@@ -1,6 +1,4 @@
-/* Rectangle 26 */
-
-/*  */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
 .login-container {
   width: 46.125em;
@@ -8,12 +6,50 @@
   margin: 0 auto;
   background: #F4A980;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-title-barhoppr {
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 64px;
+  line-height: 77px;
+  color: #864323;
+  margin-top: 70px;
+}
+
+.login-line-divider {
+  width: 568px;
+  border: 1px solid #864323;
+}
+
+.logo-login {
+  margin: 60px 0;
+}
+
+.login-title-login {
+  font-size: 48px;
+  color: #716364;
+}
+
+.signup-question {
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.signup-link {
+  
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
+  justify-content: space-around;
+  height: 250px;
 }
 
 .login-input-field {
@@ -23,13 +59,13 @@
   border-radius: 7px;
   height: 38px;
   width: 15.125rem;
-  }
+}
 
 .login-button {
   background-color: #716364;
   border-radius: 5px;
   width: 155px;
-  height: 54px;
+  height: 48px;
   outline: 0;
   color: white;
 }

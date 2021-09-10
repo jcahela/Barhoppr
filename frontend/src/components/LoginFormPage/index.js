@@ -11,7 +11,7 @@ const LoginFormPage = () => {
 
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
-
+  console.log(sessionUser);
   if (sessionUser) {
     history.push('/');
   }
@@ -40,6 +40,11 @@ const LoginFormPage = () => {
 
   return (
     <div className="login-container">
+      <h1 className="login-title-barhoppr">BARHOPPR</h1>
+      <div className="login-line-divider"></div>
+      <img src="/images/logo-login.png" alt="A mug of beer logo" className="logo-login" />
+      <h2 className="login-title-login">Login</h2>
+      <span className="signup-question">Need a Barhoppr account?  <a className="signup-link" href="/">Sign up here</a></span>
       <form onSubmit={onSubmit} className="login-form">
         <ul>
           {errors.map(error => (
