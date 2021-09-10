@@ -7,13 +7,24 @@ const { handleValidationErrors } = require('../../utils/validation')
 
 const router = express.Router();
 
-const validateSignup = [
+const validateSignupExists = [
   check('email')
     .exists({ checkFalsy: true })
+    .withMessage('Please enter an email'),
+  check('username')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a username'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a password'),
+    handleValidationErrors
+];
+
+const validateSignup = [
+  check('email')
     .isEmail()
     .withMessage('Please provide a valid email.'),
   check('username')
-    .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage('Please provide a username with at least 4 characters.'),
   check('username')
@@ -21,15 +32,14 @@ const validateSignup = [
     .isEmail()
     .withMessage('Username cannot be an email.'),
   check('password')
-    .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
-  handleValidationErrors,
-];
+    handleValidationErrors
+]
 
-router.post('/', validateSignup, asyncHandler(async (req, res) => {
-  const { email, password, username, profilePicture } = req.body;
-  const user = await User.signup({ email, username, password, profilePicture });
+router.post('/', validateSignupExists, validateSignup, asyncHandler(async (req, res) => {
+  const { email, password, username } = req.body;
+  const user = await User.signup({ email, username, password });
 
   await setTokenCookie(res, user);
 
