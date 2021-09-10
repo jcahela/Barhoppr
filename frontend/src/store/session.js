@@ -32,6 +32,7 @@ export const removeUser = () => ({
   type: REMOVE_USER
 })
 
+// For restoring a user session using token cookie
 const SET_SESSION_USER = 'session/setSessionUser';
 
 const setSessionUser = (user) => ({
@@ -46,6 +47,25 @@ export const restoreUser = () => async dispatch => {
     const user = await response.json();
     dispatch(setSessionUser(user));
   }
+}
+
+// For signing up a user
+export const signupUser = (user) => async dispatch => {
+  const { username, email, password } = user;
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({
+      username,
+      email,
+      password
+    })
+  });
+
+  if (response.ok) {
+    const newUser = await response.json();
+    dispatch(setSessionUser(newUser));
+  }
+  return response;
 }
 
 // state of session when a user is stored in redux session store slice of state

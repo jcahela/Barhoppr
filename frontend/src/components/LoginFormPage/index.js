@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/session'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import './LoginFormPage.css'
 
 const LoginFormPage = () => {
@@ -15,7 +15,9 @@ const LoginFormPage = () => {
   const sessionUser = useSelector(state => state.session.user)
   
   if (sessionUser) {
-    history.push('/');
+    return (
+      <Redirect to="/"/>
+    )
   }
 
   const onSubmit = (e) => {
