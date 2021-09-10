@@ -1,8 +1,17 @@
 import { Route, Switch } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
+import { restoreUser } from './store/session'
 import './App.css'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(restoreUser());
+  }, [dispatch])
+
   return (
 
    <Switch>

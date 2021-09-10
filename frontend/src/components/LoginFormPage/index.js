@@ -10,13 +10,13 @@ const LoginFormPage = () => {
   const [errors, setErrors] = useState([])
 
   const history = useHistory();
+  const dispatch = useDispatch();
+  
   const sessionUser = useSelector(state => state.session.user)
-  console.log(sessionUser);
+  
   if (sessionUser) {
     history.push('/');
   }
-
-  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +37,7 @@ const LoginFormPage = () => {
         }
       })
   }
+
 
   return (
     <div className="login-container">
