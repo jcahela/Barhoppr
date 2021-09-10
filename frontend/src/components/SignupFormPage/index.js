@@ -79,7 +79,7 @@ const SignupFormPage = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="email"
+            placeholder="Email"
           />
           <label htmlFor="password"></label>
           <input 
@@ -88,7 +88,7 @@ const SignupFormPage = () => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="password"
+            placeholder="Password"
           />
           <label htmlFor="confirmPassword"></label>
           <input 
@@ -97,10 +97,11 @@ const SignupFormPage = () => {
             name="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="confirmPassword"
+            placeholder="Confirm Password"
           />
           <button className="signup-button">Signup</button>
           <span className="login-question">Already a user?  <Link className="login-link" to="/login">Log in here</Link></span>
+          <Link className="signup-home-link" to="/">Back to Home</Link>
         </form>
 
       </div>

@@ -28,24 +28,25 @@ export const loginUser = (user) => async dispatch => {
 // For logging out a user
 const REMOVE_USER = 'session/logout';
 
-export const removeUser = () => ({
+const removeUser = () => ({
   type: REMOVE_USER
 })
 
+export const logoutUser = () => async dispatch => {
+  const response = await fetch('/api/session', {
+    method: 'DELETE'
+  });
+  dispatch(removeUser());
+  return response;
+}
+
 // For restoring a user session using token cookie
-const SET_SESSION_USER = 'session/setSessionUser';
-
-const setSessionUser = (user) => ({
-  type: SET_SESSION_USER,
-  user
-});
-
 export const restoreUser = () => async dispatch => {
   const response = await fetch('/api/session');
 
   if (response.ok) {
     const user = await response.json();
-    dispatch(setSessionUser(user));
+    dispatch(setUser(user));
   }
 }
 
@@ -63,7 +64,7 @@ export const signupUser = (user) => async dispatch => {
 
   if (response.ok) {
     const newUser = await response.json();
-    dispatch(setSessionUser(newUser));
+    dispatch(setUser(newUser));
   }
   return response;
 }
@@ -92,9 +93,7 @@ const sessionReducer = (state = initialState, action) => {
     case SET_USER:
       return newState.user = action.user;
     case REMOVE_USER:
-      return newState.user = null;
-    case SET_SESSION_USER:
-      return newState.user = action.user
+      return newState.user = { user: null };
     default:
       return state;
   }

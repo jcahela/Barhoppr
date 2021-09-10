@@ -21,6 +21,10 @@ a:hover {
   text-underline-offset: 5px;
 }
 
+a:visited {
+  color: blue;
+}
+
 input {
   border: 1px solid;
   padding-left: 20px;

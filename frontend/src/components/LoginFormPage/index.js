@@ -30,7 +30,7 @@ const LoginFormPage = () => {
 
     setPassword('');
 
-    return dispatch(loginUser(user))
+    dispatch(loginUser(user))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
