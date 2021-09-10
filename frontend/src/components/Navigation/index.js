@@ -23,15 +23,15 @@ const Navigation = () => {
 
   return (
     <nav className="nav-container">
-      <NavLink exact to="/">Home</NavLink>
+      <NavLink className="nav-link" exact to="/">Home</NavLink>
       {sessionUser ? 
         <>
           <a className="logout-button" onClick={logout} href="/">Logout</a>
           <ProfileButton />
         </>: 
         <>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/signup">Signup</NavLink>
+          <NavLink className="nav-link" to="/login">Login</NavLink>
+          <NavLink className="nav-link" to="/signup">Signup</NavLink>
         </>
       }
     </nav>
