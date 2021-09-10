@@ -1,0 +1,35 @@
+/* Rectangle 26 */
+
+/*  */
+
+.login-container {
+  width: 46.125em;
+  height: 100vh;
+  margin: 0 auto;
+  background: #F4A980;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-input-field {
+  background: #FFFFFF;
+  border: 1px solid #9D9D9D;
+  box-sizing: border-box;
+  border-radius: 7px;
+  height: 38px;
+  width: 15.125rem;
+  }
+
+.login-button {
+  background-color: #716364;
+  border-radius: 5px;
+  width: 155px;
+  height: 54px;
+  outline: 0;
+  color: white;
+}
