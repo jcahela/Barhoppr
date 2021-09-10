@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/session'
 import { useHistory, Redirect } from 'react-router-dom';
 import './LoginFormPage.css'
+import { Link } from 'react-router-dom';
 
 const LoginFormPage = () => {
   const [credential, setCredential] = useState('');
@@ -47,7 +48,7 @@ const LoginFormPage = () => {
       <div className="login-line-divider"></div>
       <img src="/images/logo-login.png" alt="A mug of beer logo" className="logo-login" />
       <h2 className="login-title-login">Login</h2>
-      <span className="signup-question">Need a Barhoppr account?  <a className="signup-link" href="/">Sign up here</a></span>
+      <span className="signup-question">Need a Barhoppr account?  <Link className="signup-link" to="/signup">Sign up here</Link></span>
       <form onSubmit={onSubmit} className="login-form">
         <ul>
           {errors.map(error => (
