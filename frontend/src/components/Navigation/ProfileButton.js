@@ -1,23 +1,58 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router";
+import { useState, useEffect } from "react";
+import { logoutUser } from "../../store/session";
 
 const ProfileButton = () => {
   const sessionUser = useSelector(state => state.session.user);
   const profilePicUrl = sessionUser.profilePicture;
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const history = useHistory()
+  const [showMenu, setShowMenu] = useState(false);
 
-  const profile = () => {
-    history.push('/profile');
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
   }
 
+  useEffect(() => {
+    if (!showMenu) return;
+    
+    const closeMenu = () => {
+      setShowMenu(false)
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener('click', closeMenu);
+  })
+
+  const logout = (e) => {
+    e.preventDefault();
+    if (sessionUser) {
+      dispatch(logoutUser());
+      history.push('/');
+    }
+  }
+
+
   return (
-    <div 
-      className="profile-button"
-      onClick={profile}
-    >
-      <img className="profile-pic" src={profilePicUrl} alt="Smiling man" />
-    </div>
+    <>
+      <button 
+        className="profile-button"
+        onClick={openMenu}
+      >
+        <img className="profile-pic" src={profilePicUrl} alt="Smiling man" />
+      </button>
+      {showMenu && (
+        <ul className="profile-dropdown">
+          <li>Username: {sessionUser.username}</li>
+          <li>Email: {sessionUser.email}</li>
+          <button className="logout-button" onClick={logout}>Logout</button>
+        </ul>
+      )}
+    </>
   )
 }
 

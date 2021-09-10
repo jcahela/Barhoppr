@@ -21,7 +21,11 @@ a:hover {
   text-underline-offset: 5px;
 }
 
-a:visited {
+a:not(.nav-container a) {
+  color: blue;
+}
+
+a:not(.nav-container a) a:visited {
   color: blue;
 }
 
@@ -29,3 +33,7 @@ input {
   border: 1px solid;
   padding-left: 20px;
 }
+
+/* button:hover {
+  box-shadow: 2px 2px 2px rgb(160, 160, 160);
+} */

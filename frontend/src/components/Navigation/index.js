@@ -1,39 +1,42 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
-import { logoutUser } from "../../store/session";
-import { useHistory } from "react-router";
 import ProfileButton from "./ProfileButton";
-
 import './Navigation.css'
 
 const Navigation = () => {
   const sessionUser = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   console.log(sessionUser);
 
-  const logout = (e) => {
-    e.preventDefault();
-    if (sessionUser) {
-      dispatch(logoutUser());
-      history.push('/');
-    }
-  }
 
   return (
     <nav className="nav-container">
-      <NavLink className="nav-link" exact to="/">Home</NavLink>
-      {sessionUser ? 
-        <>
-          <a className="logout-button" onClick={logout} href="/">Logout</a>
-          <ProfileButton />
-        </>: 
-        <>
-          <NavLink className="nav-link" to="/login">Login</NavLink>
-          <NavLink className="nav-link" to="/signup">Signup</NavLink>
-        </>
-      }
+      <div className="nav-logo-title">
+        <NavLink className="nav-link" exact to="/">
+          <img src="/images/navbar-logo.png" alt="A mug of beer logo" className="navbar-logo" />
+        </NavLink>
+        <h1 className="nav-barhoppr">BARHOPPR</h1>
+      </div>
+
+      <div className="nav-site-link-container">
+        <NavLink className="nav-link" to='/drinks'>Drinks & Bars</NavLink>
+        <NavLink className="nav-link" to='/drinks'>Checkins</NavLink>
+        <NavLink className="nav-link" to='/drinks'>Profile</NavLink>
+        <NavLink className="nav-link" to='/drinks'>My Feed</NavLink>
+      </div>
+      
+      <div className="nav-link-container">
+        {sessionUser ? 
+          <>
+            <ProfileButton />
+          </>: 
+          <>
+            <NavLink className="nav-link login-link" to="/login">Login</NavLink>
+            <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
+          </>
+        }
+      </div>
+
     </nav>
   )
 }
