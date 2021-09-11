@@ -1,25 +1,17 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/session'
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './LoginFormPage.css'
 import { Link } from 'react-router-dom';
 
-const LoginFormPage = () => {
+const LoginForm = ({ onClose }) => {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([])
 
   const history = useHistory();
   const dispatch = useDispatch();
-  
-  const sessionUser = useSelector(state => state.session.user)
-  
-  if (sessionUser) {
-    return (
-      <Redirect to="/"/>
-    )
-  }
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -44,11 +36,14 @@ const LoginFormPage = () => {
 
   return (
     <div className="login-container">
+      <span onClick={onClose} class="material-icons close-icon" id="close-login-icon-color">close</span>
       <h1 className="login-title-barhoppr">BARHOPPR</h1>
       <div className="login-line-divider"></div>
       <img src="/images/logo-login.png" alt="A mug of beer logo" className="logo-login" />
       <h2 className="login-title-login">Login</h2>
-      <span className="signup-question">Need a Barhoppr account?  <Link className="signup-link" to="/signup">Sign up here</Link></span>
+      {(window.location.pathname !== '/signup') && (
+        <span className="signup-question">Need a Barhoppr account?  <Link className="signup-link" to="/signup">Sign up here</Link></span>
+      )}
       <form onSubmit={onSubmit} className="login-form">
         <ul>
           {errors.map(error => (
@@ -79,4 +74,4 @@ const LoginFormPage = () => {
   )
 }
 
-export default LoginFormPage;
+export default LoginForm;

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser } from '../../store/session'
 import { useHistory, Redirect } from 'react-router-dom';
-import './SignupFormPage.css'
 import { Link } from 'react-router-dom';
+import LoginFormModal from '../LoginFormModal';
+import './SignupFormPage.css'
 
 const SignupFormPage = () => {
   const [username, setUsername] = useState('');
@@ -100,7 +101,7 @@ const SignupFormPage = () => {
             placeholder="Confirm Password"
           />
           <button className="signup-button">Signup</button>
-          <span className="login-question">Already a user?  <Link className="login-link" to="/login">Log in here</Link></span>
+          <span className="login-question">Already a user?  <LoginFormModal to="/login"></LoginFormModal></span>
           <Link className="signup-home-link" to="/">Back to Home</Link>
         </form>
 

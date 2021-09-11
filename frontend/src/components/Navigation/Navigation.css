@@ -1,7 +1,6 @@
 .nav-container {
   position: sticky;
   top: 0;
-  z-index: 1;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -62,6 +61,18 @@
   color: white;
 }
 
+.nav-login {
+  font-size: 26px;
+  color: white;
+  margin-right: 30px;
+}
+
+.nav-login:hover {
+  cursor: pointer;
+  
+}
+
+/* If a user a logged in */
 .profile-button {
   height: 60px;
   width: 60px;
