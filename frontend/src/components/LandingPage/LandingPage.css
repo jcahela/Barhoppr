@@ -1,0 +1,64 @@
+.landing-background-image {
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/886337747726516254/patrick-tomasso-GXXYkSwndP4-unsplash.jpg');
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.landing-darkener {
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100vh;
+}
+
+.landing-page-login, #landing-signup {
+  color: white;
+}
+
+.landing-links-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.landing-container {
+  width: 120px;
+  height: 48px;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 12px;
+  margin-right: 8px;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.landing-signup-container {
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  margin-right: 60px;
+}
+
+#landing-signup:hover {
+  text-decoration: none;
+}
+
+.landing-welcome-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50vh;
+}
+
+.landing-welcome-title {
+  color: white;
+  font-size: 46px;
+}
+
+.landing-welcome-message {
+  color: white;
+  font-size: 22px;
+  font-weight: lighter;
+}

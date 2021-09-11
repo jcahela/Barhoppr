@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import './Navigation.css'
+import { useEffect } from "react";
 
-const Navigation = () => {
-  const sessionUser = useSelector(state => state.session.user);
+const Navigation = ({ isLoaded }) => {
+  let sessionUser = useSelector(state => state.session.user);
 
-  console.log(sessionUser);
-
+  useEffect(() => {
+  }, [sessionUser])
 
   return (
     <nav className="nav-container">
@@ -19,14 +20,14 @@ const Navigation = () => {
         <h1 className="nav-barhoppr">BARHOPPR</h1>
       </div>
 
-      <div className="nav-site-link-container">
+      {isLoaded && (<div className="nav-site-link-container">
         <NavLink className="nav-link" to='/drinks'>Drinks & Bars</NavLink>
         <NavLink className="nav-link" to='/drinks'>Checkins</NavLink>
         <NavLink className="nav-link" to='/drinks'>Profile</NavLink>
         <NavLink className="nav-link" to='/drinks'>My Feed</NavLink>
-      </div>
+      </div>)}
       
-      <div className="nav-link-container">
+      {isLoaded && (<div className="nav-link-container">
         {sessionUser ? 
           <>
             <ProfileButton />
@@ -37,7 +38,7 @@ const Navigation = () => {
             <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
           </>
         }
-      </div>
+      </div>)}
 
     </nav>
   )

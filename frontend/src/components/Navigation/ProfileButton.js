@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useHistory } from "react-router";
+import { Redirect } from "react-router";
 import { useState, useEffect } from "react";
 import { logoutUser } from "../../store/session";
 
 const ProfileButton = () => {
   const sessionUser = useSelector(state => state.session.user);
   const profilePicUrl = sessionUser.profilePicture;
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const [showMenu, setShowMenu] = useState(false);
@@ -28,11 +27,13 @@ const ProfileButton = () => {
     return () => document.removeEventListener('click', closeMenu);
   })
 
-  const logout = (e) => {
+  const logout = async (e) => {
     e.preventDefault();
     if (sessionUser) {
-      dispatch(logoutUser());
-      history.push('/');
+      await dispatch(logoutUser());
+      return (
+        <Redirect to="/"></Redirect>
+      )
     }
   }
 

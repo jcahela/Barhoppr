@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/session'
 import { useHistory } from 'react-router-dom';
 import './LoginFormPage.css'
@@ -9,10 +9,14 @@ const LoginForm = ({ onClose }) => {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([])
-
   const history = useHistory();
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
 
+  if (sessionUser) {
+    history.push('/drinks')
+  }
+  
   const onSubmit = (e) => {
     e.preventDefault();
     const user = {
@@ -23,20 +27,21 @@ const LoginForm = ({ onClose }) => {
     setPassword('');
 
     dispatch(loginUser(user))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors)
-        } else {
-          history.push('/');
-        }
-      })
+    .catch(async (res) => {
+      const data = await res.json();
+      console.log('Reached the .catch')
+      if (data && data.errors) {
+        setErrors(data.errors)
+        return;
+      }
+      history.push('/drinks');
+    })
   }
 
 
   return (
     <div className="login-container">
-      <span onClick={onClose} class="material-icons close-icon" id="close-login-icon-color">close</span>
+      <span onClick={onClose} className="material-icons close-icon" id="close-login-icon-color">close</span>
       <h1 className="login-title-barhoppr">BARHOPPR</h1>
       <div className="login-line-divider"></div>
       <img src="/images/logo-login.png" alt="A mug of beer logo" className="logo-login" />
