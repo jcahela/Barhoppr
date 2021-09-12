@@ -89,10 +89,20 @@
   margin-top: 40px;
 }
 
+.login-button:hover {
+  cursor: pointer;
+  transform: scale(1.03)
+}
+
 .modal-button {
   color: blue;
 }
 
 .hover-pointer:hover {
   cursor: pointer;
+}
+
+#demo-user-link {
+  color: #864323;
+  font-weight: bold;
 }

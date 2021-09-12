@@ -1,17 +1,10 @@
 import { NavLink } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
 import './LandingPage.css'
 
 const LandingPage = () => {
-  const sessionUser = useSelector(state => state.session.user);
-
-  if (sessionUser) {
-    return (
-      <Redirect to="/drinks"></Redirect>
-    )
-  }
+  const history = useHistory();
 
   return (
     <div className="component-body">
@@ -26,8 +19,13 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="landing-welcome-container">
+            <img className="landing-logo" src="/images/landing-logo.png" alt="Beer mug graphic" />
             <h1 className="landing-welcome-title">BARHOPPR</h1>
+            <div className="landing-divider"></div>
             <p className="landing-welcome-message">Share your favorite drinks with the world</p>
+            <div className="landing-welcome-signup-container" onClick={e => history.push('/signup')}>
+              <NavLink className="landing-welcome-signup" to="/signup" id="landing-signup" >Sign Up Here</NavLink>
+            </div>
           </div>
         </div>
       </div>

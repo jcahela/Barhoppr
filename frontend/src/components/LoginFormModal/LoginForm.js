@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../store/session'
+import { loginUser, restoreUser } from '../../store/session'
 import { useHistory } from 'react-router-dom';
 import './LoginFormPage.css'
 import { Link } from 'react-router-dom';
@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 const LoginForm = ({ onClose }) => {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([])
+  const [loginErrors, setLoginErrors] = useState([])
   const history = useHistory();
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user.user);
 
   if (sessionUser) {
     history.push('/drinks')
@@ -29,13 +29,23 @@ const LoginForm = ({ onClose }) => {
     dispatch(loginUser(user))
     .catch(async (res) => {
       const data = await res.json();
-      console.log('Reached the .catch')
       if (data && data.errors) {
-        setErrors(data.errors)
+        setLoginErrors(data.errors)
         return;
       }
+      await restoreUser();
       history.push('/drinks');
     })
+  }
+
+  const getDemoUser = async (e) => {
+    e.preventDefault();
+    dispatch(loginUser({
+      credential: 'Demo-guy',
+      password: 'password'
+    }));
+    await restoreUser();
+    history.push('/drinks');
   }
 
 
@@ -51,7 +61,7 @@ const LoginForm = ({ onClose }) => {
       )}
       <form onSubmit={onSubmit} className="login-form">
         <ul>
-          {errors.map(error => (
+          {loginErrors.map(error => (
             <li key={error}>{error}</li>
           ))}
         </ul>
@@ -75,6 +85,7 @@ const LoginForm = ({ onClose }) => {
         />
         <button className="login-button">Login</button>
       </form>
+      <Link id="demo-user-link" to="/" onClick={getDemoUser}>Log in as a demo user</Link>
     </div>
   )
 }

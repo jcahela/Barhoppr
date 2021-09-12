@@ -38,6 +38,18 @@
   margin-right: 60px;
 }
 
+.landing-signup-container:hover {
+  transform: scale(1.025);
+}
+
+.landing-login-container:hover {
+  transform: scale(1.08)
+}
+
+.landing-container:hover {
+  cursor: pointer;
+}
+
 #landing-signup:hover {
   text-decoration: none;
 }
@@ -49,16 +61,53 @@
   align-items: center;
   justify-content: center;
   width: 50%;
-  height: 50vh;
+  height: 60vh;
+}
+
+.landing-logo{
+  height: 84px;
+  width: 70px;
 }
 
 .landing-welcome-title {
   color: white;
-  font-size: 46px;
+  font-size: 56px;
+  font-weight: 200;
+  margin-bottom: 0;
+  margin-top: 14px;
+}
+
+.landing-divider {
+  width: 70px;
+  border: 7px solid;
+  color: #F4A980;
 }
 
 .landing-welcome-message {
   color: white;
   font-size: 22px;
   font-weight: lighter;
+  margin-top: 80px;
+}
+
+.landing-welcome-signup {
+  font-size: 22px;
+  display: block;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.landing-welcome-signup-container {
+  border: 1px solid white;
+  border-width: 2px;
+  border-radius: 3px;
+  width: 185px;
+  height: 65px;
+  margin-top: 50px;
+  background-image: linear-gradient(#f4a980, #dc8c66);
+}
+
+.landing-welcome-signup-container:hover {
+  cursor: pointer;
+  transform: scale(1.03);
 }

@@ -45,9 +45,11 @@ export const restoreUser = () => async dispatch => {
   const response = await fetch('/api/session');
 
   if (response.ok) {
-    const user = await response.json();
-    dispatch(setUser(user));
+    const data = await response.json();
+    dispatch(setUser(data));
   }
+
+  return response;
 }
 
 // For signing up a user
@@ -64,8 +66,8 @@ export const signupUser = (user) => async dispatch => {
   });
 
   if (response.ok) {
-    const newUser = await response.json();
-    dispatch(setUser(newUser));
+    const data = await response.json();
+    dispatch(setUser(data.user));
   }
   return response;
 }
@@ -92,9 +94,12 @@ const sessionReducer = (state = initialState, action) => {
   
   switch (action.type) {
     case SET_USER:
-      return newState.user = action.user;
+      newState.user = action.user;
+      return newState;
     case REMOVE_USER:
-      return newState.user = { user: null };
+      console.log(newState, 'Inside Remove User Reducer Case');
+      newState.user.user = null;
+      return newState;
     default:
       return state;
   }

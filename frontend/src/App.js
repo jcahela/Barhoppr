@@ -5,8 +5,8 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import SignupFormPage from './components/SignupFormPage';
-import Navigation from './components/Navigation';
 import LandingPage from './components/LandingPage';
+import DrinksPage from './components/DrinksPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,9 +34,7 @@ function App() {
           </Route>
 
           <Route path='/drinks'>
-            <div className="component-body">
-              <Navigation isLoaded={isLoaded}/>
-            </div>
+            <DrinksPage isLoaded={isLoaded}/>
           </Route>
 
         </Switch>

@@ -35,15 +35,18 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
   return res.json({ user })
 }));
 
-router.get('/', restoreUser, (req, res) => {
-  console.log('entered /api/session')
-  const { user } = req;
-  if (user) {
-    return res.json({ user: user.toSafeObject() });
-  } else {
-    return res.json({});
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json({
+        user: user.toSafeObject()
+      });
+    } else return res.json({});
   }
-})
+);
 
 router.delete('/', (_req, res) => {
   res.clearCookie('token');

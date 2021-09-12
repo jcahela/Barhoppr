@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser, restoreUser } from '../../store/session'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginFormModal from '../LoginFormModal';
 import './SignupFormPage.css'
@@ -12,8 +12,9 @@ const SignupFormPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
-  const sessionUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user.user)
 
+  const history = useHistory();
   const dispatch = useDispatch();
   const emails = useSelector(state => state.userData.emails);
   const usernames = useSelector(state => state.userData.usernames)
@@ -55,22 +56,21 @@ const SignupFormPage = () => {
       setErrors(['Confirm Password field must match Password']);
       return;
     }
-    
-    if (errors.length === 0) {
-      const response = await dispatch(signupUser(newUser));
       
-      if (response && response.errors) {
-        setErrors(response.errors);
-        return;
-      } else {
-        await dispatch(restoreUser());
-        return (
-          <Redirect to="/drinks"></Redirect>
-        )
-      }
-    }
+    dispatch(signupUser(newUser))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors)
+          return;
+        }
+      })
 
+    const restored = await dispatch(restoreUser());
+    if (restored) {
+      history.push('/drinks')
     }
+  }
     
 
   return (
