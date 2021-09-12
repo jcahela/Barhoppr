@@ -61,12 +61,28 @@
   margin-top: 50px;
 }
 
+.signup-button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
 .login-question {
   font-size: 14px;
   margin-top: 30px;
 }
 
+.signup-login {
+  color: blue;
+}
+
+.signup-login:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .signup-home-link {
   font-size: 12px;
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }

@@ -37,13 +37,27 @@ const validateSignup = [
     handleValidationErrors
 ]
 
+router.get('/emails', asyncHandler(async (req, res) => {
+  const emails = await User.findAll({
+    attributes: ['email']
+  });
+  res.json(emails);
+}))
+
+router.get('/usernames', asyncHandler(async (req, res) => {
+  const usernames = await User.findAll({
+    attributes: ['username']
+  });
+  res.json(usernames);
+}))
+
 router.post('/', validateSignupExists, validateSignup, asyncHandler(async (req, res) => {
-  const { email, password, username } = req.body;
-  const user = await User.signup({ email, username, password });
+  const { email, password, username, profilePicture } = req.body;
+  const user = await User.signup({ email, username, password, profilePicture });
 
   await setTokenCookie(res, user);
 
-  return res.json({ user });
+  return res.json({user});
 }))
 
 module.exports = router;

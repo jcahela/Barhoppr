@@ -18,7 +18,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  text-underline-offset: 5px;
+  text-underline-offset: 3px;
 }
 
 a:not(.nav-container a) {
@@ -32,6 +32,10 @@ a:not(.nav-container a) a:visited {
 input {
   border: 1px solid;
   padding-left: 20px;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 /* button:hover {

@@ -1,13 +1,20 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import LoginFormModal from "../LoginFormModal";
+import { restoreUser } from "../../store/session";
 import './Navigation.css'
+import { useEffect } from "react";
 
-const Navigation = () => {
-  const sessionUser = useSelector(state => state.session.user);
+const Navigation = ({ isLoaded }) => {
+  const currentUser = useSelector(state => state.session.user.user)
+  console.log(currentUser, 'inside navigation component');
 
-  console.log(sessionUser);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(restoreUser());
+  }, [dispatch])
 
   return (
     <nav className="nav-container">
@@ -18,20 +25,20 @@ const Navigation = () => {
         <h1 className="nav-barhoppr">BARHOPPR</h1>
       </div>
 
-      <div className="nav-site-link-container">
+      {isLoaded && (<div className="nav-site-link-container">
         <NavLink className="nav-link" to='/drinks'>Drinks & Bars</NavLink>
         <NavLink className="nav-link" to='/drinks'>Checkins</NavLink>
         <NavLink className="nav-link" to='/drinks'>Profile</NavLink>
         <NavLink className="nav-link" to='/drinks'>My Feed</NavLink>
-      </div>
+      </div>)}
       
       <div className="nav-link-container">
-        {sessionUser ? 
+        {currentUser && isLoaded ? 
           <>
             <ProfileButton />
           </>: 
           <>
-            <NavLink className="nav-link login-link" to="/login">Login</NavLink>
+            <LoginFormModal />
             <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
           </>
         }
