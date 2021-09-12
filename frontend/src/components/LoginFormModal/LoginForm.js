@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, restoreUser } from '../../store/session'
+import { loginUser } from '../../store/session'
 import { useHistory } from 'react-router-dom';
 import './LoginFormPage.css'
 import { Link } from 'react-router-dom';
@@ -32,19 +32,20 @@ const LoginForm = ({ onClose }) => {
       if (data && data.errors) {
         setLoginErrors(data.errors)
         return;
+      } else {
+        // await dispatch(restoreUser());
+        history.push('/drinks');
       }
-      await restoreUser();
-      history.push('/drinks');
     })
   }
 
   const getDemoUser = async (e) => {
     e.preventDefault();
-    dispatch(loginUser({
+    await dispatch(loginUser({
       credential: 'Demo-guy',
       password: 'password'
     }));
-    await restoreUser();
+    // await dispatch(restoreUser());
     history.push('/drinks');
   }
 

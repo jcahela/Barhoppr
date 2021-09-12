@@ -97,7 +97,6 @@ const sessionReducer = (state = initialState, action) => {
       newState.user = action.user;
       return newState;
     case REMOVE_USER:
-      console.log(newState, 'Inside Remove User Reducer Case');
       newState.user.user = null;
       return newState;
     default:

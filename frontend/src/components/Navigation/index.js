@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 const Navigation = ({ isLoaded }) => {
   const currentUser = useSelector(state => state.session.user.user)
-  console.log(currentUser, 'inside navigation component');
 
   const dispatch = useDispatch();
 

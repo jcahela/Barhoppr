@@ -58,6 +58,8 @@ const SignupFormPage = () => {
     }
       
     dispatch(signupUser(newUser))
+      .then(() => dispatch(restoreUser()))
+      .then(() => history.push('/drinks'))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -66,10 +68,6 @@ const SignupFormPage = () => {
         }
       })
 
-    const restored = await dispatch(restoreUser());
-    if (restored) {
-      history.push('/drinks')
-    }
   }
     
 
