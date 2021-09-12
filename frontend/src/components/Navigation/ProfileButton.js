@@ -5,7 +5,6 @@ import { logoutUser, restoreUser } from "../../store/session";
 
 const ProfileButton = () => {
   const sessionUser = useSelector(state => state.session.user.user);
-  console.log(sessionUser, 'inside profile button component')
   const profilePicUrl = sessionUser.profilePicture;
   const dispatch = useDispatch();
   const history = useHistory();

@@ -1,10 +1,19 @@
 import { NavLink } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import './LandingPage.css'
 
 const LandingPage = () => {
   const history = useHistory();
+
+  const sessionUser = useSelector(state => state.session.user);
+  console.log(sessionUser.user, 'inside landing page');
+
+  if(sessionUser.user) {
+    history.push('/drinks');
+    return null;
+  }
 
   return (
     <div className="component-body">
