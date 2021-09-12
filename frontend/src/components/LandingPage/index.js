@@ -8,7 +8,6 @@ const LandingPage = () => {
   const history = useHistory();
 
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser.user, 'inside landing page');
 
   if(sessionUser.user) {
     history.push('/drinks');
