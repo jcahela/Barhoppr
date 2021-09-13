@@ -54,10 +54,12 @@ export const restoreUser = () => async dispatch => {
 
 // For signing up a user
 export const signupUser = (user) => async dispatch => {
-  const { username, email, password, profilePicture } = user;
+  const { firstname, lastname, username, email, password, profilePicture } = user;
   const response = await fetch('/api/users', {
     method: 'POST',
     body: JSON.stringify({
+      firstname,
+      lastname,
       username,
       email,
       password,

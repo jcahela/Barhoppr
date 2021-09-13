@@ -27,11 +27,13 @@ const profilePictures = [
   'https://randomuser.me/api/portraits/med/women/76.jpg',
 ]
 
-function createUsers(num) {
-  for (let i = 0; i < num; i++) {
+function createUsers() {
+  for (let i = 0; i < profilePictures.length; i++) {
     const user = {
       email: faker.internet.email(),
       username: faker.internet.userName(),
+      firstname: faker.name.firstName(),
+      lastname: faker.name.lastName(),
       hashedPassword: bcrypt.hashSync(faker.internet.password()),
       profilePicture: profilePictures[i],
       createdAt: faker.date.between('2015-01-01', '2021-08-31')
@@ -41,20 +43,16 @@ function createUsers(num) {
   }
 }
 
-createUsers(20);
+createUsers();
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
-        username: 'Demo-guy',
+        username: 'demo-guy',
+        firstname: 'Andy',
+        lastname: 'Samberg',
         hashedPassword: bcrypt.hashSync('password'),
         profilePicture: 'https://randomuser.me/api/portraits/med/men/4.jpg',
         createdAt: faker.date.between('2015-01-01', '2021-08-31')
@@ -64,12 +62,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
     return queryInterface.bulkDelete('Users', null, {});
   }
 };

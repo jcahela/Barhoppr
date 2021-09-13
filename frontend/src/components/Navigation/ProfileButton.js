@@ -35,6 +35,7 @@ const ProfileButton = () => {
       await dispatch(restoreUser());
       history.push('/');
     }
+    return;
   }
 
 

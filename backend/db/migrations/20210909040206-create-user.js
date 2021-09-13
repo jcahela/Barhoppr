@@ -18,9 +18,17 @@ module.exports = {
         type: Sequelize.STRING(256),
         unique: true
       },
+      firstname: {
+        allowNull: false,
+        type: Sequelize.STRING(100),
+      },
+      lastname: {
+        allowNull: false,
+        type: Sequelize.STRING(100),
+      },
       hashedPassword: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(60),
       },
       profilePicture: {
         type: Sequelize.STRING,
@@ -28,7 +36,6 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        // defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
