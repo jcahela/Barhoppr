@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux'
 import SignupFormPage from './components/SignupFormPage';
 import LandingPage from './components/LandingPage';
 import DrinksPage from './components/DrinksPage';
+import CheckinButton from './components/CheckinButton'
+import CheckinForm from './components/CheckinFormModal';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <>
+      {/* <CheckinButton /> */}
       {isLoaded && (
         
         <Switch>
@@ -35,6 +38,15 @@ function App() {
 
           <Route path='/drinks'>
             <DrinksPage isLoaded={isLoaded}/>
+            <CheckinForm />
+          </Route>
+
+          <Route path='/users/:id'>
+            <h1>Profile Route</h1>
+          </Route>
+
+          <Route path='/bar-talk'>
+            <h1>Bar Talk Route</h1>
           </Route>
 
         </Switch>

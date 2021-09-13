@@ -19,14 +19,14 @@ const Navigation = ({ isLoaded }) => {
     <nav className="nav-container">
       <div className="nav-logo-title">
         <NavLink className="nav-link" exact to="/">
-          <img src="/images/navbar-logo.png" alt="A mug of beer logo" className="navbar-logo" />
+          <img src="/images/landing-logo.png" alt="A mug of beer logo" className="navbar-logo" />
         </NavLink>
         <h1 className="nav-barhoppr">BARHOPPR</h1>
       </div>
 
       {isLoaded && (<div className="nav-site-link-container">
         <NavLink className="nav-link" to='/bar-talk'>Bar Talk</NavLink>
-        <NavLink className="nav-link" to='/profile'>My Profile</NavLink>
+        <NavLink className="nav-link" to='/users/1'>My Profile</NavLink>
         <NavLink className="nav-link" to='/drinks'>Drinks</NavLink>
       </div>)}
       

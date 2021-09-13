@@ -21,7 +21,7 @@
 }
 
 .navbar-logo {
-  height: 48px;
+  height: 54px;
   position: relative;
   bottom: 7px;
 }
@@ -33,15 +33,20 @@
 }
 
 .nav-site-link-container {
-  margin-left: 60px;
+  margin-left: 100px;
   width: 550px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .nav-link {
   font-size: 26px;
   color: white;
+  margin-left: 60px;
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
 }
 
 .nav-link:hover {

@@ -13,6 +13,7 @@ const DrinksPage = ({ isLoaded }) => {
 
   return (
     <Navigation isLoaded={isLoaded}/>
+    
   )
 }
 
