@@ -72,18 +72,21 @@
 }
 
 .landing-logo{
-  height: 84px;
-  width: 70px;
+  height: 94px;
+  width: 80px;
   z-index: 1;
 }
 
 .landing-welcome-title {
   color: white;
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 200;
   margin-bottom: 0;
   margin-top: 14px;
   z-index: 1;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: bold;
+  /* -webkit-text-stroke: 1px rgb(182, 182, 182); */
 }
 
 .landing-divider {
@@ -98,6 +101,7 @@
   font-size: 24px;
   margin-top: 80px;
   z-index: 1;
+  -webkit-text-stroke: 1px rgb(255, 255, 255);
 }
 
 .landing-welcome-signup {
