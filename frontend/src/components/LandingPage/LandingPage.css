@@ -10,6 +10,17 @@
   filter: blur(5px);
 }
 
+.landing-welcome-contrast {
+  width: 600px;
+  height: 600px;
+  background-color: rgba(220, 139, 102, 0.575);
+  /* opacity: 0.3; */
+  border: 3px solid rgb(216, 216, 216);
+  z-index: 2;
+  margin: 150px auto;
+  border-radius: 7px;
+}
+
 .landing-darkener {
   background-color: rgba(0, 0, 0, 0.65);
   width: 100%;
@@ -64,6 +75,7 @@
 
 .landing-welcome-container {
   margin: 0 auto;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +99,6 @@
   z-index: 1;
   font-family: 'Fira Sans', sans-serif;
   font-weight: bold;
-  /* -webkit-text-stroke: 1px rgb(182, 182, 182); */
 }
 
 .landing-divider {
@@ -127,14 +138,4 @@
 .landing-welcome-signup-container:hover {
   cursor: pointer;
   transform: scale(1.03);
-}
-
-.landing-welcome-contrast {
-  width: 40vw;
-  height: 100vh;
-  background-color: #dc8c66;
-  opacity: 0.3;
-  border: 3px solid white;
-  z-index: 2;
-  margin: 0 auto;
 }
