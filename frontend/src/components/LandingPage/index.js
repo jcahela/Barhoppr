@@ -16,7 +16,10 @@ const LandingPage = () => {
 
   return (
     <div className="component-body">
-      <div className="landing-darkener"><div className="landing-background-image"></div></div>
+      <div className="landing-darkener">
+        <div className="landing-background-image"></div>
+        <div className="landing-welcome-contrast"></div>
+      </div>
       <div className="landing-links-container">
           <div className="landing-container landing-login-container" >
             <LoginFormModal />
@@ -25,6 +28,7 @@ const LandingPage = () => {
             <NavLink to="/signup" id="landing-signup" >Sign Up</NavLink>
           </div>
       </div>
+      
       <div className="landing-welcome-container">
         <img className="landing-logo" src="/images/landing-logo.png" alt="Beer mug graphic" />
         <h1 className="landing-welcome-title">BARHOPPR</h1>
