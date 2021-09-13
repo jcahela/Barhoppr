@@ -16,6 +16,7 @@ const LoginFormModal = () => {
   }
 
   const onClose = (e) => {
+    e.preventDefault();
     setShowModal(false);
     const componentBody = document.querySelector(".component-body");
     if (componentBody) {

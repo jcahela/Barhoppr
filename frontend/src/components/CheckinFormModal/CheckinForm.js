@@ -1,20 +1,14 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { } from '../../store/session'
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './CheckinForm.css'
-import { Link } from 'react-router-dom';
 
 const CheckinForm = ({ onClose }) => {
-  const sessionUser = useSelector(state => state.session.user.user);
-  const sessionUserId = sessionUser.id
-
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('');
   const [servingStyle, setServingStyle] = useState('');
   const [abv, setAbv] = useState('');
   const [checkinErrors, setCheckinErrors] = useState([]);
-  const [drinkSelected, setDrinkSelected] = useState(true);
+  const [drinkSelected, setDrinkSelected] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -25,13 +19,12 @@ const CheckinForm = ({ onClose }) => {
 
   return (
     <>
-      <button onClick={() => setDrinkSelected(!drinkSelected)}>Select/Deselect Drink</button>
-      {drinkSelected && (
-        
-        <div className="checkin-container">
-          <span onClick={onClose} className="material-icons checkin-close-icon" id="close-login-icon-color">close</span>
-          <h1 className="checkin-title">Checkin</h1>
-          <div className="checkin-divider"></div>
+    <div className="checkin-container">
+      <span onClick={onClose} className="material-icons checkin-close-icon" id="close-login-icon-color">close</span>
+      <h1 className="checkin-title">Checkin</h1>
+      <div className="checkin-divider"></div>
+      {drinkSelected ? (
+        <>
           <div className="drink-header">
             <div className="checkin-drink-image-container">
               <div className="checkin-drink-image" />
@@ -50,7 +43,6 @@ const CheckinForm = ({ onClose }) => {
             <label htmlFor="comment"></label>
             <textarea 
               className="form-row checkin-input-field comment-field"
-              type="text" 
               name="comment"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -99,8 +91,21 @@ const CheckinForm = ({ onClose }) => {
               <button className="checkin-submit-button">Checkin</button>
             </div>
           </form>
-        </div>
-      )}
+        </>
+      )
+      : (
+        <>
+          <label htmlFor="search" hidden></label>
+          <input 
+            onBlur={() => setDrinkSelected(true)} 
+            className="checkin-search"
+            placeholder="Search for a drink"
+          />
+        </>
+
+        )}
+    </div>
+      
     </>
   )
 }

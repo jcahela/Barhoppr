@@ -8,7 +8,8 @@ import SignupFormPage from './components/SignupFormPage';
 import LandingPage from './components/LandingPage';
 import DrinksPage from './components/DrinksPage';
 import CheckinButton from './components/CheckinButton'
-import CheckinForm from './components/CheckinFormModal';
+// import CheckinForm from './components/CheckinFormModal';
+import CheckinFormModal from './components/CheckinFormModal';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      {/* <CheckinButton /> */}
+      <CheckinFormModal />
       {isLoaded && (
         
         <Switch>
@@ -38,7 +39,6 @@ function App() {
 
           <Route path='/drinks'>
             <DrinksPage isLoaded={isLoaded}/>
-            <CheckinForm />
           </Route>
 
           <Route path='/users/:id'>

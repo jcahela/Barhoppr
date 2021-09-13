@@ -23,8 +23,8 @@ export const CheckinModalProvider = ({ children }) => {
 }
 
 export const CheckinModal = ({ onClose, children }) => {
-  const CheckinModalNode = useContext(ModalContext);
-  if (!modalNode) return null;
+  const CheckinModalNode = useContext(CheckinModalContext);
+  if (!CheckinModalNode) return null;
 
   return ReactDOM.createPortal(
     <div id="checkin-modal">
