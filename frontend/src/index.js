@@ -8,6 +8,7 @@ import configureStore from './store';
 import { csrfFetch, restoreCSRF } from './store/csrf'
 import * as sessionActions from './store/session'
 import { ModalProvider } from './context/Modal'
+import { CheckinModalProvider } from './context/CheckinModal';
 
 const store = configureStore();
 
@@ -23,9 +24,11 @@ function Root() {
   return (
     <Provider store={store}>
       <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <CheckinModalProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </CheckinModalProvider>
       </ModalProvider>
     </Provider>
   )

@@ -1,0 +1,140 @@
+.checkin-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: fit-content;
+  padding: 15px;
+  background-color: #F4A980;
+  border-radius: 5px;
+  position: relative;
+}
+
+.checkin-close-icon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.checkin-close-icon:hover {
+  cursor: pointer;
+}
+
+.checkin-title {
+  font-size: 26px;
+  margin-top: 0;
+}
+
+.checkin-divider {
+  width: 100%;
+  border: 1px solid;
+}
+
+/* If a drink is not selected */
+
+.checkin-search {
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid rgb(126, 126, 126);
+  border-radius: 5px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  width: 400px;
+  height: 50px;
+}
+
+/* If a drink is selected */
+.drink-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.checkin-drink-image-container {
+  width: 150px;
+  height: 100px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid rgb(126, 126, 126);
+  border-radius: 5px;
+}
+
+.checkin-drink-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.chunkys.com//nas/content/live/chunkys/wp-content/uploads/2017/07/blue-moon-logo.jpg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.checkin-drink-name-container {
+  width: 400px;
+  height: 40px;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.checkin-drink-name {
+  font-size: 25px;
+}
+
+.checkin-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkin-input-field {
+  background-color: white;
+  border: 1px solid rgb(126, 126, 126);
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.comment-field {
+  height: 100px;
+}
+
+.form-row {
+  margin-top: 20px;
+}
+
+.rating-serving-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0;
+}
+
+.rating {
+  width: 50%;
+}
+
+.abv-submit-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.abv {
+  width: 50%;
+  padding: 0 15px;
+}
+
+.checkin-submit-button {
+  background-color: #716364;
+  border-radius: 5px;
+  width: 140px;
+  height: 48px;
+  outline: 0;
+  color: white;
+  font-size: 20px;
+}
+
+.checkin-submit-button:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}

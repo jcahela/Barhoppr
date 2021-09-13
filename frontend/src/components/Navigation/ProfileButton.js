@@ -16,12 +16,13 @@ const ProfileButton = () => {
     setShowMenu(true);
   }
 
+  const closeMenu = () => {
+    setShowMenu(false)
+  };
+
   useEffect(() => {
     if (!showMenu) return;
     
-    const closeMenu = () => {
-      setShowMenu(false)
-    };
 
     document.addEventListener('click', closeMenu);
 
@@ -40,10 +41,12 @@ const ProfileButton = () => {
 
 
   return (
-    <>
+    <div 
+      onMouseLeave={closeMenu}
+      onMouseEnter={openMenu}
+    >
       <button 
         className="profile-button"
-        onClick={openMenu}
       >
         <img className="profile-pic" src={profilePicUrl} alt="Smiling man" />
       </button>
@@ -54,7 +57,7 @@ const ProfileButton = () => {
           <button className="logout-button" onClick={logout}>Logout</button>
         </ul>
       )}
-    </>
+    </div>
   )
 }
 
