@@ -24,6 +24,20 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 100]
+      },
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 100]
+      },
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -54,8 +68,8 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
   User.prototype.toSafeObject = function() {
-    const { id, username, email, profilePicture } = this;
-    return { id, username, email, profilePicture };
+    const { id, username, email, firstname, lastname, profilePicture } = this;
+    return { id, username, email, firstname, lastname, profilePicture };
   };
   User.prototype.validatePassword = function(password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -78,9 +92,11 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-  User.signup = async function ({ username, email, password, profilePicture }) {
+  User.signup = async function ({ username, email, password, profilePicture, firstname, lastname }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
+      firstname,
+      lastname,
       username,
       email,
       hashedPassword,

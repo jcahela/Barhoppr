@@ -42,7 +42,7 @@ const LoginForm = ({ onClose }) => {
   const getDemoUser = async (e) => {
     e.preventDefault();
     await dispatch(loginUser({
-      credential: 'Demo-guy',
+      credential: 'demo-guy',
       password: 'password'
     }));
     // await dispatch(restoreUser());

@@ -7,9 +7,9 @@ import './LandingPage.css'
 const LandingPage = () => {
   const history = useHistory();
 
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user.user);
 
-  if(sessionUser.user) {
+  if(sessionUser) {
     history.push('/drinks');
     return null;
   }
