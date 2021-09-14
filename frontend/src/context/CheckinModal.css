@@ -20,7 +20,7 @@
 
 #checkin-modal-content {
   position: absolute;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 5px;
   border: 0;
 }

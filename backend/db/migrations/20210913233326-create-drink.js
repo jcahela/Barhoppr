@@ -1,41 +1,34 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Drinks', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
-        allowNull: false,
-        type: Sequelize.STRING(30),
-        unique: true
-      },
-      email: {
-        allowNull: false,
-        type: Sequelize.STRING(256),
-        unique: true
-      },
-      firstname: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING(100),
+        unique: true
       },
-      lastname: {
+      drinkImageUrl: {
         allowNull: false,
-        type: Sequelize.STRING(100),
+        type: Sequelize.TEXT
       },
-      hashedPassword: {
+      description: {
         allowNull: false,
-        type: Sequelize.STRING(60),
+        type: Sequelize.TEXT
       },
-      profilePicture: {
-        type: Sequelize.STRING,
+      abv: {
+        allowNull: false,
+        type: Sequelize.DECIMAL
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
@@ -46,9 +39,8 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable(
-      'Users', 
+      'Drinks', 
       null, 
-      { truncate: true, cascade: true, restartIdentity: true }
-    );
+      { truncate: true, cascade: true, restartIdentity: true });
   }
 };

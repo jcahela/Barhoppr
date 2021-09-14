@@ -1,41 +1,37 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Checkins', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      userId: {
         allowNull: false,
-        type: Sequelize.STRING(30),
-        unique: true
+        type: Sequelize.INTEGER,
+        references: {model: "Users"}
       },
-      email: {
+      drinkId: {
         allowNull: false,
-        type: Sequelize.STRING(256),
-        unique: true
+        type: Sequelize.INTEGER,
+        references: {model: "Drinks"}
       },
-      firstname: {
+      servingStyle: {
+        type: Sequelize.STRING
+      },
+      rating: {
         allowNull: false,
-        type: Sequelize.STRING(100),
+        type: Sequelize.DECIMAL
       },
-      lastname: {
-        allowNull: false,
-        type: Sequelize.STRING(100),
-      },
-      hashedPassword: {
-        allowNull: false,
-        type: Sequelize.STRING(60),
-      },
-      profilePicture: {
-        type: Sequelize.STRING,
+      comment: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
@@ -46,7 +42,7 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable(
-      'Users', 
+      'Checkins', 
       null, 
       { truncate: true, cascade: true, restartIdentity: true }
     );
