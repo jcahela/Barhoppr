@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import { restoreUser } from "../../store/session";
+import { getMyCheckins } from '../../store/checkins'
 import './Navigation.css'
 import { useEffect } from "react";
 
@@ -13,6 +14,7 @@ const Navigation = ({ isLoaded }) => {
 
   useEffect(() => {
     dispatch(restoreUser());
+    dispatch(getMyCheckins());
   }, [dispatch])
 
   return (

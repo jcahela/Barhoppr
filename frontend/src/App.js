@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import { restoreUser } from './store/session'
 import { fetchEmails, fetchUsernames } from './store/userData'
+import { getAllCheckins } from './store/checkins'
 import './App.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
@@ -19,6 +20,7 @@ function App() {
     dispatch(restoreUser())
       .then(() => dispatch(fetchEmails()))
       .then(() => dispatch(fetchUsernames()))
+      .then(() => dispatch(getAllCheckins()))
       .then(() => setIsLoaded(true))
   }, [dispatch])
 

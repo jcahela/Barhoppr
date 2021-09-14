@@ -29,8 +29,6 @@ const SignupFormPage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(firstname, 'INSIDE SIGNUP SUBMIT')
-    console.log(lastname, 'INSIDE SIGNUP SUBMIT')
 
     const newUser = {
       firstname,

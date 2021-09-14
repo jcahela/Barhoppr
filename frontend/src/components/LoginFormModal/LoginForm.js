@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/session'
+import { getMyCheckins } from '../../store/checkins';
 import { useHistory } from 'react-router-dom';
 import './LoginFormPage.css'
 import { Link } from 'react-router-dom';
@@ -27,14 +28,12 @@ const LoginForm = ({ onClose }) => {
     setPassword('');
 
     dispatch(loginUser(user))
+    .then(() => history.push('/drinks') )
     .catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) {
         setLoginErrors(data.errors)
         return;
-      } else {
-        // await dispatch(restoreUser());
-        history.push('/drinks');
       }
     })
   }

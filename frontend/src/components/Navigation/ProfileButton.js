@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router";
 import { useState, useEffect } from "react";
 import { logoutUser, restoreUser } from "../../store/session";
+import { removeMyCheckins } from '../../store/checkins'
 
 const ProfileButton = () => {
   const sessionUser = useSelector(state => state.session.user.user);
@@ -32,6 +33,7 @@ const ProfileButton = () => {
   const logout = async (e) => {
     e.preventDefault();
     if (sessionUser) {
+      await dispatch(removeMyCheckins());
       await dispatch(logoutUser());
       await dispatch(restoreUser());
       history.push('/');

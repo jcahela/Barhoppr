@@ -3,19 +3,49 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation')
 const { Checkin, User } = require('../../db/models')
-const { requireAuth } = require('../../utils/auth');
+const { restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
-router.use(requireAuth);
+router.use(restoreUser);
+
+// Test User/Drink/Checkin models
+// router.get('/user', asyncHandler(async (req, res) => {
+//   // get the first drink Id, then get all checkins of that drink, and all users that have made checkins on that drink
+//   const demoUser = await Drink.findByPk(1, {
+//     include: {
+//       model: Checkin,
+//       include: User
+//     }
+//   });
+//   res.json(demoUser);
+// }))
+
+// Test Friendship model
+// router.get('/user', asyncHandler(async (req, res) => {
+//   // get the first user and all friends of that user
+//   const demoUser = await User.findByPk(1, {
+//     include: ['Friend1', 'Friend2']
+//   });
+//   res.json(demoUser);
+// }));
 
 router.get('/', asyncHandler(async (req, res) => {
   const { user } = req;
-  const currentUserCheckins = await Checkin.findAll({
-    where: {userId: user.id}
-  })
-  res.json(currentUserCheckins)
-}))
+  if (user) {
+    const currentUserCheckins = await Checkin.findAll({
+      where: {userId: user.id}
+    })
+    res.json(currentUserCheckins)
+  } else {
+    res.json({});
+  }
+}));
+
+router.get('/all', asyncHandler(async (req, res) => {
+  const allCheckins = await Checkin.findAll();
+  res.json(allCheckins);
+}));
 
 const validateCheckin = [
   check('drinkId')

@@ -3,8 +3,6 @@ import './CheckinButton.css'
 
 const CheckinButton = ({ onOpen }) => {
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser);
-  console.log(!JSON.stringify(sessionUser) === '{}', 'INSIDE CHECKIN BUTTON');
   const sessionExists = !(JSON.stringify(sessionUser) === '{}');
 
   // const showCheckinForm = () => {
