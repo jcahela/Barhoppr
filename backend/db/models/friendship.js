@@ -12,8 +12,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Friendship.associate = function(models) {
     // associations can be defined here
-    Friendship.belongsTo(models.User, { as: 'Friend1', onDelete: 'CASCADE'})
-    Friendship.belongsTo(models.User, { as: 'Friend2', onDelete: 'CASCADE'})
   };
   return Friendship;
 };
