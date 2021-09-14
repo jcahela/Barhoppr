@@ -94,6 +94,7 @@ const sessionReducer = (state = initialState, action) => {
 
   const newState = {...state}
   
+  // debugger;
   switch (action.type) {
     case SET_USER:
       newState.user = action.user;

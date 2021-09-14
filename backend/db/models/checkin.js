@@ -14,14 +14,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     rating: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        min: 0,
+        max: 5
+      }
     },
     comment: {
       type: DataTypes.TEXT
     }
   }, {});
   Checkin.associate = function(models) {
-    // associations can be defined here
+    Checkin.belongsTo(models.User, { foreignKey: 'userId' });
+    Checkin.belongsTo(models.Drink, { foreignKey: 'drinkId' });
   };
   return Checkin;
 };

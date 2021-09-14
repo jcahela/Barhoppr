@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Drink.associate = function(models) {
-    // associations can be defined here
+    Drink.hasMany(models.Checkin, { foreignKey: 'drinkId' });
   };
   return Drink;
 };

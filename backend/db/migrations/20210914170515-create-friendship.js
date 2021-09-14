@@ -1,36 +1,27 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Checkins', {
+    return queryInterface.createTable('Friendships', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      user1: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: "Users"}
       },
-      drinkId: {
+      user2: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: "Drinks"}
-      },
-      servingStyle: {
-        type: Sequelize.STRING
-      },
-      rating: {
-        allowNull: false,
-        type: Sequelize.DECIMAL
-      },
-      comment: {
-        type: Sequelize.TEXT
+        references: {model: "Users"}
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
@@ -40,10 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable(
-      'Checkins', 
-      null, 
-      { truncate: true, cascade: true, restartIdentity: true }
-    );
+    return queryInterface.dropTable('Friendships');
   }
 };
