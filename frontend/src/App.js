@@ -2,9 +2,10 @@ import { Route, Switch } from 'react-router-dom';
 import { restoreUser } from './store/session'
 import { fetchEmails, fetchUsernames } from './store/userData'
 import { getAllCheckins } from './store/checkins'
+import { fetchDrinks } from './store/drinks'
 import './App.css'
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import CheckinFormModal from './components/CheckinFormModal';
 import SignupFormPage from './components/SignupFormPage';
 import LandingPage from './components/LandingPage';
@@ -21,6 +22,7 @@ function App() {
       .then(() => dispatch(fetchEmails()))
       .then(() => dispatch(fetchUsernames()))
       .then(() => dispatch(getAllCheckins()))
+      .then(() => dispatch(fetchDrinks()))
       .then(() => setIsLoaded(true))
   }, [dispatch])
 
