@@ -10,7 +10,8 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(100),
+        unique: true
       },
       drinkImageUrl: {
         allowNull: false,
@@ -22,19 +23,24 @@ module.exports = {
       },
       abv: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Drinks');
+    return queryInterface.dropTable(
+      'Drinks', 
+      null, 
+      { truncate: true, cascade: true, restartIdentity: true });
   }
 };

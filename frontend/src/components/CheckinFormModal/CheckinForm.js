@@ -26,9 +26,7 @@ const CheckinForm = ({ onClose }) => {
       {drinkSelected ? (
         <>
           <div className="drink-header">
-            <div className="checkin-drink-image-container">
-              <div className="checkin-drink-image" />
-            </div>
+            <div className="checkin-drink-image"/>
             <div className="checkin-drink-name-container">
               <h2 className="checkin-drink-name">Bud Lite Heineken</h2>
 
