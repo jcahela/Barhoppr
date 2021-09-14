@@ -14,7 +14,7 @@ const setAllCheckins = (allCheckins) => ({
   allCheckins
 })
 
-export const removeMyCheckins = (myCheckins) => ({
+export const removeMyCheckins = () => ({
   type: REMOVE_MY_CHECKINS
 })
 
@@ -43,7 +43,7 @@ export const getAllCheckins = () => async dispatch => {
 
 const initialState = {};
 
-export const checkinsReducer = (state = initialState, action) => {
+const checkinsReducer = (state = initialState, action) => {
   Object.freeze(state);
 
   const newState = {...state};
@@ -62,3 +62,5 @@ export const checkinsReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export default checkinsReducer;

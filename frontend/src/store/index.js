@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import userDataReducer from './userData';
-import { checkinsReducer } from './checkins';
+import checkinsReducer from './checkins';
+import drinksReducer from './drinks';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   userData: userDataReducer,
-  checkins: checkinsReducer
+  checkins: checkinsReducer,
+  drinks: drinksReducer
 });
 
 let enhancer;
