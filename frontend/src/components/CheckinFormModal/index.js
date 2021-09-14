@@ -1,7 +1,7 @@
 import CheckinForm from './CheckinForm';
 import CheckinButton from '../CheckinButton';
 import { useState } from 'react';
-import { CheckinModal } from '../../context/CheckinModal';
+import { Modal } from '../../context/Modal';
 import './CheckinForm.css';
 
 const CheckinFormModal = () => {
@@ -21,9 +21,9 @@ const CheckinFormModal = () => {
     <>
       <CheckinButton onOpen={onOpen}/>
       {showCheckinModal && (
-        <CheckinModal onClose={onClose}>
+        <Modal onClose={onClose}>
           <CheckinForm onClose={onClose} />
-        </CheckinModal>
+        </Modal>
       )}
     </>
   )
