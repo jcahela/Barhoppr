@@ -1,0 +1,75 @@
+import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import './CheckinForm.css';
+
+
+const CheckinSearch = ({ drinkSelected, setDrinkSelected }) => {
+  const classRef = useRef();
+  const [ searchVal, setSearchVal ] = useState('');
+  const drinks = useSelector(state => state.drinks);
+  const drinksArr = Object.values(drinks);
+  
+  const matches = () => {
+    const inputLength = searchVal.length;
+    const matches = [];
+
+    if (inputLength === 0) return drinksArr;
+
+    drinksArr.forEach(drink => {
+      const drinkSegment = drink.name.slice(0, inputLength);
+      if (drinkSegment.toLowerCase() === searchVal.toLowerCase()) {
+        matches.push(drink);
+      }
+    });
+
+    if (matches.length === 0) matches.push({id:'No Matches', name:'No Matches'});
+    return matches;
+  }
+
+  const showResults = () => {
+    const resultsList = classRef.current;
+    resultsList.classList.remove("hidden");
+  }
+  const hideResults = () => {
+    const resultsList = classRef.current;
+    resultsList.classList.add("hidden");
+  }
+  const showForm = () => {
+    console.log(drinkSelected)
+    setDrinkSelected(true);
+    console.log(drinkSelected)
+  }
+
+  return (
+    <>
+      <label htmlFor="search" hidden></label>
+      <input 
+        className="checkin-search"
+        placeholder="Search for a drink"
+        value={searchVal}
+        onChange={(e) => setSearchVal(e.target.value)}
+        onFocus={showResults}
+        onBlur={hideResults}
+      />
+      <div className="results-container">
+        <ul 
+          ref={classRef} 
+          className="hidden"
+        >
+          {matches().map(drink => (
+            // TODO: change to drink card once drink cards are made
+            <li 
+              className="drink-result" 
+              key={drink.id}
+              onClick={showForm}
+            >{drink.name}</li>
+          ))}
+        </ul>
+      </div>
+    </>
+  )
+}
+
+export default CheckinSearch;

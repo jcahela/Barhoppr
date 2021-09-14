@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import CheckinSearch from './CheckinSearch';
 import './CheckinForm.css'
 
 const CheckinForm = ({ onClose }) => {
@@ -9,6 +10,7 @@ const CheckinForm = ({ onClose }) => {
   const [abv, setAbv] = useState('');
   const [checkinErrors, setCheckinErrors] = useState([]);
   const [drinkSelected, setDrinkSelected] = useState(false);
+
 
   const dispatch = useDispatch();
 
@@ -91,17 +93,7 @@ const CheckinForm = ({ onClose }) => {
           </form>
         </>
       )
-      : (
-        <>
-          <label htmlFor="search" hidden></label>
-          <input 
-            onBlur={() => setDrinkSelected(true)} 
-            className="checkin-search"
-            placeholder="Search for a drink"
-          />
-        </>
-
-        )}
+      : <CheckinSearch drinkSelected={drinkSelected} setDrinkSelected={setDrinkSelected}/>}
     </div>
       
     </>
