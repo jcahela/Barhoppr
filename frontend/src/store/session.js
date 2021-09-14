@@ -93,8 +93,7 @@ const sessionReducer = (state = initialState, action) => {
   Object.freeze(state);
 
   const newState = {...state}
-  
-  // debugger;
+
   switch (action.type) {
     case SET_USER:
       newState.user = action.user;

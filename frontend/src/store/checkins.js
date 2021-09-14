@@ -20,7 +20,6 @@ export const removeMyCheckins = (myCheckins) => ({
 
 export const getMyCheckins = () => async dispatch => {
   const response = await fetch('/api/checkins');
-  debugger;
   if (response.ok) {
     const checkins = await response.json();
     dispatch(setMyCheckins(checkins));
