@@ -44,6 +44,30 @@
   height: 50px;
 }
 
+.hidden {
+  display: none;
+}
+
+.results-container {
+  background-color: white;
+  position: absolute;
+  max-height: 300px;
+  overflow: auto;
+  top: 135px;
+  width: 400px;
+}
+
+.drink-result {
+  list-style-type: none;
+  height: 125px;
+}
+
+.drink-result:hover {
+  background-color: rgb(194, 194, 194);
+  cursor: pointer;
+}
+
+
 /* If a drink is selected */
 .drink-header{
   display: flex;
