@@ -1,5 +1,5 @@
 .checkincard-container {
-  height: 300px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -64,9 +64,13 @@
 }
 
 .checkincard-comment-container {
-  max-width: 600px;
+  width: 600px;
   margin: 0 auto;
   margin-top: 30px;
+  margin-bottom: 10px;
+  border: 2px solid #63636383;
+  min-height: 100px;
+  padding: 10px;
 }
 
 .checkincard-comment {
@@ -74,7 +78,6 @@
 }
 
 .checkincard-time {
-  /* margin-top: 60px; */
   position: absolute;
   bottom: 8px;
   left: 8px;
