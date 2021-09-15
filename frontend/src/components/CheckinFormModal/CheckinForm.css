@@ -67,6 +67,12 @@
   cursor: pointer;
 }
 
+.no-match {
+  overflow: hidden;
+  height: 30px;
+  padding: 10px;
+}
+
 
 /* If a drink is selected */
 .drink-header{
@@ -79,7 +85,7 @@
 .checkin-drink-image {
   width: 150px;
   height: 100px;
-  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/887191393485865010/Sonoma-Cutrer.png');
+  /* background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/887191393485865010/Sonoma-Cutrer.png'); */
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

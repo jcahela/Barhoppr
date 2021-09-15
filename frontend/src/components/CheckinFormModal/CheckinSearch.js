@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import './CheckinForm.css';
 
 
-const CheckinSearch = ({ drinkSelected, setDrinkSelected }) => {
+const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
   const classRef = useRef();
   const [ searchVal, setSearchVal ] = useState('');
   const drinks = useSelector(state => state.drinks);
@@ -24,7 +24,6 @@ const CheckinSearch = ({ drinkSelected, setDrinkSelected }) => {
       }
     });
 
-    if (matches.length === 0) matches.push({id:'No Matches', name:'No Matches'});
     return matches;
   }
 
@@ -32,14 +31,11 @@ const CheckinSearch = ({ drinkSelected, setDrinkSelected }) => {
     const resultsList = classRef.current;
     resultsList.classList.remove("hidden");
   }
-  const hideResults = () => {
-    const resultsList = classRef.current;
-    resultsList.classList.add("hidden");
-  }
-  const showForm = () => {
-    console.log(drinkSelected)
+
+  const showForm = (e) => {
     setDrinkSelected(true);
-    console.log(drinkSelected)
+    const drink = drinksArr.find(drink => drink.name === e.target.innerText);
+    setCurrentDrink(drink);
   }
 
   return (
@@ -51,21 +47,23 @@ const CheckinSearch = ({ drinkSelected, setDrinkSelected }) => {
         value={searchVal}
         onChange={(e) => setSearchVal(e.target.value)}
         onFocus={showResults}
-        onBlur={hideResults}
       />
       <div className="results-container">
         <ul 
           ref={classRef} 
           className="hidden"
         >
-          {matches().map(drink => (
+          {matches().length ? matches().map(drink => (
             // TODO: change to drink card once drink cards are made
             <li 
               className="drink-result" 
               key={drink.id}
               onClick={showForm}
             >{drink.name}</li>
-          ))}
+          )) : (
+            <li className="no-match">No Matches</li>
+          )
+        }
         </ul>
       </div>
     </>

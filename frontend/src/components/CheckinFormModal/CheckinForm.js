@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CheckinSearch from './CheckinSearch';
 import './CheckinForm.css'
@@ -10,7 +10,17 @@ const CheckinForm = ({ onClose }) => {
   const [abv, setAbv] = useState('');
   const [checkinErrors, setCheckinErrors] = useState([]);
   const [drinkSelected, setDrinkSelected] = useState(false);
+  const [currentDrink, setCurrentDrink] = useState({});
+  const imageRef = useRef();
 
+  useEffect(() => {
+    const image = imageRef.current;
+    console.log(currentDrink);
+    if (image) image.style.backgroundImage = `url(${currentDrink.drinkImageUrl})`;
+    console.log(image);
+  }, [currentDrink]);
+
+  
 
   const dispatch = useDispatch();
 
@@ -28,9 +38,9 @@ const CheckinForm = ({ onClose }) => {
       {drinkSelected ? (
         <>
           <div className="drink-header">
-            <div className="checkin-drink-image"/>
+            <div ref={imageRef} className="checkin-drink-image"/>
             <div className="checkin-drink-name-container">
-              <h2 className="checkin-drink-name">Bud Lite Heineken</h2>
+              <h2 className="checkin-drink-name">{currentDrink.name}</h2>
 
             </div>
           </div>
@@ -93,7 +103,7 @@ const CheckinForm = ({ onClose }) => {
           </form>
         </>
       )
-      : <CheckinSearch drinkSelected={drinkSelected} setDrinkSelected={setDrinkSelected}/>}
+      : <CheckinSearch setCurrentDrink={setCurrentDrink} setDrinkSelected={setDrinkSelected}/>}
     </div>
       
     </>
