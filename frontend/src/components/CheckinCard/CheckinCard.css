@@ -6,6 +6,7 @@
   background-color: white;
   border-radius: 9px;
   margin-top: 40px;
+  position: relative;
 }
 
 .checkincard-header {
@@ -22,13 +23,12 @@
 }
 
 .checkincard-title-container {
-  max-width: 640px;
+  width: 640px;
   max-height: 80px;
-  overflow: hidden;
 }
 
 .checkincard-title {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .checkincard-user-name {
@@ -38,7 +38,8 @@
 .checkincard-drink-pic {
   height: 80px;
   width: 80px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   border: 3px solid #63636383;
   border-radius: 3px;
@@ -47,6 +48,19 @@
 .checkincard-rating {
   font-size: 20px;
   margin-top: 20px;
+}
+
+.delete-checkin-button {
+  font-size: 13px;
+  color: blue;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+
+}
+
+.delete-checkin-button:hover {
+  cursor: pointer;
 }
 
 .checkincard-comment-container {
@@ -60,5 +74,27 @@
 }
 
 .checkincard-time {
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.drink-icon {
+  position: absolute;
+  top: 105px;
+  right: 16px;
+}
+
+.wine-sizing {
+  font-size: 30px;
+}
+
+.can-img {
+  width: 30px;
+  display: inline;
+}
+
+.hidden {
+  display: none;
 }

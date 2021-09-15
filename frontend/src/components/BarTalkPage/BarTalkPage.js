@@ -9,6 +9,7 @@ import './BarTalkPage.css'
 const BarTalkPage = ({ isLoaded }) => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+  const allCheckins = useSelector(state => state.checkins.allCheckins);
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -27,7 +28,9 @@ const BarTalkPage = ({ isLoaded }) => {
       <div className="bartalk-feed-container">
         <h1 className="bartalk-title">Recent Bar Talk</h1>
         <div className="bartalk-divider"></div>
-        <CheckinCard />
+        {allCheckins.map(checkin => (
+          <CheckinCard key={checkin.id} checkin={checkin}/>
+        ))}
 
       </div>
     </>
