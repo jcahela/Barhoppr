@@ -21,9 +21,7 @@ const LandingPage = () => {
         <div className="landing-welcome-contrast"></div>
       </div>
       <div className="landing-links-container">
-          <div className="landing-container landing-login-container" >
-            <LoginFormModal />
-          </div>
+          <LoginFormModal />
           <div className="landing-container landing-signup-container">
             <NavLink to="/signup" id="landing-signup" >Sign Up</NavLink>
           </div>
