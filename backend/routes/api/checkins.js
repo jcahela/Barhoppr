@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation')
-const { Checkin } = require('../../db/models')
+const { Checkin, User, Drink } = require('../../db/models')
 const { restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
@@ -34,7 +34,8 @@ router.get('/', asyncHandler(async (req, res) => {
   const { user } = req;
   if (user) {
     const currentUserCheckins = await Checkin.findAll({
-      where: {userId: user.id}
+      where: {userId: user.id},
+      include: [User, Drink]
     })
     res.json(currentUserCheckins)
   } else {
@@ -43,7 +44,9 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 router.get('/all', asyncHandler(async (req, res) => {
-  const allCheckins = await Checkin.findAll();
+  const allCheckins = await Checkin.findAll({
+    include: [User, Drink]
+  });
   res.json(allCheckins);
 }));
 

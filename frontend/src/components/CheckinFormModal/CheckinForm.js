@@ -8,7 +8,6 @@ const CheckinForm = ({ setShowCheckinModal, onClose }) => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('');
   const [servingStyle, setServingStyle] = useState('');
-  const [abv, setAbv] = useState('');
   const [checkinErrors, setCheckinErrors] = useState([]);
   const [drinkSelected, setDrinkSelected] = useState(false);
   const [currentDrink, setCurrentDrink] = useState({});

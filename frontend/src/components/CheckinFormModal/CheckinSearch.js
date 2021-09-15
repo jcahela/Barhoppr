@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 import './CheckinForm.css';
