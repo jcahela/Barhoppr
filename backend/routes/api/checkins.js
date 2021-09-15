@@ -45,7 +45,8 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/all', asyncHandler(async (req, res) => {
   const allCheckins = await Checkin.findAll({
-    include: [User, Drink]
+    include: [User, Drink],
+    order: [['createdAt', 'DESC']]
   });
   res.json(allCheckins);
 }));
@@ -88,6 +89,15 @@ router.post('/', validateCheckin, asyncHandler(async (req, res) => {
 
 }))
 
+router.delete('/', asyncHandler(async (req, res) => {
+  const { checkinId } = req.body;
+
+  const checkinToDestroy = await Checkin.findByPk(checkinId);
+
+  await checkinToDestroy.destroy();
+
+  res.json({checkinToDestroy});
+}))
 
 
 module.exports = router;

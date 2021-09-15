@@ -4,6 +4,7 @@ const SET_MY_CHECKINS = 'checkins/setMyCheckins';
 const SET_ALL_CHECKINS = 'checkins/setAllCheckins';
 const REMOVE_MY_CHECKINS = 'checkins/removeMyCheckins';
 const POST_CHECKIN = 'checkins/postCheckin';
+const DELETE_CHECKIN = 'checkins/deleteCheckin'
 
 const setMyCheckins = (myCheckins) => ({
   type: SET_MY_CHECKINS,
@@ -18,6 +19,11 @@ const setAllCheckins = (allCheckins) => ({
 const postCheckin = (newCheckin) => ({
   type: POST_CHECKIN,
   newCheckin
+})
+
+const deleteCheckin = (checkinToDestroy) => ({
+  type: DELETE_CHECKIN,
+  checkinToDestroy
 })
 
 export const removeMyCheckins = () => ({
@@ -58,6 +64,21 @@ export const createCheckin = (newCheckin) => async dispatch => {
   return response;
 }
 
+export const destroyCheckin = (checkinId) => async dispatch => {
+  const response = await fetch('/api/checkins', {
+    method: 'DELETE',
+    body: JSON.stringify({
+      checkinId
+    })
+  });
+
+  if (response.ok) {
+    const checkinToDelete = await response.json();
+    dispatch(deleteCheckin(checkinToDelete));
+  }
+  return response;
+}
+
 // State of checkins in redux checkin slice of state
 
 // {
@@ -86,8 +107,14 @@ const checkinsReducer = (state = initialState, action) => {
       newState['myCheckins'] = [];
       return newState;
     case POST_CHECKIN:
-      newState['myCheckins'] = [...newState['myCheckins'], action.newCheckin];
-      newState['allCheckins'] = [...newState['allCheckins'], action.newCheckin];
+      newState['myCheckins'] = [action.newCheckin, ...newState['myCheckins']];
+      newState['allCheckins'] = [action.newCheckin, ...newState['allCheckins']];
+      return newState;
+    case DELETE_CHECKIN:
+      const newMyCheckins = newState['myCheckins'].filter(checkin => checkin.id !== action.checkinToDestroy.id)
+      const newAllCheckins = newState['allCheckins'].filter(checkin => checkin.id !== action.checkinToDestroy.id)
+      newState['myCheckins'] = newMyCheckins;
+      newState['allCheckins'] = newAllCheckins;
       return newState;
     default:
       return state;

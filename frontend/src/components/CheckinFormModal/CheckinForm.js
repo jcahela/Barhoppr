@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CheckinSearch from './CheckinSearch';
-import { createCheckin } from '../../store/checkins';
+import { createCheckin, getMyCheckins, getAllCheckins } from '../../store/checkins';
 import './CheckinForm.css'
 
 const CheckinForm = ({ setShowCheckinModal, onClose }) => {
@@ -37,7 +37,9 @@ const CheckinForm = ({ setShowCheckinModal, onClose }) => {
     };
     
     dispatch(createCheckin(checkin))
+      .then(() => dispatch(getMyCheckins()))
       .then(() => setShowCheckinModal(false))
+      .then(() => dispatch(getAllCheckins()))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
