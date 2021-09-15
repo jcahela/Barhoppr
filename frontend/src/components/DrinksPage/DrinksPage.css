@@ -23,7 +23,7 @@
 }
 
 .top-rated-drinks {
-  height: 600px;
+  height: fit-content;
   width: 300px;
   background-color: #ECECEC;
   position: absolute;
@@ -45,6 +45,7 @@
 }
 
 .mini-drink-container {
-  border: 1px solid;
-  height: 80px;
+  /* border: 1px solid; */
+  /* height: 80px; */
+  margin-top: 30px;
 }

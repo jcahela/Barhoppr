@@ -42,12 +42,11 @@ const DrinksPage = ({ isLoaded }) => {
       </div>
       <div className="top-rated-drinks">
         <h2 className="top-rated-title">Top 5 Rated Drinks</h2>
-        {topFive.map(drink => {
-          
+        {topFive.map((drink, index) => {
           return (
             <div className="mini-drink-container">
               <div className={`img-${drink.id} top-rated-drink-image`}></div>
-              <p>{drink.name}</p>
+              <p>{index + 1}. {drink.name}</p>
             </div>
           )
         })}
