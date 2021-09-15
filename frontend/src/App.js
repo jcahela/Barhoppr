@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import { restoreUser } from './store/session'
 import { fetchEmails, fetchUsernames } from './store/userData'
-import { getAllCheckins } from './store/checkins'
+import { getAllCheckins, getMyCheckins } from './store/checkins'
 import { fetchDrinks } from './store/drinks'
 import './App.css'
 import { useEffect, useState } from 'react';
@@ -22,6 +22,7 @@ function App() {
       .then(() => dispatch(fetchEmails()))
       .then(() => dispatch(fetchUsernames()))
       .then(() => dispatch(getAllCheckins()))
+      .then(() => dispatch(getMyCheckins()))
       .then(() => dispatch(fetchDrinks()))
       .then(() => setIsLoaded(true))
   }, [dispatch])

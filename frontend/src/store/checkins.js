@@ -65,7 +65,10 @@ export const createCheckin = (newCheckin) => async dispatch => {
 //   allCheckins: [checkin1, checkin2, checkin3, etc.]
 // }
 
-const initialState = {};
+const initialState = {
+  allCheckins: [],
+  myCheckins: []
+};
 
 const checkinsReducer = (state = initialState, action) => {
   Object.freeze(state);
@@ -80,7 +83,7 @@ const checkinsReducer = (state = initialState, action) => {
       newState['allCheckins'] = action.allCheckins;
       return newState;
     case REMOVE_MY_CHECKINS:
-      delete newState['myCheckins'];
+      newState['myCheckins'] = [];
       return newState;
     case POST_CHECKIN:
       newState['myCheckins'] = [...newState['myCheckins'], action.newCheckin];
