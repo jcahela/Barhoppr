@@ -1,0 +1,40 @@
+.bartalk-body {
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/887527644835487744/bar_background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  background-attachment: fixed;
+  position: fixed;
+  z-index: -1;
+  filter: brightness(50%)
+}
+
+.bartalk-feed-container {
+  width: 1000px;
+  box-sizing: border-box;
+  min-height: 91.2vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  margin-top: 90px;
+  border-radius: 1px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.bartalk-checkin-container {
+  width: 800px;
+  height: fit-content;
+  margin: 0 auto;
+  position: relative;
+  top: 300px;
+  border: 1px solid;
+}
+
+.bartalk-divider {
+  border: 2px solid rgb(88, 88, 88);
+  width: 80%;
+  background-color: rgb(88, 88, 88);
+}

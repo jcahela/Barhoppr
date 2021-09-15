@@ -53,7 +53,6 @@ function App() {
 
           <Route path='/bar-talk'>
             <BarTalkPage isLoaded={isLoaded}/>
-            <h1>Bar Talk Route</h1>
           </Route>
 
         </Switch>

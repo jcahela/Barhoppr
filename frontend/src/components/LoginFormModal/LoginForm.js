@@ -28,7 +28,7 @@ const LoginForm = ({ onClose }) => {
     setPassword('');
 
     dispatch(loginUser(user))
-    .then(() => history.push('/drinks') )
+    .then(() => history.push('/bar-talk') )
     .catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) {
@@ -45,7 +45,7 @@ const LoginForm = ({ onClose }) => {
       password: 'password'
     }));
     // await dispatch(restoreUser());
-    history.push('/drinks');
+    history.push('/bar-talk');
   }
 
 

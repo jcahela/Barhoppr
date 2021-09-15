@@ -31,12 +31,33 @@
 
 .landing-page-login, #landing-signup {
   color: white;
+  z-index: 1;
+}
+
+.landing-page-login {
+  width: 120px;
+  height: 48px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-right: 8px;
+  margin-top: 20px;
+  font-size: 18px;
+  z-index: 1;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+}
+
+.landing-page-login:hover {
+  transform: scale(1.03);
+  border: 1px solid white;
+
 }
 
 .landing-links-container {
   display: flex;
   justify-content: flex-end;
 }
+
 
 .landing-container {
   width: 120px;
@@ -61,9 +82,6 @@
   transform: scale(1.03);
 }
 
-.landing-login-container:hover {
-  transform: scale(1.03)
-}
 
 .landing-container:hover {
   cursor: pointer;
