@@ -1,0 +1,50 @@
+.drinks-feed-container {
+  width: 800px;
+  box-sizing: border-box;
+  min-height: 91.2vh;
+  background-color: #ECECEC;
+  margin: 0 auto;
+  margin-top: 90px;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.drinks-title {
+  text-align: center;
+  color: #864323;
+}
+
+.drinks-divider {
+  border: 2px solid rgb(182, 182, 182);
+  width: 100%;
+  background-color: rgb(182, 182, 182);
+}
+
+.top-rated-drinks {
+  height: 600px;
+  width: 300px;
+  background-color: #ECECEC;
+  position: absolute;
+  right: 30px;
+  top: 220px;
+  border-radius: 3px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.top-rated-title {
+  font-size: 18px;
+  text-align: center;
+  color: #353535;
+  text-decoration: underline 3px rgb(182, 182, 182);
+  text-underline-offset: 10px;
+}
+
+.mini-drink-container {
+  border: 1px solid;
+  height: 80px;
+}

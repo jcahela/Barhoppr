@@ -44,7 +44,6 @@ function App() {
 
           <Route path='/drinks'>
             <DrinksPage isLoaded={isLoaded}/>
-            <h1>Drinks Route</h1>
           </Route>
 
           <Route path='/users/:id'>

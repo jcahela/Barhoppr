@@ -1,11 +1,13 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Drink } = require('../../db/models')
+const { Drink, Checkin } = require('../../db/models')
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req, res) => {
-  const drinks = await Drink.findAll();
+  const drinks = await Drink.findAll({
+    include: Checkin
+  });
   res.json(drinks);
 }))
 

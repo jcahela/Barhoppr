@@ -5,10 +5,6 @@ const CheckinButton = ({ onOpen }) => {
   const sessionUser = useSelector(state => state.session.user);
   const sessionExists = !(JSON.stringify(sessionUser) === '{}');
 
-  // const showCheckinForm = () => {
-  //   alert('hi');
-  // }
-
   return (
     <>
       {sessionExists && (
