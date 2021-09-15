@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CheckinSearch from './CheckinSearch';
+import { createCheckin } from '../../store/checkins';
 import './CheckinForm.css'
 
-const CheckinForm = ({ onClose }) => {
+const CheckinForm = ({ setShowCheckinModal, onClose }) => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('');
   const [servingStyle, setServingStyle] = useState('');
@@ -15,18 +16,36 @@ const CheckinForm = ({ onClose }) => {
 
   useEffect(() => {
     const image = imageRef.current;
-    console.log(currentDrink);
     if (image) image.style.backgroundImage = `url(${currentDrink.drinkImageUrl})`;
-    console.log(image);
   }, [currentDrink]);
 
-  
 
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    alert('hi');
+
+    const checkin = {
+      drinkId: currentDrink.id,
+      comment,
+      rating,
+      servingStyle
+    };
+
+    if (rating < 0 || rating > 5) {
+      setCheckinErrors([...checkinErrors, 'Rating must be between 0 and 5.']);
+      return
+    };
+    
+    dispatch(createCheckin(checkin))
+      .then(() => setShowCheckinModal(false))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setCheckinErrors(data.errors)
+          return;
+        }
+      })
   }
 
   return (
@@ -72,6 +91,8 @@ const CheckinForm = ({ onClose }) => {
                 max="5"
               />
               <label htmlFor="servingStyle" hidden></label>
+            </div>
+            <div className="form-row abv-submit-row">
               <select 
                 className="checkin-input-field serving-style"
                 name="servingStyle"
@@ -84,20 +105,6 @@ const CheckinForm = ({ onClose }) => {
                 <option value="bottle">Bottle</option>
                 <option value="can">Can</option>
               </select>
-            </div>
-            <div className="form-row abv-submit-row">
-              <label htmlFor="abv" hidden></label>
-              <input 
-                className="checkin-input-field abv"
-                type="number" 
-                name="abv"
-                value={abv}
-                onChange={(e) => setAbv(e.target.value)}
-                step="0.1"
-                placeholder="ABV%"
-                min="0"
-                max="100"
-              />
               <button className="checkin-submit-button">Checkin</button>
             </div>
           </form>

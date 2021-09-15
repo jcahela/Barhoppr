@@ -49,7 +49,8 @@ router.get('/all', asyncHandler(async (req, res) => {
 
 const validateCheckin = [
   check('drinkId')
-    .exists({ checkFalsy: true }),
+    .exists({ checkFalsy: true })
+    .withMessage('You must provide a drinkId'),
   check('rating')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a rating.')

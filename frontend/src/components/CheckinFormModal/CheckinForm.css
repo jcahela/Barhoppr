@@ -131,7 +131,8 @@
 }
 
 .rating {
-  width: 50%;
+  width: 100px;
+  padding: 10px 10px 10px 15px;
 }
 
 .abv-submit-row {
