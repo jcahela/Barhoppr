@@ -7,7 +7,7 @@ import './CheckinForm.css';
 const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
   const classRef = useRef();
   const [ searchVal, setSearchVal ] = useState('');
-  const drinks = useSelector(state => state.drinks);
+  const drinks = useSelector(state => state.drinks.drinkList);
   const drinksArr = Object.values(drinks);
   
   const matches = () => {

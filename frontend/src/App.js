@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import { restoreUser } from './store/session'
 import { fetchEmails, fetchUsernames } from './store/userData'
 import { getAllCheckins, getMyCheckins } from './store/checkins'
-import { fetchDrinks } from './store/drinks'
+import { fetchDrinks, fetchTop5 } from './store/drinks'
 import './App.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -24,6 +24,7 @@ function App() {
       .then(() => dispatch(getAllCheckins()))
       .then(() => dispatch(getMyCheckins()))
       .then(() => dispatch(fetchDrinks()))
+      .then(() => dispatch(fetchTop5()))
       .then(() => setIsLoaded(true))
   }, [dispatch])
 

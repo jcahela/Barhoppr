@@ -8,7 +8,7 @@ import './DrinksPage.css'
 const DrinksPage = ({ isLoaded }) => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  const drinks = useSelector(state => state.drinks);
+  const drinks = useSelector(state => state.drinks.drinkList);
 
   const drinksArr = Object.values(drinks);
 

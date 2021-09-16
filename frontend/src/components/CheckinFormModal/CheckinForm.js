@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CheckinSearch from './CheckinSearch';
 import { createCheckin, getMyCheckins, getAllCheckins } from '../../store/checkins';
-import { fetchDrinks } from '../../store/drinks';
+import { fetchDrinks, fetchTop5 } from '../../store/drinks';
 import { useDrinkSelected } from '../../context/DrinkSelected';
 import './CheckinForm.css'
+
 
 const CheckinForm = ({ setShowCheckinModal, onClose }) => {
   const [comment, setComment] = useState('');
@@ -67,6 +68,7 @@ const CheckinForm = ({ setShowCheckinModal, onClose }) => {
       .then(() => dispatch(fetchDrinks()))
       .then(() => setCurrentDrink({}))
       .then(() => dispatch(getAllCheckins()))
+      .then(() => dispatch(fetchTop5()))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
