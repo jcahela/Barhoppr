@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { useDrinkSelected } from '../../context/DrinkSelected';
-import { useDispatch } from 'react-redux';
 
 import './DrinkCard.css'
 
 const DrinkCard = ({ drink }) => {
   const drinkImageRef = useRef();
-  const dispatch = useDispatch();
   const { setDrinkSelected, setCurrentDrink, setShowCheckinModal } = useDrinkSelected();
 
   // get average rating

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CheckinSearch from './CheckinSearch';
 import { createCheckin, getMyCheckins, getAllCheckins } from '../../store/checkins';
 import { fetchDrinks, fetchTop5 } from '../../store/drinks';
