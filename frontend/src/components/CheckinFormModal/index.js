@@ -1,11 +1,11 @@
 import CheckinForm from './CheckinForm';
 import CheckinButton from '../CheckinButton';
-import { useState } from 'react';
 import { Modal } from '../../context/Modal';
+import { useDrinkSelected } from '../../context/DrinkSelected';
 import './CheckinForm.css';
 
 const CheckinFormModal = () => {
-  const [showCheckinModal, setShowCheckinModal] = useState(false);
+  const { setDrinkSelected, setCurrentDrink, showCheckinModal, setShowCheckinModal } = useDrinkSelected();
 
   const onOpen = (e) => {
     e.preventDefault();
@@ -14,6 +14,8 @@ const CheckinFormModal = () => {
 
   const onClose = (e) => {
     e.preventDefault();
+    setDrinkSelected(false);
+    setCurrentDrink({});
     setShowCheckinModal(false);
   };
 

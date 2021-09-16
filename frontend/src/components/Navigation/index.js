@@ -20,7 +20,7 @@ const Navigation = ({ isLoaded }) => {
   return (
     <nav className="nav-container">
       <div className="nav-logo-title">
-        <NavLink className="nav-link" exact to="/">
+        <NavLink className="nav-link" exact to="/bar-talk">
           <img src="/images/landing-logo.png" alt="A mug of beer logo" className="navbar-logo" />
         </NavLink>
         <h1 className="nav-barhoppr">BARHOPPR</h1>

@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CheckinSearch from './CheckinSearch';
 import { createCheckin, getMyCheckins, getAllCheckins } from '../../store/checkins';
+import { fetchDrinks } from '../../store/drinks';
+import { useDrinkSelected } from '../../context/DrinkSelected';
 import './CheckinForm.css'
 
 const CheckinForm = ({ setShowCheckinModal, onClose }) => {
@@ -9,8 +11,7 @@ const CheckinForm = ({ setShowCheckinModal, onClose }) => {
   const [rating, setRating] = useState('');
   const [servingStyle, setServingStyle] = useState('');
   const [checkinErrors, setCheckinErrors] = useState([]);
-  const [drinkSelected, setDrinkSelected] = useState(false);
-  const [currentDrink, setCurrentDrink] = useState({});
+  const { drinkSelected, setDrinkSelected, currentDrink, setCurrentDrink } = useDrinkSelected();
   const imageRef = useRef();
 
   useEffect(() => {
@@ -39,6 +40,9 @@ const CheckinForm = ({ setShowCheckinModal, onClose }) => {
     dispatch(createCheckin(checkin))
       .then(() => dispatch(getMyCheckins()))
       .then(() => setShowCheckinModal(false))
+      .then(() => setDrinkSelected(false))
+      .then(() => dispatch(fetchDrinks()))
+      .then(() => setCurrentDrink({}))
       .then(() => dispatch(getAllCheckins()))
       .catch(async (res) => {
         const data = await res.json();
