@@ -36,6 +36,22 @@ export const fetchUsernames = () => async dispatch => {
   }
 }
 
+const LOAD_USERS = 'users/loadUsers'
+
+const loadUsers = (users) => ({
+  type: LOAD_USERS,
+  users
+})
+
+export const fetchUsers = () => async dispatch => {
+  const response = await fetch('/api/users/all');
+
+  if (response.ok) {
+    const users = await response.json();
+    dispatch(loadUsers(users));
+  }
+}
+
 const initialState = {
   emails: null,
   usernames: null
@@ -51,6 +67,8 @@ const userDataReducer = (state = initialState, action) => {
       return {...newState, emails: action.emails};
     case LOAD_USERNAMES:
       return {...newState, usernames: action.usernames}
+    case LOAD_USERS:
+      return {...newState, users: action.users}
     default:
       return newState;
   }

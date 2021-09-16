@@ -1,0 +1,13 @@
+.profile-banner {
+  height: 400px;
+  width: 50%;
+  margin: 0 auto;
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888168217116311573/mountains-1412683_1280.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+}
