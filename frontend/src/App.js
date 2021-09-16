@@ -29,7 +29,6 @@ function App() {
 
   return (
     <>
-      <CheckinFormModal />
       {isLoaded && (
         
         <Switch>
@@ -43,6 +42,7 @@ function App() {
           </Route>
 
           <Route path='/drinks'>
+            <CheckinFormModal />  
             <DrinksPage isLoaded={isLoaded}/>
           </Route>
 
@@ -52,11 +52,11 @@ function App() {
           </Route>
 
           <Route path='/bar-talk'>
+            <CheckinFormModal />  
             <BarTalkPage isLoaded={isLoaded}/>
           </Route>
 
         </Switch>
-      
       )}
     </>
   );

@@ -17,7 +17,10 @@ const BarTalkPage = ({ isLoaded }) => {
   drinksArr.forEach(drink => {
     const ratingsArr = [];
     drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
-    const avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
+    let avgRating;
+    if (ratingsArr.length) {
+      avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
+    }
     drink['avgRating'] = avgRating;
   })
 
@@ -51,7 +54,7 @@ const BarTalkPage = ({ isLoaded }) => {
         <h2 className="top-rated-title">Top 5 Rated Drinks</h2>
         {topFive.map((drink, index) => {
           return (
-            <div className="mini-drink-container">
+            <div className="mini-drink-container" key={drink.id}>
               <p className="top-rated-drink">{index + 1}. {drink.name}</p>
             </div>
           )
