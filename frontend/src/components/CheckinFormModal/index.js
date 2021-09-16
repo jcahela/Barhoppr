@@ -7,6 +7,13 @@ import './CheckinForm.css';
 const CheckinFormModal = () => {
   const { setDrinkSelected, setCurrentDrink, showCheckinModal, setShowCheckinModal } = useDrinkSelected();
 
+  if (showCheckinModal === true) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+
+  }
+
   const onOpen = (e) => {
     e.preventDefault();
     setShowCheckinModal(true);

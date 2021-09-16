@@ -18,13 +18,17 @@ const BarTalkPage = ({ isLoaded }) => {
     const ratingsArr = [];
     drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
     let avgRating;
-    if (ratingsArr.length) {
+    if (ratingsArr.length > 0) {
       avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
+    } else {
+      avgRating = 0;
     }
     drink['avgRating'] = avgRating;
   })
 
   drinksArr.sort((a, b) => (a.avgRating < b.avgRating ? 1 : -1));
+
+  console.log(drinksArr);
 
   const topFive = drinksArr.slice(0, 5);
 

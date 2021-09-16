@@ -56,10 +56,10 @@ const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
             <div 
               className="drink-result-container" 
               key={drink.id} 
-              onClick={showForm}
+              
             >
               <img className="drink-result-image" src={drink.drinkImageUrl} alt="" />
-              <div className="drink-result-name-container">
+              <div onClick={showForm} className="drink-result-name-container">
                 <li className="drink-result-name">{drink.name}</li>
               </div>
             </div>

@@ -14,8 +14,12 @@ const DrinkCard = ({ drink }) => {
   let avgRating;
   const ratingsArr = [];
   if (drink.Checkins.length) {
-    drink.Checkins?.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
-    avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
+    drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
+    if (drink.Checkins.length > 0) {
+      avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
+    } else {
+      avgRating = 0;
+    }
   }
 
   useEffect(() => {

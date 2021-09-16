@@ -176,3 +176,14 @@
   transform: scale(1.03);
   cursor: pointer;
 }
+
+#drink-icon {
+  position: absolute;
+  bottom: 25px;
+  left: 183px;
+  font-size: 30px;
+}
+
+#can-icon {
+  height: 20px;
+}
