@@ -1,10 +1,29 @@
 import Navigation from "../Navigation"
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { useParams } from "react-router";
+import { useEffect, useRef } from "react";
+import CheckinCard from "../CheckinCard/CheckinCard";
+import './ProfilePage.css'
 
 const ProfilePage = ({ isLoaded }) => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+  const allUsers = useSelector(state => state.userData.users);
+  const allCheckins = useSelector(state => state.checkins.allCheckins)
+  const profilePicRef = useRef();
+  const { id } = useParams();
+
+  const profileUser = allUsers.find(user => user.id === +id);
+
+  const profileCheckins = allCheckins.filter(checkin => checkin.User.id === profileUser.id)
+
+
+  useEffect(() => {
+    const profilePicDiv = profilePicRef.current;
+    profilePicDiv.style.backgroundImage = `url(${profileUser?.profilePicture})`
+
+  })
 
   if (sessionUser['user'] === undefined) {
     history.push('/');
@@ -12,7 +31,30 @@ const ProfilePage = ({ isLoaded }) => {
   }
 
   return (
-    <Navigation isLoaded={isLoaded}/>
+    <>
+      <Navigation isLoaded={isLoaded}/>
+      <div className="profile-banner">
+        <div className="profile-header-container">
+          <div ref={profilePicRef} className="profile-picture"></div>
+          <div className="profile-header-info">
+            <h1 className="profile-header profile-header-name">{profileUser.firstname} {profileUser.lastname}</h1>
+            <h2 className="profile-header profile-header-username">@{profileUser.username}</h2>
+          </div>
+        </div>
+      </div>
+      <div className="profile-checkins">
+        <h1 className="activity-title">{(sessionUser.user.id === +id) ? 'Your Activity' : `${profileUser.firstname}'s Activity`}</h1>
+        <div className="activity-title-divider"></div>
+        <div className="activity-divider"></div>
+        {profileCheckins.map(checkin => (
+          <>
+            <CheckinCard checkin={checkin}/>
+            <div className="activity-divider"></div>
+          </>
+        ))}
+      </div>
+      
+    </>
   )
 }
 

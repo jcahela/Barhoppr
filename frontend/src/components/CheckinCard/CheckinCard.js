@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { destroyCheckin, getMyCheckins, getAllCheckins, updateCheckin } from '../../store/checkins';
 import { fetchTop5 } from '../../store/drinks';
 import './CheckinCard.css'
@@ -168,7 +169,11 @@ const CheckinCard = ({ checkin }) => {
         {checkin && (<div className="checkincard-header">
           <div ref={profilePicRef} className="checkincard-profile-pic"></div>
           <div className="checkincard-title-container">
-            <h2 className="checkincard-title"><span className="checkincard-user-name">{checkinUser?.firstname} {checkinUser?.lastname}</span> is drinking a {checkinDrink?.name}</h2>
+            <h2 className="checkincard-title">
+              <Link id="user-profile-link" to={`/users/${checkinUser?.id}`} className="checkincard-user-name">
+                {checkinUser?.firstname} {checkinUser?.lastname}
+              </Link> is drinking a {checkinDrink?.name}
+            </h2>
             <p className="checkincard-rating"><span className="checkincard-user-name">{checkinUser?.firstname}</span> rated it a {checkin?.rating}/5!</p>
           </div>
           <div ref={drinkPicRef} className="checkincard-drink-pic"></div>
