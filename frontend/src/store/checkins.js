@@ -5,6 +5,7 @@ const SET_ALL_CHECKINS = 'checkins/setAllCheckins';
 const REMOVE_MY_CHECKINS = 'checkins/removeMyCheckins';
 const POST_CHECKIN = 'checkins/postCheckin';
 const DELETE_CHECKIN = 'checkins/deleteCheckin'
+const EDIT_CHECKIN = 'checkins/editCheckin'
 
 const setMyCheckins = (myCheckins) => ({
   type: SET_MY_CHECKINS,
@@ -25,6 +26,20 @@ const deleteCheckin = (checkinToDestroy) => ({
   type: DELETE_CHECKIN,
   checkinToDestroy
 })
+
+const editCheckin = (checkinToEdit) => ({
+  type: EDIT_CHECKIN,
+  checkinToEdit
+})
+
+// const editedCheckin = {
+//   checkinId: checkin.id,
+//   editDrinkId,
+//   servingStyle,
+//   rating,
+//   comment
+// };
+
 
 export const removeMyCheckins = () => ({
   type: REMOVE_MY_CHECKINS
@@ -56,7 +71,7 @@ export const createCheckin = (newCheckin) => async dispatch => {
       servingStyle
     })
   });
-
+  
   if (response.ok) {
     const createdCheckin = await response.json();
     dispatch(postCheckin(createdCheckin));
@@ -71,7 +86,7 @@ export const destroyCheckin = (checkinId) => async dispatch => {
       checkinId
     })
   });
-
+  
   if (response.ok) {
     const checkinToDelete = await response.json();
     dispatch(deleteCheckin(checkinToDelete));
@@ -79,16 +94,38 @@ export const destroyCheckin = (checkinId) => async dispatch => {
   return response;
 }
 
+export const updateCheckin = (checkin) => async dispatch => {
+  const {checkinId, editDrinkId, servingStyle, rating, comment} = checkin;
+  console.log(editDrinkId, 'INSIDE UPDATE CHECKIN THUNK')
+  const response = await fetch('/api/checkins/edit', {
+    method: 'PUT',
+    body: JSON.stringify({
+      checkinId, 
+      drinkId: editDrinkId, 
+      servingStyle, 
+      rating, 
+      comment
+    })
+  });
+  console.log('AFTER FETCH IN UPDATE THUNK')
+
+  if (response.ok) {
+    const updatedCheckin = await response.json();
+    dispatch(editCheckin(updatedCheckin));
+    return response;
+  }
+}
+
 // State of checkins in redux checkin slice of state
 
 // {
-//   myCheckins: [checkin1, checkin2, checkin3, etc.],
-//   allCheckins: [checkin1, checkin2, checkin3, etc.]
-// }
-
-const initialState = {
-  allCheckins: [],
-  myCheckins: []
+  //   myCheckins: [checkin1, checkin2, checkin3, etc.],
+  //   allCheckins: [checkin1, checkin2, checkin3, etc.]
+  // }
+  
+  const initialState = {
+    allCheckins: [],
+    myCheckins: []
 };
 
 const checkinsReducer = (state = initialState, action) => {
@@ -116,9 +153,23 @@ const checkinsReducer = (state = initialState, action) => {
       newState['myCheckins'] = newMyCheckins;
       newState['allCheckins'] = newAllCheckins;
       return newState;
+    case EDIT_CHECKIN:
+      const editedCheckin = action.checkinToEdit;
+      // update that checkin in myCheckins:
+      const myCheckinIdx = newState['myCheckins'].findIndex(checkin => checkin.id === editedCheckin.id)
+      newState.myCheckins[myCheckinIdx] = editedCheckin;
+      // update that checkin in allCheckins:
+      const allCheckinIdx = newState['allCheckins'].findIndex(checkin => checkin.id === editedCheckin.id)
+      newState.allCheckins[allCheckinIdx] = editedCheckin;
+      return newState;
     default:
       return state;
   }
 }
+
+// const editCheckin = (checkinToEdit) => ({
+//   type: EDIT_CHECKIN,
+//   checkinToEdit
+// })
 
 export default checkinsReducer;
