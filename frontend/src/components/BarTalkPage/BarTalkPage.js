@@ -28,8 +28,6 @@ const BarTalkPage = ({ isLoaded }) => {
 
   drinksArr.sort((a, b) => (a.avgRating < b.avgRating ? 1 : -1));
 
-  console.log(drinksArr);
-
   const topFive = drinksArr.slice(0, 5);
 
   useEffect(() => {

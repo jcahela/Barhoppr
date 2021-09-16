@@ -99,5 +99,20 @@ router.delete('/', asyncHandler(async (req, res) => {
   res.json({checkinToDestroy});
 }))
 
+router.put('/edit', validateCheckin, asyncHandler(async (req, res) => {
+  const {checkinId, drinkId, servingStyle, rating, comment} = req.body;
+
+  const checkinToEdit = await Checkin.findByPk(checkinId);
+  await checkinToEdit.update({
+    drinkId, 
+    servingStyle, 
+    rating, 
+    comment
+  });
+  
+  
+  res.json(checkinToEdit);
+}))
+
 
 module.exports = router;
