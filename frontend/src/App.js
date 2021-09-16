@@ -12,6 +12,7 @@ import LandingPage from './components/LandingPage';
 import DrinksPage from './components/DrinksPage';
 import ProfilePage from './components/ProfilePage';
 import BarTalkPage from './components/BarTalkPage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,33 +32,35 @@ function App() {
   return (
     <>
       {isLoaded && (
-        
-        <Switch>
+        <>
+          <ScrollToTop />
+          <Switch>
 
-          <Route exact path='/'>
-            <LandingPage />
-          </Route>
+            <Route exact path='/'>
+              <LandingPage />
+            </Route>
 
-          <Route path='/signup'>
-            <SignupFormPage />
-          </Route>
+            <Route path='/signup'>
+              <SignupFormPage />
+            </Route>
 
-          <Route path='/drinks'>
-            <CheckinFormModal />  
-            <DrinksPage isLoaded={isLoaded}/>
-          </Route>
+            <Route path='/drinks'>
+              <CheckinFormModal />  
+              <DrinksPage isLoaded={isLoaded}/>
+            </Route>
 
-          <Route path='/users/:id'>
-            <ProfilePage isLoaded={isLoaded}/>
-            <h1>Profile Route</h1>
-          </Route>
+            <Route path='/users/:id'>
+              <ProfilePage isLoaded={isLoaded}/>
+              <h1>Profile Route</h1>
+            </Route>
 
-          <Route path='/bar-talk'>
-            <CheckinFormModal />  
-            <BarTalkPage isLoaded={isLoaded}/>
-          </Route>
+            <Route path='/bar-talk'>
+              <CheckinFormModal />  
+              <BarTalkPage isLoaded={isLoaded}/>
+            </Route>
 
-        </Switch>
+          </Switch>
+        </>
       )}
     </>
   );
