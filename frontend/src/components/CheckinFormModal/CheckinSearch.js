@@ -53,12 +53,15 @@ const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
           className="hidden"
         >
           {matches().length ? matches().map(drink => (
-            <div className="drink-result-container" key={drink.id}>
+            <div 
+              className="drink-result-container" 
+              key={drink.id} 
+              onClick={showForm}
+            >
               <img className="drink-result-image" src={drink.drinkImageUrl} alt="" />
-              <div className="drink-result-name-container"><li 
-                className="drink-result-name"
-                onClick={showForm}
-              >{drink.name}</li></div>
+              <div className="drink-result-name-container">
+                <li className="drink-result-name">{drink.name}</li>
+              </div>
             </div>
           )) : (
             <li className="no-match">No Matches</li>
