@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { destroyCheckin, getMyCheckins, getAllCheckins, updateCheckin } from '../../store/checkins';
-
+import { fetchTop5 } from '../../store/drinks';
 import './CheckinCard.css'
 
 const CheckinCard = ({ checkin }) => {
@@ -18,7 +18,7 @@ const CheckinCard = ({ checkin }) => {
   const [editComment, setEditComment] = useState(checkin.comment);
 
 
-  const drinks = useSelector(state => state.drinks);
+  const drinks = useSelector(state => state.drinks.drinkList);
   const drinksArr = Object.values(drinks);
 
   const checkinUser = checkin?.User;
@@ -65,13 +65,12 @@ const CheckinCard = ({ checkin }) => {
   const deleteCheckin = (e) => {
     dispatch(destroyCheckin(checkin.id))
       .then(() => dispatch(getMyCheckins()))
-      .then(() => dispatch(getAllCheckins()));
+      .then(() => dispatch(getAllCheckins()))
+      .then(() => dispatch(fetchTop5()));
   }
 
   const onEdit = (e) => {
     e.preventDefault();
-    // create checkin to be sent to DB:
-    // userId, drinkId, servingStyle, rating, comment
     const editedCheckin = {
       checkinId: checkin.id,
       editDrinkId,
@@ -85,7 +84,8 @@ const CheckinCard = ({ checkin }) => {
     dispatch(updateCheckin(editedCheckin))
       .then(() => dispatch(getMyCheckins()))
       .then(() => dispatch(getAllCheckins()))
-      .then(() => setBeingEdited(false));
+      .then(() => setBeingEdited(false))
+      .then(() => dispatch(fetchTop5()));
   }
 
   if (beingEdited) {
@@ -179,7 +179,10 @@ const CheckinCard = ({ checkin }) => {
         </div>
         <p className="checkincard-time">{checkinDateFormatted}</p>
         {ownedCard && (
-          <p className="edit-checkin-button" onClick={() => setBeingEdited(true)}>edit</p>
+          <p className="edit-checkin-button" onClick={() => {
+            setEditDrinkId(checkin.Drink.id)
+            setBeingEdited(true)
+          }}>edit</p>
         )}
         <span ref={iconRef} className="material-icons drink-icon"></span>
         <img ref={canRef} className="hidden can-img drink-icon" src="https://img.icons8.com/material/50/000000/beer-can--v2.png" alt=""/>

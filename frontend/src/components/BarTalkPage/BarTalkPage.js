@@ -1,39 +1,29 @@
 import Navigation from "../Navigation"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import CheckinCard from "../CheckinCard";
 import { useEffect } from "react";
+import { fetchTop5 } from "../../store/drinks";
 
 import './BarTalkPage.css'
 
 const BarTalkPage = ({ isLoaded }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const allCheckins = useSelector(state => state.checkins.allCheckins);
-  const drinks = useSelector(state => state.drinks);
+  const topFive = useSelector(state => state.drinks.top5);
 
-  const drinksArr = Object.values(drinks);
+  useEffect(() => {
+    dispatch(fetchTop5());
+  }, [dispatch])
 
-  drinksArr.forEach(drink => {
-    const ratingsArr = [];
-    drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
-    let avgRating;
-    if (ratingsArr.length > 0) {
-      avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
-    } else {
-      avgRating = 0;
-    }
-    drink['avgRating'] = avgRating;
-  })
-
-  drinksArr.sort((a, b) => (a.avgRating < b.avgRating ? 1 : -1));
-
-  const topFive = drinksArr.slice(0, 5);
-
+  
   useEffect(() => {
     const body = document.querySelector('body');
     body.classList.add('bartalk-background')
   }, [])
+  
 
   if (sessionUser['user'] === undefined) {
     history.push('/');
