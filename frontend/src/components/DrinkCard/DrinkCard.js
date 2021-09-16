@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useDrinkSelected } from '../../context/DrinkSelected';
-import { fetchDrinks } from '../../store/drinks'
 import { useDispatch } from 'react-redux';
 
 import './DrinkCard.css'
@@ -25,10 +24,6 @@ const DrinkCard = ({ drink }) => {
   useEffect(() => {
     drinkImageRef.current.style.backgroundImage = `url(${drink.drinkImageUrl})`
   })
-
-  useEffect(() => {
-    dispatch(fetchDrinks())
-  }, [dispatch])
 
   // On clicking the drinkcard checkin button, I want to:
   // 1. Open the checkin modal
