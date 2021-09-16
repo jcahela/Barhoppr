@@ -17,17 +17,6 @@ const DrinksPage = ({ isLoaded }) => {
     return null;
   }
 
-  drinksArr.forEach(drink => {
-    const ratingsArr = [];
-    drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
-    const avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
-    drink['avgRating'] = avgRating;
-  })
-
-  drinksArr.sort((a, b) => (a.avgRating < b.avgRating ? 1 : -1));
-
-  const topFive = drinksArr.slice(0, 5);
-
   return (
     <>
       <div className="drinks-body" />
@@ -39,17 +28,6 @@ const DrinksPage = ({ isLoaded }) => {
           <DrinkCard key={drink.id} drink={drink}/>
         ))}
 
-      </div>
-      <div className="top-rated-drinks">
-        <h2 className="top-rated-title">Top 5 Rated Drinks</h2>
-        {topFive.map((drink, index) => {
-          return (
-            <div className="mini-drink-container">
-              <div className={`img-${drink.id} top-rated-drink-image`}></div>
-              <p>{index + 1}. {drink.name}</p>
-            </div>
-          )
-        })}
       </div>
     </>
   )
