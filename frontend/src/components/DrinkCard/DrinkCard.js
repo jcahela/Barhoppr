@@ -9,11 +9,6 @@ const DrinkCard = ({ drink }) => {
   const ratingsArr = [];
   drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
   const avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
-  
-  // get date the drink was created in the database
-  const drinkCreatedAt = drink.createdAt;
-  const drinkDate = new Date(drinkCreatedAt);
-  const drinkDateFormatted = drinkDate.toLocaleDateString();
 
   useEffect(() => {
     drinkImageRef.current.style.backgroundImage = `url(${drink.drinkImageUrl})`
@@ -29,7 +24,7 @@ const DrinkCard = ({ drink }) => {
         <div className="drinkcard-info">
           <p className="drinkcard-info-section drinkcard-rating-avg">Rating: {avgRating}/5</p>
           <p className="drinkcard-info-section drinkcard-rating-total">{ratingsArr.length} Ratings</p>
-          <p className="drinkcard-info-section drinkcard-added-date">Added: {drinkDateFormatted}</p>
+          <p className="drinkcard-info-section drinkcard-added-date">{drink.abv}% ABV</p>
         </div>
       </div>
       <img 
