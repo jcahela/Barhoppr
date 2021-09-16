@@ -53,12 +53,13 @@ const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
           className="hidden"
         >
           {matches().length ? matches().map(drink => (
-            // TODO: change to drink card once drink cards are made
-            <li 
-              className="drink-result" 
-              key={drink.id}
-              onClick={showForm}
-            >{drink.name}</li>
+            <div className="drink-result-container" key={drink.id}>
+              <img className="drink-result-image" src={drink.drinkImageUrl} alt="" />
+              <div className="drink-result-name-container"><li 
+                className="drink-result-name"
+                onClick={showForm}
+              >{drink.name}</li></div>
+            </div>
           )) : (
             <li className="no-match">No Matches</li>
           )
