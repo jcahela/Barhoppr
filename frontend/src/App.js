@@ -52,7 +52,6 @@ function App() {
 
             <Route path='/users/:id'>
               <ProfilePage isLoaded={isLoaded}/>
-              <h1>Profile Route</h1>
             </Route>
 
             <Route path='/bar-talk'>

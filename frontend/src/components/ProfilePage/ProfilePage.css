@@ -5,9 +5,71 @@
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888168217116311573/mountains-1412683_1280.png');
   background-size: cover;
   background-position: center;
+  position: relative;
+  box-shadow: 4px 0 4px 3px rgba(0, 0, 0, 0.25);
+}
+
+.profile-header-container {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  display: flex;
 }
 
 .profile-picture {
-  width: 40px;
-  height: 40px;
+  height: 80px;
+  width: 80px;
+  border: 4px solid white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+}
+
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 15px;
+}
+
+.profile-header-name {
+  margin: 0;
+  font-size: 22px;
+  color: white;
+}
+
+.profile-header-username {
+  color: white;
+  font-weight: 100;
+}
+
+.profile-header {
+  margin-bottom: 5px;
+}
+
+.profile-checkins {
+  width: 50%;
+  margin: 0 auto;
+  padding: 30px;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.25);
+}
+
+.activity-title {
+  text-align: center;
+}
+
+.activity-title-divider {
+  border: 2px solid rgb(201, 201, 201);
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.activity-divider {
+  border: 2px solid rgb(201, 201, 201);
+  width: 100%;
 }
