@@ -19,6 +19,10 @@ const DrinksPage = ({ isLoaded }) => {
     return null;
   }
 
+  const newDrink = () => {
+    history.push('/new-drink');
+  }
+
   return (
     <>
       <div className="drinks-body" />
@@ -26,6 +30,7 @@ const DrinksPage = ({ isLoaded }) => {
       <div className="drinks-feed-container">
         <h1 className="drinks-title">Drinks</h1>
         <div className="drinks-divider"></div>
+        <div onClick={newDrink} className="new-drink-card"><div className="plus-icon">+</div></div>
         {sortedDrinksArr.map(drink => (
           <DrinkCard key={drink.id} drink={drink}/>
         ))}
