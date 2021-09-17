@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './CheckinForm.css';
 
@@ -64,7 +65,7 @@ const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
               </div>
             </div>
           )) : (
-            <li className="no-match">No Matches</li>
+            <li className="no-match">Don't see your drink? <Link to="/new-drink">Create one here</Link></li>
           )
         }
         </ul>

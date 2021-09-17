@@ -31,7 +31,7 @@ const CheckinFormModal = () => {
       <CheckinButton onOpen={onOpen}/>
       {showCheckinModal && (
         <Modal onClose={onClose}>
-          <CheckinForm setShowCheckinModal={setShowCheckinModal} onClose={onClose} />
+          <CheckinForm onClose={onClose} />
         </Modal>
       )}
     </>

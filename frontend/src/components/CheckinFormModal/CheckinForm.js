@@ -7,12 +7,12 @@ import { useDrinkSelected } from '../../context/DrinkSelected';
 import './CheckinForm.css'
 
 
-const CheckinForm = ({ setShowCheckinModal, onClose }) => {
+const CheckinForm = ({ onClose }) => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('');
   const [servingStyle, setServingStyle] = useState('');
   const [checkinErrors, setCheckinErrors] = useState([]);
-  const { drinkSelected, setDrinkSelected, currentDrink, setCurrentDrink } = useDrinkSelected();
+  const { drinkSelected, setDrinkSelected, currentDrink, setCurrentDrink, setShowCheckinModal } = useDrinkSelected();
   const imageRef = useRef();
   const iconRef = useRef();
   const canRef = useRef();

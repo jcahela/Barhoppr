@@ -32,8 +32,6 @@ const SignupFormPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(profilePicture);
-
     const newUser = {
       firstname,
       lastname,

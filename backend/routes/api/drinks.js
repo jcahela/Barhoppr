@@ -1,15 +1,32 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Drink, Checkin } = require('../../db/models')
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
+
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req, res) => {
   const drinks = await Drink.findAll({
-    include: Checkin
+    include: Checkin,
+    order: [['createdAt', 'DESC']]
   });
   res.json(drinks);
 }));
+
+router.post('/', singleMulterUpload("image"), asyncHandler(async (req, res) => {
+  const { name, description, abv } = req.body;
+  const drinkImageFile = await singlePublicFileUpload(req.file);
+
+  const newDrink = Drink.create({
+    name, 
+    drinkImageUrl: drinkImageFile, 
+    description, 
+    abv
+  });
+
+  res.json(newDrink);
+}))
 
 router.get('/top-5', asyncHandler(async (req, res) => {
   const drinks = await Drink.findAll({
