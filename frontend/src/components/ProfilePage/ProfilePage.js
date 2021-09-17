@@ -2,7 +2,7 @@ import Navigation from "../Navigation"
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CheckinCard from "../CheckinCard/CheckinCard";
 import './ProfilePage.css'
 
@@ -12,6 +12,7 @@ const ProfilePage = ({ isLoaded }) => {
   const allUsers = useSelector(state => state.userData.users);
   const allCheckins = useSelector(state => state.checkins.allCheckins)
   const profilePicRef = useRef();
+  const [showMenu, setShowMenu] = useState(false);
   const { id } = useParams();
 
   const profileUser = allUsers.find(user => user.id === +id);
@@ -32,11 +33,21 @@ const ProfilePage = ({ isLoaded }) => {
 
   const profileCheckins = allCheckins.filter(checkin => checkin.User.id === profileUser.id)
 
-
-
   if (sessionUser['user'] === undefined) {
     history.push('/');
     return null;
+  }
+
+  const openMenu = () => {
+    setShowMenu(true);
+  }
+
+  const closeMenu = () => {
+    setShowMenu(false)
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
   }
 
   return (
@@ -44,7 +55,22 @@ const ProfilePage = ({ isLoaded }) => {
       <Navigation isLoaded={isLoaded}/>
       <div className="profile-banner">
         <div className="profile-header-container">
-          <div ref={profilePicRef} className="profile-picture"></div>
+          <div 
+            ref={profilePicRef} 
+            className="profile-picture"
+            onMouseEnter={openMenu}
+            onMouseLeave={closeMenu}
+          >
+          {showMenu && (
+            <div className="new-profile-pic-form">
+              <form onSubmit={onSubmit}>
+                <label htmlFor="profilePic">Choose new profile picture</label>
+                <input id="profilePic" type="file" />
+                <button className="new-profile-pic-button">Submit</button>
+              </form>
+            </div>
+          )}
+          </div>
           <div className="profile-header-info">
             <h1 className="profile-header profile-header-name">{profileUser.firstname} {profileUser.lastname}</h1>
             <h2 className="profile-header profile-header-username">@{profileUser.username}</h2>

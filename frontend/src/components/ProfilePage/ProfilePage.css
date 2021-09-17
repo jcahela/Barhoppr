@@ -73,3 +73,28 @@
   border: 2px solid rgb(201, 201, 201);
   width: 100%;
 }
+
+.new-profile-pic-form {
+  background-color: white;
+  position: absolute;
+  top: 80px;
+  width: 230px;
+  font-size: 14px;
+  border: 1px solid;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+#profilePic {
+  width: 210px;
+  border: none;
+  position: relative;
+  right: 20px;
+}
+
+.new-profile-pic-button {
+  border: 1px solid;
+  padding: 3px;
+}
