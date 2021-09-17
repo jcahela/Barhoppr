@@ -13,6 +13,7 @@ import DrinksPage from './components/DrinksPage';
 import ProfilePage from './components/ProfilePage';
 import BarTalkPage from './components/BarTalkPage';
 import ScrollToTop from './components/ScrollToTop';
+import DrinkForm from './components/DrinkForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,10 @@ function App() {
             <Route path='/bar-talk'>
               <CheckinFormModal />  
               <BarTalkPage isLoaded={isLoaded}/>
+            </Route>
+
+            <Route path='/new-drink'>
+              <DrinkForm isLoaded={isLoaded} />
             </Route>
 
             <Route>
