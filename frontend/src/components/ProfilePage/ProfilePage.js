@@ -13,6 +13,7 @@ const ProfilePage = ({ isLoaded }) => {
   const allCheckins = useSelector(state => state.checkins.allCheckins)
   const profilePicRef = useRef();
   const [showMenu, setShowMenu] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
   const { id } = useParams();
 
   const profileUser = allUsers.find(user => user.id === +id);
@@ -21,6 +22,18 @@ const ProfilePage = ({ isLoaded }) => {
     const profilePicDiv = profilePicRef.current;
     if (profilePicDiv) profilePicDiv.style.backgroundImage = `url(${profileUser?.profilePicture})`
   })
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+  
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   if (!profileUser) {
     return (
@@ -58,8 +71,7 @@ const ProfilePage = ({ isLoaded }) => {
           <div 
             ref={profilePicRef} 
             className="profile-picture"
-            onMouseEnter={openMenu}
-            onMouseLeave={closeMenu}
+            onClick={openMenu}
           >
           {showMenu && (
             <div className="new-profile-pic-form">
@@ -77,7 +89,7 @@ const ProfilePage = ({ isLoaded }) => {
           </div>
         </div>
       </div>
-      <div className="profile-checkins">
+      <div onClick={closeMenu} className="profile-checkins">
         <h1 className="activity-title">{(sessionUser.user.id === +id) ? 'Your Activity' : `${profileUser.firstname}'s Activity`}</h1>
         <div className="activity-title-divider"></div>
         <div className="activity-divider"></div>
