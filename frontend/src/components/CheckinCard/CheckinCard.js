@@ -28,6 +28,10 @@ const CheckinCard = ({ checkin }) => {
   const checkinDate = new Date(checkinDateLongString);
   const checkinDateFormatted = checkinDate.toLocaleString();
   
+  const updateDateLongString = checkin?.updatedAt;
+  const updateDate = new Date(updateDateLongString);
+  const updateDateFormatted = updateDate.toLocaleString();
+
   const ownedCard = currentUser?.id === checkinUser?.id
 
   useEffect(() => {
@@ -183,6 +187,7 @@ const CheckinCard = ({ checkin }) => {
           <p className="checkincard-comment">{checkin?.comment}</p>
         </div>
         <p className="checkincard-time">{checkinDateFormatted}</p>
+        {checkinDateFormatted !== updateDateFormatted && <p className="checkincard-updated-time">(Edited: {updateDateFormatted})</p>}
         {ownedCard && (
           <p className="edit-checkin-button" onClick={() => {
             setEditDrinkId(checkin.Drink.id)

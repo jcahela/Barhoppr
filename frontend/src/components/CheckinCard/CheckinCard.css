@@ -107,6 +107,16 @@
   font-size: 14px;
 }
 
+.checkincard-updated-time {
+  position: absolute;
+  bottom: 35px;
+  right: 150px;
+  font-size: 13px;
+  font-weight: lighter;
+  /* font-family: 'Fira Sans', sans-serif; */
+  color: rgb(138, 138, 138);
+}
+
 .drink-icon {
   position: absolute;
   top: 105px;
