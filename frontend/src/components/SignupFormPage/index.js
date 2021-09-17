@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser, restoreUser } from '../../store/session'
+import { fetchUsers } from '../../store/userData';
 import { Redirect, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginFormModal from '../LoginFormModal';
@@ -15,6 +16,7 @@ const SignupFormPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user.user)
+  const [profilePicture, setProfilePicture] = useState(null);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,13 +32,16 @@ const SignupFormPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    console.log(profilePicture);
+
     const newUser = {
       firstname,
       lastname,
       username,
       email,
       password,
-      profilePicture: 'https://cdn.discordapp.com/attachments/886336420552269847/886379917208592414/user_icon_001.png'
+      // profilePicture: 'https://cdn.discordapp.com/attachments/886336420552269847/886379917208592414/user_icon_001.png'
+      profilePicture
     };
     
     setPassword('');
@@ -63,6 +68,7 @@ const SignupFormPage = () => {
       
     dispatch(signupUser(newUser))
       .then(() => dispatch(restoreUser()))
+      .then(() => dispatch(fetchUsers()))
       .then(() => history.push('/bar-talk'))
       .catch(async (res) => {
         const data = await res.json();
@@ -72,6 +78,12 @@ const SignupFormPage = () => {
         }
       })
 
+  }
+
+  // AWS updateFile function
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setProfilePicture(file);
   }
     
 
@@ -143,6 +155,10 @@ const SignupFormPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
             />
+            <label>Set Profile Picture
+              <input type="file" onChange={updateFile} />
+            </label>
+
             <button className="signup-button">Signup</button>
             <div className="signup-bottom-links">
               <span className="login-question">Already a user?  <LoginFormModal to="/login"></LoginFormModal></span>

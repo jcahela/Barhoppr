@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import { restoreUser } from './store/session'
 import { fetchEmails, fetchUsernames, fetchUsers } from './store/userData'
 import { getAllCheckins, getMyCheckins } from './store/checkins'
@@ -57,6 +57,11 @@ function App() {
             <Route path='/bar-talk'>
               <CheckinFormModal />  
               <BarTalkPage isLoaded={isLoaded}/>
+            </Route>
+
+            <Route>
+              <h1>That page doesn't exist</h1>
+              <Link to="/bar-talk">Home</Link>
             </Route>
 
           </Switch>

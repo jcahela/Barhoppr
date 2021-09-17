@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { logoutUser, restoreUser } from "../../store/session";
 import { removeMyCheckins } from '../../store/checkins'
 
 const ProfileButton = () => {
   const sessionUser = useSelector(state => state.session.user.user);
+  const profilePicRef = useRef();
   const profilePicUrl = sessionUser.profilePicture;
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,12 +23,8 @@ const ProfileButton = () => {
   };
 
   useEffect(() => {
-    if (!showMenu) return;
-    
-
-    document.addEventListener('click', closeMenu);
-
-    return () => document.removeEventListener('click', closeMenu);
+    const profilePicDiv = profilePicRef.current;
+    profilePicDiv.style.backgroundImage = `url(${profilePicUrl})`
   })
 
   const logout = async (e) => {
@@ -47,11 +44,7 @@ const ProfileButton = () => {
       onMouseLeave={closeMenu}
       onMouseEnter={openMenu}
     >
-      <button 
-        className="profile-button"
-      >
-        <img className="profile-pic" src={profilePicUrl} alt="Smiling man" />
-      </button>
+      <div ref={profilePicRef} className="profile-button"/>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{sessionUser.firstname} {sessionUser.lastname}</li>
