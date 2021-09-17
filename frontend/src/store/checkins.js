@@ -80,7 +80,7 @@ export const createCheckin = (newCheckin) => async dispatch => {
 }
 
 export const destroyCheckin = (checkinId) => async dispatch => {
-  const response = await fetch('/api/checkins', {
+  const response = await fetch(`/api/checkins`, {
     method: 'DELETE',
     body: JSON.stringify({
       checkinId
@@ -97,10 +97,9 @@ export const destroyCheckin = (checkinId) => async dispatch => {
 export const updateCheckin = (checkin) => async dispatch => {
   const {checkinId, editDrinkId, servingStyle, rating, comment} = checkin;
   console.log(editDrinkId, 'INSIDE UPDATE CHECKIN THUNK')
-  const response = await fetch('/api/checkins/edit', {
+  const response = await fetch(`/api/checkins/${checkinId}`, {
     method: 'PUT',
     body: JSON.stringify({
-      checkinId, 
       drinkId: editDrinkId, 
       servingStyle, 
       rating, 

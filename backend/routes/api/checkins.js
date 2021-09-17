@@ -99,8 +99,9 @@ router.delete('/', asyncHandler(async (req, res) => {
   res.json({checkinToDestroy});
 }))
 
-router.put('/edit', validateCheckin, asyncHandler(async (req, res) => {
-  const {checkinId, drinkId, servingStyle, rating, comment} = req.body;
+router.put('/:id(\\d+)', validateCheckin, asyncHandler(async (req, res) => {
+  const { drinkId, servingStyle, rating, comment } = req.body;
+  const checkinId = req.params.id;
 
   const checkinToEdit = await Checkin.findByPk(checkinId);
   await checkinToEdit.update({

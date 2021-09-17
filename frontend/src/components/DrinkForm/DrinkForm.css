@@ -1,7 +1,10 @@
 .new-drink-body {
-  background-color: rgb(216, 216, 216);
+  /* background-color: rgb(216, 216, 216); */
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888426694980042752/Rectangle_52.png');
+  background-size: cover;
+  background-position: center;
   margin: 0 auto;
-  width: 40%;
+  width: 100%;
   height: 100vh;
   padding-top: 100px;
 }
@@ -39,6 +42,7 @@
   width: 300px;
   height: 200px;
   padding: 10px;
+  resize: none;
 }
 
 .drink-abv {
@@ -46,9 +50,24 @@
   height: 30px;
 }
 
+.abv-label-text {
+  position: relative;
+  right: 35px;
+}
+
 .new-drink-image {
   width: 320px;
   margin-top: 10px;
   padding-left: 0;
   border: 0;
+  border-radius: 3px;
+}
+
+.new-drink-button {
+  border: 1px solid;
+  height: 30px;
+  /* background-color: #dc8c66;
+  color: white; */
+  color: black;
+  border-radius: 3px;
 }

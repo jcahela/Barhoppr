@@ -12,6 +12,8 @@ const DrinksPage = ({ isLoaded }) => {
 
   const drinksArr = Object.values(drinks);
 
+  const sortedDrinksArr = drinksArr.sort((a, b) => a.id < b.id ? 1 : -1)
+
   if (sessionUser['user'] === undefined) {
     history.push('/');
     return null;
@@ -24,7 +26,7 @@ const DrinksPage = ({ isLoaded }) => {
       <div className="drinks-feed-container">
         <h1 className="drinks-title">Drinks</h1>
         <div className="drinks-divider"></div>
-        {drinksArr.map(drink => (
+        {sortedDrinksArr.map(drink => (
           <DrinkCard key={drink.id} drink={drink}/>
         ))}
 
