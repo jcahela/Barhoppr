@@ -1,10 +1,30 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Drink, Checkin } = require('../../db/models')
-const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
+const { Drink, Checkin } = require('../../db/models');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
 const router = express.Router();
+
+const validateDrink = [
+  check('name')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a drink name'),
+  check('description')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a description'),
+  check('abv')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter an ABV%')
+    .isFloat({
+      min: 0,
+      max: 70
+    })
+    .withMessage('ABV% must be between 0 and 70'),
+  handleValidationErrors
+];
 
 router.get('/', asyncHandler(async(req, res) => {
   const drinks = await Drink.findAll({
@@ -14,13 +34,23 @@ router.get('/', asyncHandler(async(req, res) => {
   res.json(drinks);
 }));
 
-router.post('/', singleMulterUpload("image"), asyncHandler(async (req, res) => {
-  const { name, description, abv } = req.body;
-  const drinkImageFile = await singlePublicFileUpload(req.file);
+const fileExists = (req, res, next) => {
+  if (!req.file) req.file = undefined;
+  next();
+}
 
+router.post('/',
+  fileExists,
+  singleMulterUpload("image"), 
+  validateDrink,
+  asyncHandler(async (req, res) => {
+  const { name, description, abv } = req.body;
+  let drinkImageFile;
+  if (req.file) drinkImageFile = await singlePublicFileUpload(req.file);
+  console.log(req.body);
   const newDrink = Drink.create({
     name, 
-    drinkImageUrl: drinkImageFile, 
+    drinkImageUrl: drinkImageFile || 'https://cdn.discordapp.com/attachments/886336420552269847/888435456331612200/default-drink.png', 
     description, 
     abv
   });

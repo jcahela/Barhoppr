@@ -55,21 +55,17 @@ export const restoreUser = () => async dispatch => {
 // For signing up a user
 export const signupUser = (user) => async dispatch => {
   const { firstname, lastname, username, email, password, profilePicture } = user;
-  const formData = new FormData();
-  formData.append("username", username);
-  formData.append("email", email);
-  formData.append("password", password);
-  formData.append("firstname", firstname);
-  formData.append("lastname", lastname);
-
-  if (profilePicture) formData.append("image", profilePicture)
 
   const response = await csrfFetch('/api/users', {
     method: 'POST',
-    headers: {
-      "Content-Type":"multipart/form-data"
-    },
-    body: formData
+    body: JSON.stringify({ 
+      firstname, 
+      lastname, 
+      username, 
+      email, 
+      password, 
+      profilePicture 
+    })
   });
 
   if (response.ok) {

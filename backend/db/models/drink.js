@@ -5,9 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        len: [3, 100]
-      },
     },
     drinkImageUrl: {
       type: DataTypes.TEXT,
@@ -23,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: {
         min: 0,
-        max: 100
+        max: 70
       },
     }
   }, {});
