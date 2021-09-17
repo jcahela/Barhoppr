@@ -9,10 +9,11 @@ import './DrinkForm.css'
 
 function DrinkForm({ isLoaded }) {
   const { setShowCheckinModal } = useDrinkSelected();
-  const [drinkName, setDrinkName] = useState('')
-  const [description, setDescription] = useState('')
-  const [abv, setAbv] = useState('')
-  const [drinkImageFile, setDrinkImageFile] = useState('')
+  const [drinkName, setDrinkName] = useState('');
+  const [description, setDescription] = useState('');
+  const [abv, setAbv] = useState('');
+  const [drinkImageFile, setDrinkImageFile] = useState('');
+  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -40,6 +41,14 @@ function DrinkForm({ isLoaded }) {
     dispatch(createDrink(newDrink))
       .then(() => dispatch(fetchDrinks()))
       .then(() => history.push('/drinks'))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+          console.log(errors);
+          return;
+        }
+      })
   }
 
   return (
@@ -52,9 +61,13 @@ function DrinkForm({ isLoaded }) {
             className="new-drink-form"  
           >
             <h1 className="new-drink-title">Create a New Drink!</h1>
+            <ul className="drink-errors">
+              {errors.map(error => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
             <label htmlFor="drinkName">
               <input 
-                required
                 className="new-drink-input drink-name"
                 type="text" 
                 id="drinkName" 
@@ -65,7 +78,6 @@ function DrinkForm({ isLoaded }) {
             </label>
             <label htmlFor="description">
               <textarea 
-                required
                 className="new-drink-input drink-description"
                 type="text" 
                 id="description" 
@@ -76,7 +88,6 @@ function DrinkForm({ isLoaded }) {
             </label>
             <label htmlFor="abv">
               <input 
-                required
                 className="new-drink-input drink-abv"
                 type="number" 
                 id="abv" 
