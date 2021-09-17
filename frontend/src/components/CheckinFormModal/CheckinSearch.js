@@ -10,14 +10,16 @@ const CheckinSearch = ({ setCurrentDrink, setDrinkSelected }) => {
   const [ searchVal, setSearchVal ] = useState('');
   const drinks = useSelector(state => state.drinks.drinkList);
   const drinksArr = Object.values(drinks);
+
+  const sortedDrinksArr = drinksArr.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
   
   const matches = () => {
     const inputLength = searchVal.length;
     const matches = [];
 
-    if (inputLength === 0) return drinksArr;
+    if (inputLength === 0) return sortedDrinksArr;
 
-    drinksArr.forEach(drink => {
+    sortedDrinksArr.forEach(drink => {
       const drinkSegment = drink.name.slice(0, inputLength);
       if (drinkSegment.toLowerCase() === searchVal.toLowerCase()) {
         matches.push(drink);

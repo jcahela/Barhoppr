@@ -1,5 +1,5 @@
 .drinks-feed-container {
-  width: 800px;
+  width: 80%;
   box-sizing: border-box;
   min-height: 91.2vh;
   background-color: #ECECEC;
@@ -7,33 +7,52 @@
   margin-top: 90px;
   border-radius: 1px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   padding: 50px;
 }
 
 .drinks-title {
-  text-align: center;
   color: #864323;
+  margin: 30px auto 50px auto;
 }
 
 .drinks-divider {
   border: 2px solid rgb(182, 182, 182);
   width: 100%;
   background-color: rgb(182, 182, 182);
+  margin-bottom: 30px;
 }
 
-.top-rated-drinks {
-  height: fit-content;
-  width: 300px;
-  background-color: #ECECEC;
-  position: absolute;
-  right: 30px;
-  top: 220px;
+.new-drink-card {
+  height: 189px;
+  width: 620px;
+  border: 2px dashed #a1a1a1;
   border-radius: 3px;
-  padding: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+  /* justify-content: space-around; */
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.plus-icon {
+  font-size: 200px;
+  width: 100%;
+  text-align: center;
+  max-height: 232px;
+  color:rgb(182, 182, 182);
+}
+
+.plus-icon:hover {
+  color: rgb(133, 133, 133);
+}
+
+.new-drink-card:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+  transform: scale(1.02);
 }
 
 .top-rated-title {
