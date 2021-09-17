@@ -18,33 +18,35 @@ const Navigation = ({ isLoaded }) => {
   }, [dispatch])
 
   return (
-    <nav className="nav-container">
-      <div className="nav-logo-title">
-        <NavLink className="nav-link" exact to="/bar-talk">
-          <img src="/images/landing-logo.png" alt="A mug of beer logo" className="navbar-logo" />
-        </NavLink>
-        <h1 className="nav-barhoppr">BARHOPPR</h1>
-      </div>
+    <>
+      <nav className="nav-container">
+        <div className="nav-logo-title">
+          <NavLink className="nav-link" exact to="/bar-talk">
+            <img src="/images/landing-logo.png" alt="A mug of beer logo" className="navbar-logo" />
+          </NavLink>
+          <h1 className="nav-barhoppr">BARHOPPR</h1>
+        </div>
 
-      {isLoaded && (<div className="nav-site-link-container">
-        <NavLink className="nav-link" to='/bar-talk'>Bar Talk</NavLink>
-        <NavLink className="nav-link" to={`/users/${currentUser?.id}`}>My Profile</NavLink>
-        <NavLink className="nav-link" to='/drinks'>Drinks</NavLink>
-      </div>)}
-      
-      <div className="nav-link-container">
-        {currentUser && isLoaded ? 
-          <>
-            <ProfileButton />
-          </>: 
-          <>
-            <LoginFormModal />
-            <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
-          </>
-        }
-      </div>
-
-    </nav>
+        {isLoaded && (<div className="nav-site-link-container">
+          <NavLink className="nav-link" to='/bar-talk'>Bar Talk</NavLink>
+          <NavLink className="nav-link" to={`/users/${currentUser?.id}`}>My Profile</NavLink>
+          <NavLink className="nav-link" to='/drinks'>Drinks</NavLink>
+        </div>)}
+        
+        <div className="nav-link-container">
+          {currentUser && isLoaded ? 
+            <>
+              <ProfileButton />
+            </>: 
+            <>
+              <LoginFormModal />
+              <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
+            </>
+          }
+        </div>
+      </nav>
+      <div className="footer-container"></div>
+    </>
   )
 }
 

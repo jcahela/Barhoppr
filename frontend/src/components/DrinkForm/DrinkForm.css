@@ -77,3 +77,9 @@
   color: black;
   border-radius: 3px;
 }
+
+.new-drink-button:hover {
+  background-color: #716364;
+  color: white;
+  cursor: pointer;
+}
