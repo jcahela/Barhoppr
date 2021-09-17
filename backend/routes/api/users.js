@@ -60,9 +60,9 @@ router.get('/all', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', 
-  singleMulterUpload("image"),
-  validateSignupExists, 
-  validateSignup, 
+// validateSignupExists, 
+// validateSignup, 
+singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
     const { firstname, lastname, email, password, username } = req.body;
     const profilePicture = await singlePublicFileUpload(req.file);

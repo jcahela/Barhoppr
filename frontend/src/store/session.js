@@ -1,4 +1,4 @@
-import { csrfFetch as fetch } from './csrf'
+import { csrfFetch } from './csrf'
 
 // For logging in a user
 const SET_USER = 'session/setUser'
@@ -10,7 +10,7 @@ const setUser = (user) => ({
 
 export const loginUser = (user) => async dispatch => {
   const { credential, password } = user;
-  const response = await fetch('/api/session', {
+  const response = await csrfFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
       credential,
@@ -33,7 +33,7 @@ const removeUser = () => ({
 })
 
 export const logoutUser = () => async dispatch => {
-  const response = await fetch('/api/session', {
+  const response = await csrfFetch('/api/session', {
     method: 'DELETE'
   });
   dispatch(removeUser());
@@ -42,7 +42,7 @@ export const logoutUser = () => async dispatch => {
 
 // For restoring a user session using token cookie
 export const restoreUser = () => async dispatch => {
-  const response = await fetch('/api/session');
+  const response = await csrfFetch('/api/session');
 
   if (response.ok) {
     const data = await response.json();
@@ -62,12 +62,12 @@ export const signupUser = (user) => async dispatch => {
   formData.append("firstname", firstname);
   formData.append("lastname", lastname);
 
-  if (profilePicture) formData.append("profilePicture", profilePicture)
+  if (profilePicture) formData.append("image", profilePicture)
 
-  const response = await fetch('/api/users', {
+  const response = await csrfFetch('/api/users', {
     method: 'POST',
     headers: {
-      "Content-Type": "multipart/form-data"
+      "Content-Type":"multipart/form-data"
     },
     body: formData
   });
