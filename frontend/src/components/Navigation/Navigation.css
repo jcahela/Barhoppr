@@ -135,3 +135,45 @@
   cursor: pointer;
   width: 100%;
 }
+
+.footer-container {
+  background-image: url('https://cdn.discordapp.com/attachments/392041428387233796/885992368334061688/unknown.png');
+  background-position: center;
+  background-size: cover;
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.github-logo {
+  width: 30px;
+  height: 50px;
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888538081119072326/GitHub-Mark-32px.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.linkedin-logo {
+  width: 30px;
+  height: 50px;
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888542913594806272/768px-LinkedIn_logo_initials.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.github-logo-text {
+  margin-left: 5px;
+  font-size: 18px;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.linkedin-link {
+  margin-left: 20px;
+}
