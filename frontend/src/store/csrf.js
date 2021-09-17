@@ -7,12 +7,15 @@ export async function csrfFetch(url, options = {}) {
   // set options.headers to an empty object if there are no headers
   options.headers = options.headers || {};
 
-  if (options.method.toUpperCase() !== 'GET') {
-    // if the options.method is not 'GET', then set the "Content-Type" header to whatever is set for the "Content-Type" header. Otherwise, default to 'application/json'.
-    options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json';
-    // if the options.method is not 'GET', then create another header called 'XSRF-Token' and set it to the value of the XSRF-TOKEN cookie (for auth purposes)
-    options.headers['XSRF-Token'] = Cookies.get('XSRF-TOKEN');
-  };
+  if (options.method.toUpperCase() !== "GET") {
+    if (options.headers["Content-Type"] === "multipart/form-data") {
+      delete options.headers["Content-Type"];
+    } else {
+      options.headers["Content-Type"] =
+        options.headers["Content-Type"] || "application/json";
+    }
+    options.headers["XSRF-Token"] = Cookies.get("XSRF-TOKEN");
+  }
 
   // call the default window's fetch with the url and the options passed in
   const res = await window.fetch(url, options);
