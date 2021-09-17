@@ -85,11 +85,11 @@ const SignupFormPage = () => {
             onSubmit={onSubmit} 
             className="signup-form">
             <h1 className="signup-title">Sign up to Barhoppr.</h1>
-            <ul className="errors-container">
+            {errors.length > 0 && <ul className="errors-container">
               {errors.map(error => (
                 <li key={error}>{error}</li>
               ))}
-            </ul>
+            </ul>}
             <label htmlFor="firstname"></label>
             <input 
               className="signup-input-field"

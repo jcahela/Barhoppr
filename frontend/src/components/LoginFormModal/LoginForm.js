@@ -11,13 +11,8 @@ const LoginForm = ({ onClose }) => {
   const [loginErrors, setLoginErrors] = useState([])
   const history = useHistory();
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user.user);
-
-  if (sessionUser) {
-    history.push('/drinks')
-  }
   
-  const onSubmit = (e) => {
+  const onLogin = (e) => {
     e.preventDefault();
     const user = {
       credential,
@@ -58,12 +53,12 @@ const LoginForm = ({ onClose }) => {
       {(window.location.pathname !== '/signup') && (
         <span className="signup-question">Need a Barhoppr account?  <Link className="signup-link" to="/signup">Sign up here</Link></span>
       )}
-      <form onSubmit={onSubmit} className="login-form">
-        <ul>
+      <form onSubmit={onLogin} className="login-form">
+        {loginErrors.length > 0 && <ul className="login-error-container">
           {loginErrors.map(error => (
-            <li key={error}>{error}</li>
+            <li className="login-errors" key={error}>{error}</li>
           ))}
-        </ul>
+        </ul>}
         <label htmlFor="credential"></label>
         <input 
           className="login-input-field"

@@ -58,11 +58,11 @@ function DrinkForm({ isLoaded }) {
             className="new-drink-form"  
           >
             <h1 className="new-drink-title">Create a New Drink!</h1>
-            <ul className="drink-errors">
+            {errors.length > 0 && <ul className="drink-errors">
               {errors.map(error => (
                 <li key={error}>{error}</li>
               ))}
-            </ul>
+            </ul>}
             <label htmlFor="drinkName">
               <input 
                 className="new-drink-input drink-name"

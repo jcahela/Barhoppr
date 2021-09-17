@@ -2,16 +2,28 @@ import { NavLink } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../store/session";
 import './LandingPage.css'
 
 const LandingPage = () => {
   const history = useHistory();
-
+  const dispatch = useDispatch();
+  
   const sessionUser = useSelector(state => state.session.user.user);
 
   if(sessionUser) {
-    history.push('/drinks');
+    history.push('/bar-talk');
     return null;
+  }
+
+  const getDemoUser = (e) => {
+    e.preventDefault();
+    dispatch(loginUser({
+      credential: 'demo-guy',
+      password: 'password'
+    }))
+    .then(() => history.push('/bar-talk'));
   }
 
   return (
@@ -34,6 +46,9 @@ const LandingPage = () => {
         <p className="landing-welcome-message">Share your favorite drinks with the world!</p>
         <div className="landing-welcome-signup-container" onClick={e => history.push('/signup')}>
           <NavLink className="landing-welcome-signup" to="/signup" id="landing-signup" >Sign Up Here</NavLink>
+        </div>
+        <div className="landing-welcome-demo-container">
+          <NavLink onClick={getDemoUser} id="landing-welcome-demo" to="/bar-talk" >Log in as a demo user</NavLink>
         </div>
       </div>
         

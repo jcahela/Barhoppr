@@ -1,5 +1,4 @@
 .new-drink-body {
-  /* background-color: rgb(216, 216, 216); */
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888426694980042752/Rectangle_52.png');
   background-size: cover;
   background-position: center;
@@ -24,6 +23,13 @@
   width: fit-content;
   display: flex;
   flex-direction: column;
+}
+
+.drink-errors {
+  list-style-type: none;
+  color: red;
+  background-color: rgb(255, 213, 213);
+  padding: 10px;
 }
 
 .new-drink-input {
