@@ -9,12 +9,18 @@ const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
 const router = express.Router();
 
 const validateSignupExists = [
-  check('email')
+  check('firstname')
     .exists({ checkFalsy: true })
-    .withMessage('Please enter an email'),
+    .withMessage('Please enter a first name'),
+  check('lastname')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a last name'),
   check('username')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a username'),
+  check('email')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter an email'),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a password'),
@@ -62,15 +68,12 @@ router.get('/all', asyncHandler(async (req, res) => {
 router.post('/', 
   validateSignupExists, 
   validateSignup, 
-  singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
     const { firstname, lastname, email, password, username } = req.body;
-    const profilePicture = await singlePublicFileUpload(req.file);
     const user = await User.signup({ 
       email, 
       username, 
       password, 
-      profilePicture, 
       firstname, 
       lastname 
     });

@@ -16,7 +16,6 @@ const SignupFormPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user.user)
-  const [profilePicture, setProfilePicture] = useState(null);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -38,8 +37,7 @@ const SignupFormPage = () => {
       username,
       email,
       password,
-      // profilePicture: 'https://cdn.discordapp.com/attachments/886336420552269847/886379917208592414/user_icon_001.png'
-      profilePicture
+      profilePicture: 'https://cdn.discordapp.com/attachments/886336420552269847/886379917208592414/user_icon_001.png'
     };
     
     setPassword('');
@@ -77,13 +75,6 @@ const SignupFormPage = () => {
       })
 
   }
-
-  // AWS updateFile function
-  const updateFile = (e) => {
-    const file = e.target.files[0];
-    if (file) setProfilePicture(file);
-  }
-    
 
   return (
     <div className="component-body">
@@ -153,10 +144,6 @@ const SignupFormPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
             />
-            <label>Set Profile Picture
-              <input type="file" onChange={updateFile} />
-            </label>
-
             <button className="signup-button">Signup</button>
             <div className="signup-bottom-links">
               <span className="login-question">Already a user?  <LoginFormModal to="/login"></LoginFormModal></span>

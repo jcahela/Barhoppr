@@ -24,7 +24,7 @@ const validateDrink = [
     })
     .withMessage('ABV% must be between 0 and 70'),
   handleValidationErrors
-]
+];
 
 router.get('/', asyncHandler(async(req, res) => {
   const drinks = await Drink.findAll({
@@ -34,16 +34,23 @@ router.get('/', asyncHandler(async(req, res) => {
   res.json(drinks);
 }));
 
+const fileExists = (req, res, next) => {
+  if (!req.file) req.file = undefined;
+  next();
+}
+
 router.post('/',
-  validateDrink,
+  fileExists,
   singleMulterUpload("image"), 
+  validateDrink,
   asyncHandler(async (req, res) => {
   const { name, description, abv } = req.body;
-  const drinkImageFile = await singlePublicFileUpload(req.file);
-
+  let drinkImageFile;
+  if (req.file) drinkImageFile = await singlePublicFileUpload(req.file);
+  console.log(req.body);
   const newDrink = Drink.create({
     name, 
-    drinkImageUrl: drinkImageFile, 
+    drinkImageUrl: drinkImageFile || 'https://cdn.discordapp.com/attachments/886336420552269847/888435456331612200/default-drink.png', 
     description, 
     abv
   });

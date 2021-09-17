@@ -28,9 +28,6 @@ function DrinkForm({ isLoaded }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-// For adding a default image later:
-//: drinkImageUrl || 'https://cdn.discordapp.com/attachments/886336420552269847/888435456331612200/default-drink.png'
-
     const newDrink = {
       name: drinkName,
       drinkImageFile,
