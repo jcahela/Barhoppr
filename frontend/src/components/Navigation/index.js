@@ -28,7 +28,7 @@ const Navigation = ({ isLoaded }) => {
 
       {isLoaded && (<div className="nav-site-link-container">
         <NavLink className="nav-link" to='/bar-talk'>Bar Talk</NavLink>
-        <NavLink className="nav-link" to='/users/1'>My Profile</NavLink>
+        <NavLink className="nav-link" to={`/users/${currentUser?.id}`}>My Profile</NavLink>
         <NavLink className="nav-link" to='/drinks'>Drinks</NavLink>
       </div>)}
       

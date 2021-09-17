@@ -1,7 +1,7 @@
 import Navigation from "../Navigation"
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import CheckinCard from "../CheckinCard/CheckinCard";
 import './ProfilePage.css'
@@ -15,15 +15,24 @@ const ProfilePage = ({ isLoaded }) => {
   const { id } = useParams();
 
   const profileUser = allUsers.find(user => user.id === +id);
+  
+  useEffect(() => {
+    const profilePicDiv = profilePicRef.current;
+    if (profilePicDiv) profilePicDiv.style.backgroundImage = `url(${profileUser?.profilePicture})`
+  })
+
+  if (!profileUser) {
+    return (
+      <>
+        <h1>That page doesn't exist</h1>
+        <Link to="/bar-talk">Home</Link>
+      </>
+    )
+  }
 
   const profileCheckins = allCheckins.filter(checkin => checkin.User.id === profileUser.id)
 
 
-  useEffect(() => {
-    const profilePicDiv = profilePicRef.current;
-    profilePicDiv.style.backgroundImage = `url(${profileUser?.profilePicture})`
-
-  })
 
   if (sessionUser['user'] === undefined) {
     history.push('/');
@@ -46,7 +55,7 @@ const ProfilePage = ({ isLoaded }) => {
         <h1 className="activity-title">{(sessionUser.user.id === +id) ? 'Your Activity' : `${profileUser.firstname}'s Activity`}</h1>
         <div className="activity-title-divider"></div>
         <div className="activity-divider"></div>
-        {profileCheckins.map(checkin => (
+        {profileCheckins?.map(checkin => (
           <>
             <CheckinCard checkin={checkin}/>
             <div className="activity-divider"></div>

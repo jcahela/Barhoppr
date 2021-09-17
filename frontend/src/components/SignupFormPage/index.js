@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser, restoreUser } from '../../store/session'
+import { fetchUsers } from '../../store/userData';
 import { Redirect, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginFormModal from '../LoginFormModal';
@@ -67,6 +68,7 @@ const SignupFormPage = () => {
       
     dispatch(signupUser(newUser))
       .then(() => dispatch(restoreUser()))
+      .then(() => dispatch(fetchUsers()))
       .then(() => history.push('/bar-talk'))
       .catch(async (res) => {
         const data = await res.json();
