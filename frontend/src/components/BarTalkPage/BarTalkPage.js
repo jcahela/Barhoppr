@@ -52,6 +52,9 @@ const BarTalkPage = ({ isLoaded }) => {
           )
         })}
       </div>
+      <a className="scrollToTop" href="#bartalk-body"><span class="material-icons scroll-button-content">
+arrow_upward
+</span></a>
     </>
   )
 }

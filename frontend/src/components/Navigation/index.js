@@ -17,11 +17,24 @@ const Navigation = ({ isLoaded }) => {
     dispatch(getMyCheckins());
   }, [dispatch])
 
+  let drinkNav;
+  let drinkBarhoppr;
+  let drinkNavLink;
+  let drinkFooterContainer;
+  
+  useEffect(() => {
+    if (window.location.pathname === '/drinks') {
+      drinkNav = 'drink-nav-container';
+      drinkNavLink = 'drink-nav-link'
+      drinkFooterContainer = 'drink-footer-container'
+    }
+  })
+
   return (
     <>
-      <nav className="nav-container">
+      <nav className={window.location.pathname === '/drinks' ? "drink-nav-container" : "nav-container"}>
         <div className="nav-logo-title">
-          <NavLink className="nav-link" exact to="/bar-talk">
+          <NavLink className={window.location.pathname === '/drinks' ? "drink-nav-link" : `nav-link`} exact to="/bar-talk">
             <img src="/images/landing-logo.png" alt="A mug of beer logo" className="navbar-logo" />
           </NavLink>
           <h1 className="nav-barhoppr">BARHOPPR</h1>

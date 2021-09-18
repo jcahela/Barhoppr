@@ -1,7 +1,20 @@
+.profile-body {
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888621264808316948/create-a-flat-and-minimalist-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  background-attachment: fixed;
+}
+
 .profile-banner {
   height: 400px;
   width: 50%;
   margin: 0 auto;
+  margin-top: 100px;
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888168217116311573/mountains-1412683_1280.png');
   background-size: cover;
   background-position: center;
@@ -54,6 +67,7 @@
   padding: 30px;
   padding-top: 60px;
   display: flex;
+  background-color: white;
   flex-direction: column;
   box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.25);
 }
@@ -72,4 +86,28 @@
 .activity-divider {
   border: 2px solid rgb(201, 201, 201);
   width: 100%;
+}
+
+.scrollToTop {
+  position: fixed;
+  right: 380px;
+  bottom: 70px;
+  z-index: 3;
+  background-color: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  box-shadow: 4px 0 4px 3px rgba(0, 0, 0, 0.25);
+}
+
+.scrollToTop:hover {
+  transform: scale(1.08);
+}
+
+.scroll-button-content {
+  margin-top: 10px;
+  color:rgb(83, 83, 83);
+  width: 25px;
+  height: 25px;
 }

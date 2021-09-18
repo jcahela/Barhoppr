@@ -39,9 +39,15 @@ const ProfilePage = ({ isLoaded }) => {
     return null;
   }
 
+  function scrollToTop(e) {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+  }
+
   return (
     <>
       <Navigation isLoaded={isLoaded}/>
+      <div className="profile-body" id="profile-body"></div>
       <div className="profile-banner">
         <div className="profile-header-container">
           <div ref={profilePicRef} className="profile-picture"></div>
@@ -62,6 +68,9 @@ const ProfilePage = ({ isLoaded }) => {
           </>
         ))}
       </div>
+            <a className="scrollToTop" href="#bartalk-body"><span class="material-icons scroll-button-content">
+arrow_upward
+</span></a>
       
     </>
   )

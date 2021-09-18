@@ -12,6 +12,7 @@
   background: transparent;
   /* font-family: 'Fira Sans', sans-serif; */
   font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
