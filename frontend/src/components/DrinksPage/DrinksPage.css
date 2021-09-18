@@ -9,17 +9,30 @@
 
 .drinks-feed-container {
   width: 80%;
-  height: 200px;
   box-sizing: border-box;
-  min-height: 91.2vh;
+  height: 85vh;
   background-color: #ECECEC;
   margin: 0 auto;
-  margin-top: 88px;
+  margin-top: 100px;
   border-radius: 1px;
   display: flex;
   flex-wrap: wrap;
   padding: 50px;
   overflow: auto;
+}
+
+.drinks-feed-container::-webkit-scrollbar {
+  background-color: #d1d1d1;
+  width: 1em;
+}
+
+.drinks-feed-container::-webkit-scrollbar-thumb {
+  background-color: #DC8C66;
+  border-radius: 20px;
+}
+
+.drinks-feed-container::-webkit-scrollbar-thumb:hover {
+  background-color: #db6f3d;
 }
 
 .drinks-title {
@@ -69,4 +82,31 @@
 
 .mini-drink-container {
   margin-top: 30px;
+}
+
+.github-logo {
+  width: 30px;
+  height: 50px;
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888538081119072326/GitHub-Mark-32px.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.linkedin-logo {
+  width: 30px;
+  height: 50px;
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888542913594806272/768px-LinkedIn_logo_initials.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.github-logo-text {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.linkedin-link {
+  margin-left: 20px;
 }

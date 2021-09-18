@@ -12,6 +12,7 @@ const BarTalkPage = ({ isLoaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const allCheckins = useSelector(state => state.checkins.allCheckins);
+  const drinks = useSelector(state => state.drinks.drinkList)
   const topFive = useSelector(state => state.drinks.top5);
 
   useEffect(() => {
@@ -29,6 +30,19 @@ const BarTalkPage = ({ isLoaded }) => {
     history.push('/');
     return null;
   }
+  
+
+  topFive.forEach(drink => {
+    const ratingsArr = [];
+    drink.Checkins.forEach(checkin => ratingsArr.push(Number(checkin.rating)));
+    let avgRating;
+    if (ratingsArr.length > 0) {
+      avgRating = (ratingsArr.reduce((a, b) => (a + b)) / ratingsArr.length).toFixed(2);
+    } else {
+      avgRating = 0;
+    }
+    drink['avgRating'] = avgRating;
+  })
 
   return (
     <>
@@ -47,7 +61,7 @@ const BarTalkPage = ({ isLoaded }) => {
         {topFive.map((drink, index) => {
           return (
             <div className="mini-drink-container" key={drink.id}>
-              <p className="top-rated-drink">{index + 1}. {drink.name}</p>
+              <p className="top-rated-drink">{index + 1}. {drink.name} ({drink.avgRating} - {drink.Checkins.length > 1 ? `${drink.Checkins.length} reviews` : `${drink.Checkins.length} review`})</p>
             </div>
           )
         })}

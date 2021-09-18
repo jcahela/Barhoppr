@@ -18,10 +18,11 @@
   margin: 0 auto;
   margin-top: 90px;
   border-radius: 1px;
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: 50px;
+  position: relative;
 }
 
 .bartalk-checkin-container {
@@ -51,6 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  z-index: 1;
 }
 
 .top-rated-title {
@@ -71,4 +73,9 @@
 
 .top-rated-drink:hover {
   cursor: default;
+}
+
+#scroll-top {
+  position: relative;
+  bottom: 50px;
 }

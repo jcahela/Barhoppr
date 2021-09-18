@@ -57,6 +57,21 @@
   width: 400px;
 }
 
+/* results-container */
+.results-container::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 1em;
+}
+
+.results-container::-webkit-scrollbar-thumb {
+  background-color: #DC8C66;
+  border-radius: 20px;
+}
+
+.results-container::-webkit-scrollbar-thumb:hover {
+  background-color: #db6f3d;
+}
+
 .drink-result-container {
   display: flex;
   justify-content: space-between;

@@ -193,15 +193,7 @@
   background-image: none;
 }
 
-.drink-nav-link {
-  font-size: 26px;
-  color: white;
-  margin-left: 60px;
-}
-
 .drink-footer-container {
-  background-image: none;
-  background-color: rgba(230, 230, 230, 0.479);
   background-position: center;
   background-size: cover;
   height: 40px;
@@ -212,4 +204,12 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
+  margin: 0 auto;
+}
+
+.drink-github-logo-text {
+  margin-left: 5px;
+  font-size: 18px;
+  color: white;
+  font-weight: lighter;
 }

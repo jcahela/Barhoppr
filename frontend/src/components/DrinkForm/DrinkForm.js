@@ -5,6 +5,7 @@ import { createDrink } from "../../store/drinks";
 import { useDrinkSelected } from "../../context/DrinkSelected";
 import { useHistory } from "react-router-dom";
 import { fetchDrinks } from "../../store/drinks";
+import { Link } from "react-router-dom";
 import './DrinkForm.css'
 
 function DrinkForm({ isLoaded }) {
@@ -48,11 +49,15 @@ function DrinkForm({ isLoaded }) {
       })
   }
 
+  const goBack = () => {
+    history.goBack();
+  }
+
   return (
     <>
-      <Navigation isLoaded={isLoaded}/>
       <div className="new-drink-body">
         <div className="form-container">
+          <p className="go-back" onClick={goBack}>Go back</p>
           <form
             onSubmit={onSubmit}
             className="new-drink-form"  
