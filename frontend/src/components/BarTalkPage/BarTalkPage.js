@@ -13,9 +13,16 @@ const BarTalkPage = ({ isLoaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const allCheckins = useSelector(state => state.checkins.allCheckins);
+  const allDrinks = useSelector(state => state.drinks.drinkList);
+  const allDrinksArr = Object.values(allDrinks);
   const topFive = useSelector(state => state.drinks.top5);
-  const [sortStyle, setSortStyle] = useState('newest-to-oldest')
-  const [sortedArray, setSortedArray] = useState(allCheckins)
+  const [sortStyle, setSortStyle] = useState('newest-to-oldest');
+  const [sortedArray, setSortedArray] = useState(allCheckins);
+  const [showFilter, setShowFilter] = useState(false);
+  const [filter, setFilter] = useState('');
+  const [filteredArray, setFilteredArray] = useState(allDrinksArr);
+  const [filteredDrink, setFilteredDrink] = useState({})
+
 
   useEffect(() => {
     dispatch(fetchTop5());
@@ -28,12 +35,32 @@ const BarTalkPage = ({ isLoaded }) => {
   }, [sortedArray])
 
   useEffect(() => {
+    if (filter === 'all') {
+      return;
+    }
     if (sortStyle === 'newest-to-oldest') {
+      if (filter === 'all') {
+        return;
+      }
+      if (showFilter) {
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        setSortedArray(filteredCheckins);
+        return;
+      }
       setSortedArray(allCheckins);
     };
     if (sortStyle === 'oldest-to-newest') {
-      const oldestToNewest = allCheckins.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
-      setSortedArray(oldestToNewest);
+      if (filter === 'all') {
+        const oldestToNewest = allCheckins.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+        setSortedArray(oldestToNewest);
+        return;
+      }
+      if (showFilter) {
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const sortedFilteredCheckins = filteredCheckins.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
+        setSortedArray(sortedFilteredCheckins);
+        return;
+      }
     };
     if (sortStyle === 'highest-to-lowest') {
       const highestToLowest = allCheckins.sort((a, b) => a.rating < b.rating ? 1 : -1);
@@ -44,7 +71,7 @@ const BarTalkPage = ({ isLoaded }) => {
       setSortedArray(lowestToHighest);
       
     }
-  }, [sortStyle, allCheckins])
+  }, [sortStyle, allCheckins, filter, showFilter])
   
 
   if (sessionUser['user'] === undefined) {
@@ -70,6 +97,22 @@ const BarTalkPage = ({ isLoaded }) => {
     dispatch(getAllCheckins());
   }
 
+  const filterCheckins = (e) => {
+    setFilter(e.target.value)
+    const drink = allDrinksArr.find(drink => drink.name === e.target.value);
+    setFilteredDrink(drink);
+    dispatch(getAllCheckins());
+  }
+
+  const toggleFilters = (e) => {
+    setShowFilter(!showFilter);
+    if (filter) {
+      setFilter(null);
+    } else {
+      setFilter('all');
+    }
+  }
+
 
   return (
     <>
@@ -84,13 +127,33 @@ const BarTalkPage = ({ isLoaded }) => {
             name="sortStyle" 
             className="sort-selector"
             value={sortStyle}
-            onChange={sortCheckins}
+            onChange={(e) => sortCheckins(e)}
           >
             <option value="newest-to-oldest">Newest to oldest</option>
             <option value="oldest-to-newest">Oldest to newest</option>
             <option value="highest-to-lowest">By Rating (highest to lowest)</option>
             <option value="lowest-to-highest">By Rating (lowest to highest)</option>
           </select>
+          <div 
+            className="filter-by-box"
+            onClick={toggleFilters}
+          >Filter By +</div>
+          {showFilter && (
+            <>
+              <span className="sort-title">Drink: </span>
+              <select 
+                name="filter" 
+                className="filter-selector"
+                value={filter}
+                onChange={filterCheckins}
+              >
+                <option value="all" selected default>All</option>
+                {allDrinksArr.map(drink => (
+                  <option className="filter-drink" value={drink.name} key={drink.id}>{drink.name}</option>
+                  ))}
+              </select>
+            </>
+          )}
         </div>
         {sortedArray.map(checkin => (
           <CheckinCard key={checkin.id} checkin={checkin}/>
