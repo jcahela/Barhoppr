@@ -40,6 +40,18 @@
   background-color: rgb(88, 88, 88);
 }
 
+.sort-container {
+  margin-top: 20px;
+}
+
+.sort-selector {
+  width: fit-content;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
 .top-rated-drinks-container {
   height: fit-content;
   width: 300px;

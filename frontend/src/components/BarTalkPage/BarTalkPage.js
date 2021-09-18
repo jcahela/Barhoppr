@@ -1,9 +1,10 @@
 import Navigation from "../Navigation"
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import CheckinCard from "../CheckinCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchTop5 } from "../../store/drinks";
+import { getAllCheckins } from "../../store/checkins";
 
 import './BarTalkPage.css'
 
@@ -13,6 +14,8 @@ const BarTalkPage = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
   const allCheckins = useSelector(state => state.checkins.allCheckins);
   const topFive = useSelector(state => state.drinks.top5);
+  const [sortStyle, setSortStyle] = useState('newest-to-oldest')
+  const [sortedArray, setSortedArray] = useState(allCheckins)
 
   useEffect(() => {
     dispatch(fetchTop5());
@@ -22,7 +25,26 @@ const BarTalkPage = ({ isLoaded }) => {
   useEffect(() => {
     const body = document.querySelector('body');
     body.classList.add('bartalk-background')
-  }, [])
+  }, [sortedArray])
+
+  useEffect(() => {
+    if (sortStyle === 'newest-to-oldest') {
+      setSortedArray(allCheckins);
+    };
+    if (sortStyle === 'oldest-to-newest') {
+      const oldestToNewest = allCheckins.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+      setSortedArray(oldestToNewest);
+    };
+    if (sortStyle === 'highest-to-lowest') {
+      const highestToLowest = allCheckins.sort((a, b) => a.rating < b.rating ? 1 : -1);
+      setSortedArray(highestToLowest);
+    };
+    if (sortStyle === 'lowest-to-highest') {
+      const lowestToHighest = allCheckins.sort((a, b) => a.rating > b.rating ? 1 : -1);
+      setSortedArray(lowestToHighest);
+      
+    }
+  }, [sortStyle, allCheckins])
   
 
   if (sessionUser['user'] === undefined) {
@@ -43,6 +65,12 @@ const BarTalkPage = ({ isLoaded }) => {
     drink['avgRating'] = avgRating;
   })
 
+  const sortCheckins = (e) => {
+    setSortStyle(e.target.value);
+    dispatch(getAllCheckins());
+  }
+
+
   return (
     <>
       <div className="bartalk-body" />
@@ -50,7 +78,21 @@ const BarTalkPage = ({ isLoaded }) => {
       <div className="bartalk-feed-container">
         <h1 className="bartalk-title">Recent Bar Talk</h1>
         <div className="bartalk-divider"></div>
-        {allCheckins.map(checkin => (
+        <div className="sort-container">
+          <span className="sort-title">Sort By: </span>
+          <select 
+            name="sortStyle" 
+            className="sort-selector"
+            value={sortStyle}
+            onChange={sortCheckins}
+          >
+            <option value="newest-to-oldest">Newest to oldest</option>
+            <option value="oldest-to-newest">Oldest to newest</option>
+            <option value="highest-to-lowest">By Rating (highest to lowest)</option>
+            <option value="lowest-to-highest">By Rating (lowest to highest)</option>
+          </select>
+        </div>
+        {sortedArray.map(checkin => (
           <CheckinCard key={checkin.id} checkin={checkin}/>
         ))}
 
