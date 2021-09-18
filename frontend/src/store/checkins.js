@@ -96,7 +96,6 @@ export const destroyCheckin = (checkinId) => async dispatch => {
 
 export const updateCheckin = (checkin) => async dispatch => {
   const {checkinId, editDrinkId, servingStyle, rating, comment} = checkin;
-  console.log(editDrinkId, 'INSIDE UPDATE CHECKIN THUNK')
   const response = await fetch(`/api/checkins/${checkinId}`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -106,7 +105,6 @@ export const updateCheckin = (checkin) => async dispatch => {
       comment
     })
   });
-  console.log('AFTER FETCH IN UPDATE THUNK')
 
   if (response.ok) {
     const updatedCheckin = await response.json();

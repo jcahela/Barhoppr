@@ -1,11 +1,9 @@
-import Navigation from "../Navigation"
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createDrink } from "../../store/drinks";
 import { useDrinkSelected } from "../../context/DrinkSelected";
 import { useHistory } from "react-router-dom";
 import { fetchDrinks } from "../../store/drinks";
-import { Link } from "react-router-dom";
 import './DrinkForm.css'
 
 function DrinkForm({ isLoaded }) {
@@ -43,7 +41,6 @@ function DrinkForm({ isLoaded }) {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
-          console.log(errors);
           return;
         }
       })

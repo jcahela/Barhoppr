@@ -7,6 +7,12 @@
   z-index: -1;
 }
 
+#drinks-top {
+  position: relative;
+  bottom: 50px;
+}
+
+
 .drinks-feed-container {
   width: 80%;
   box-sizing: border-box;

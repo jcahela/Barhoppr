@@ -28,7 +28,7 @@ const DrinksPage = ({ isLoaded }) => {
       <div className="drinks-body" />
       <Navigation isLoaded={isLoaded}/>
       <div className="drinks-feed-container">
-        <div id="scroll-top"></div>
+        <div id="drinks-top"></div>
         <h1 className="drinks-title" id="drinks-body">Drinks</h1>
         <div className="drinks-divider"></div>
         <div onClick={newDrink} className="new-drink-card"><div className="plus-icon">+</div></div>
@@ -37,7 +37,7 @@ const DrinksPage = ({ isLoaded }) => {
         ))}
 
       </div>
-      <a className="scrollToTop" href="#scroll-top"><span class="material-icons scroll-button-content">
+      <a className="scrollToTop" href="#drinks-top"><span className="material-icons scroll-button-content">
 arrow_upward
 </span></a>
     </>

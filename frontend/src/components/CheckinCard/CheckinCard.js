@@ -84,8 +84,6 @@ const CheckinCard = ({ checkin }) => {
       comment: editComment
     };
 
-    console.log(editedCheckin);
-
     dispatch(updateCheckin(editedCheckin))
       .then(() => dispatch(getMyCheckins()))
       .then(() => dispatch(getAllCheckins()))

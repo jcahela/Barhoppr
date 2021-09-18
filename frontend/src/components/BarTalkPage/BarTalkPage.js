@@ -12,7 +12,6 @@ const BarTalkPage = ({ isLoaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const allCheckins = useSelector(state => state.checkins.allCheckins);
-  const drinks = useSelector(state => state.drinks.drinkList)
   const topFive = useSelector(state => state.drinks.top5);
 
   useEffect(() => {
@@ -66,7 +65,7 @@ const BarTalkPage = ({ isLoaded }) => {
           )
         })}
       </div>
-      <a className="scrollToTop" href="#bartalk-body"><span class="material-icons scroll-button-content">
+      <a className="scrollToTop" href="#bartalk-body"><span className="material-icons scroll-button-content">
 arrow_upward
 </span></a>
     </>

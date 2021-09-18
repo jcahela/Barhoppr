@@ -58,7 +58,7 @@ export const createDrink = (drink) => async dispatch => {
   });
 
   if (response.ok) {
-    const newDrink = response.json();
+    const newDrink = await response.json();
     dispatch(postDrink(newDrink));
   }
 }

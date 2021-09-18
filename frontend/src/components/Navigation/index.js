@@ -47,9 +47,9 @@ const Navigation = ({ isLoaded }) => {
         </div>
       </nav>
       <div className={window.location.pathname === '/drinks' ? "drink-footer-container" : "footer-container"}>
-        <a href="https://github.com/jcahela" target="_blank" class="github-link"><div className="github-logo"></div></a>
+        <a href="https://github.com/jcahela" target="_blank" rel="noreferrer" className="github-link"><div className="github-logo"></div></a>
         <span className={window.location.pathname === '/drinks' ? "drink-github-logo-text" : "github-logo-text"}>Github</span>
-        <a href="https://www.linkedin.com/in/jason-cahela/" target="_blank" class="linkedin-link"><div className="linkedin-logo"></div></a>
+        <a href="https://www.linkedin.com/in/jason-cahela/" target="_blank" rel="noreferrer" className="linkedin-link"><div className="linkedin-logo"></div></a>
         <span className={window.location.pathname === '/drinks' ? "drink-github-logo-text" : "github-logo-text"}>LinkedIn</span>
       </div>
     </>
