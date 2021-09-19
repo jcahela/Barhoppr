@@ -37,7 +37,7 @@ const SignupFormPage = () => {
       username,
       email,
       password,
-      profilePicture: 'https://cdn.discordapp.com/attachments/886336420552269847/886379917208592414/user_icon_001.png'
+      profilePicture: 'https://cdn.discordapp.com/attachments/886336420552269847/888852953950195812/default-profile-pic-e1513291410505.jpg'
     };
     
     setPassword('');

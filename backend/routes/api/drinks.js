@@ -47,7 +47,6 @@ router.post('/',
   const { name, description, abv } = req.body;
   let drinkImageFile;
   if (req.file) drinkImageFile = await singlePublicFileUpload(req.file);
-  console.log(req.body);
   const newDrink = Drink.create({
     name, 
     drinkImageUrl: drinkImageFile || 'https://cdn.discordapp.com/attachments/886336420552269847/888435456331612200/default-drink.png', 

@@ -69,9 +69,10 @@ router.post('/',
   validateSignupExists, 
   validateSignup, 
   asyncHandler(async (req, res) => {
-    const { firstname, lastname, email, password, username } = req.body;
+    const { firstname, lastname, email, password, username, profilePicture } = req.body;
     const user = await User.signup({ 
       email, 
+      profilePicture,
       username, 
       password, 
       firstname, 
@@ -81,6 +82,28 @@ router.post('/',
     await setTokenCookie(res, user);
 
     return res.json({user});
+}));
+
+router.patch('/:id/update-profile-pic', 
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res, next) => {
+    const userId = req.params.id;
+    let profilePicture;
+    if (req.file) profilePicture = await singlePublicFileUpload(req.file);
+    const userToUpdate = await User.findByPk(userId);
+    if (!userToUpdate) {
+      const err = new Error('Profile image update failed');
+      err.status = 401;
+      err.title = 'Profile Pic Update Failed';
+      err.errors = ['The user does not exist.'];
+      return next(err);
+    }
+
+    await userToUpdate.update({
+      profilePicture
+    });
+
+    res.json(userToUpdate);
 }))
 
 module.exports = router;

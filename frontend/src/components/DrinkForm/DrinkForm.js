@@ -1,10 +1,10 @@
-import Navigation from "../Navigation"
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createDrink } from "../../store/drinks";
 import { useDrinkSelected } from "../../context/DrinkSelected";
 import { useHistory } from "react-router-dom";
 import { fetchDrinks } from "../../store/drinks";
+import Navigation from '../Navigation'
 import './DrinkForm.css'
 
 function DrinkForm({ isLoaded }) {
@@ -42,17 +42,21 @@ function DrinkForm({ isLoaded }) {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
-          console.log(errors);
           return;
         }
       })
   }
 
+  const goBack = () => {
+    history.goBack();
+  }
+
   return (
     <>
-      <Navigation isLoaded={isLoaded}/>
+      <Navigation isLoaded={isLoaded} />
       <div className="new-drink-body">
         <div className="form-container">
+          <p className="go-back" onClick={goBack}>Go back</p>
           <form
             onSubmit={onSubmit}
             className="new-drink-form"  

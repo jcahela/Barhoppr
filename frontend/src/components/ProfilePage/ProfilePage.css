@@ -1,7 +1,20 @@
+.profile-body {
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888621264808316948/create-a-flat-and-minimalist-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  background-attachment: fixed;
+}
+
 .profile-banner {
   height: 400px;
   width: 50%;
   margin: 0 auto;
+  margin-top: 100px;
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888168217116311573/mountains-1412683_1280.png');
   background-size: cover;
   background-position: center;
@@ -17,14 +30,16 @@
 }
 
 .profile-picture {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   border: 4px solid white;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 50px;
+  border-radius: 50%;
+  position: relative;
 }
+
 
 .profile-header-info {
   display: flex;
@@ -54,6 +69,7 @@
   padding: 30px;
   padding-top: 60px;
   display: flex;
+  background-color: white;
   flex-direction: column;
   box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.25);
 }
@@ -72,4 +88,106 @@
 .activity-divider {
   border: 2px solid rgb(201, 201, 201);
   width: 100%;
+}
+
+.scrollToTop {
+  position: fixed;
+  right: 380px;
+  bottom: 70px;
+  z-index: 2;
+  background-color: rgb(206, 206, 206);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+}
+
+.scrollToTop:hover {
+  transform: scale(1.08);
+}
+
+.scroll-button-content {
+  margin-top: 10px;
+  color:rgb(83, 83, 83);
+  width: 25px;
+  height: 25px;
+}
+
+/* New Profile Pic Section */
+.new-photo-icon {
+  color: rgb(77, 77, 77);
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: rgb(197, 197, 197);
+}
+
+.new-photo-icon:hover {
+  cursor: pointer;
+  background-color: rgb(145, 145, 145);
+  color: white;
+}
+
+.new-profile-pic-form-container {
+  height: 400px;
+}
+
+.new-profile-pic-form {
+  background-color: rgb(255, 255, 255);
+  color: white;
+  position: relative;
+  top: 125px;
+  /* left: 120px; */
+  width: 222px;
+  font-size: 14px;
+  border: 1px solid rgb(161, 161, 161);
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px rgb(177, 177, 177);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.new-profile-pic-close-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.new-profile-pic-close-icon:hover {
+  cursor: pointer;
+}
+
+.new-profile-pic-file-button {
+  margin-top: 10px;
+}
+
+.new-profile-pic-file-label {
+  color: black;
+}
+
+#profilePic {
+  width: 210px;
+  border: none;
+  position: relative;
+  right: 20px;
+}
+
+.new-profile-pic-button {
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 9px;
+  width: 220px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.new-profile-pic-button:hover {
+  cursor: pointer;
+  transform: scale(1.01);
 }

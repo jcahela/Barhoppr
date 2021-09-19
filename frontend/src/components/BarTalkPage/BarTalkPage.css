@@ -18,10 +18,11 @@
   margin: 0 auto;
   margin-top: 90px;
   border-radius: 1px;
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: 50px;
+  position: relative;
 }
 
 .bartalk-checkin-container {
@@ -39,6 +40,45 @@
   background-color: rgb(88, 88, 88);
 }
 
+.sort-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort-selector {
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.sort-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-container {
+  margin-left: 100px;
+  width: 350px;
+}
+
+.filter-by-box {
+  text-decoration: underline;
+}
+
+.filter-by-box:hover {
+  cursor: pointer;
+}
+
+.filter-selector {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 .top-rated-drinks-container {
   height: fit-content;
   width: 300px;
@@ -51,6 +91,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  z-index: 1;
 }
 
 .top-rated-title {
@@ -71,4 +112,9 @@
 
 .top-rated-drink:hover {
   cursor: default;
+}
+
+#scroll-top {
+  position: relative;
+  bottom: 50px;
 }

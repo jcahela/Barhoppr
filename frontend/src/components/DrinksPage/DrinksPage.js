@@ -28,7 +28,8 @@ const DrinksPage = ({ isLoaded }) => {
       <div className="drinks-body" />
       <Navigation isLoaded={isLoaded}/>
       <div className="drinks-feed-container">
-        <h1 className="drinks-title">Drinks</h1>
+        <div id="drinks-top"></div>
+        <h1 className="drinks-title" id="drinks-body">Drinks</h1>
         <div className="drinks-divider"></div>
         <div onClick={newDrink} className="new-drink-card"><div className="plus-icon">+</div></div>
         {sortedDrinksArr.map(drink => (
@@ -36,6 +37,9 @@ const DrinksPage = ({ isLoaded }) => {
         ))}
 
       </div>
+      <a className="scrollToTop" href="#drinks-top"><span className="material-icons scroll-button-content">
+arrow_upward
+</span></a>
     </>
   )
 }
