@@ -68,7 +68,7 @@
 .landing-login {
   animation-name: fadeIn;
   animation-duration: 2s;
-  animation-delay: 3.5s;
+  animation-delay: 3.9s;
   animation-fill-mode: backwards;
 }
 
@@ -77,7 +77,7 @@
   margin-right: 3.75em;
   animation-name: fadeIn;
   animation-duration: 2s;
-  animation-delay: 3.5s;
+  animation-delay: 3.9s;
   animation-fill-mode: backwards;
 }
 
@@ -112,7 +112,7 @@
   border-radius: 7px;
   animation-name: backgroundChange;
   animation-duration: 2s;
-  animation-delay: 3.5s;
+  animation-delay: 3.9s;
   animation-fill-mode: backwards;
 }
 
@@ -171,7 +171,7 @@
   z-index: 1;
   animation-name: fadeIn;
   animation-duration: 2s;
-  animation-delay: 1.8s;
+  animation-delay: 2.2s;
   animation-fill-mode: backwards;
 }
 
@@ -194,7 +194,7 @@
   z-index: 1;
   animation-name: fadeIn;
   animation-duration: 2s;
-  animation-delay: 3.5s;
+  animation-delay: 3.9s;
   animation-fill-mode: backwards;
 }
 
@@ -209,7 +209,7 @@
   margin-top: 1em;
   animation-name: fadeIn;
   animation-duration: 2s;
-  animation-delay: 3.5s;
+  animation-delay: 3.9s;
   animation-fill-mode: backwards;
 }
 
