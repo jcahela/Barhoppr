@@ -2,10 +2,10 @@
   height: fit-content;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 1.25em;
   background-color: white;
   border-radius: 9px;
-  margin-top: 40px;
+  margin-top: 2.5em;
   position: relative;
 }
 
@@ -15,20 +15,20 @@
 }
 
 .checkincard-profile-pic {
-  height: 80px;
-  width: 80px;
+  min-height: 5rem;
+  min-width: 5rem;
   background-size: cover;
   background-position: center;
-  border-radius: 50px;
+  border-radius: 50%;
 }
 
 .checkincard-title-container {
-  width: 640px;
-  max-height: 80px;
+  width: 40rem;
+  max-height: 5rem;
 }
 
 .checkincard-title {
-  font-size: 20px;
+  font-size: 1.25em;
   width: fit-content;
 }
 
@@ -41,8 +41,8 @@
 }
 
 .checkincard-drink-pic {
-  height: 80px;
-  width: 80px;
+  height: 5rem;
+  width: 5rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,28 +51,28 @@
 }
 
 .checkincard-rating {
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 1.25em;
+  margin-top: 1.25em;
   display: inline-block;
 }
 
 .edit-checkin-button {
-  font-size: 13px;
+  font-size: 0.813em;
   color: blue;
   position: absolute;
-  bottom: 35px;
-  left: 150px;
+  bottom: 2.188rem;
+  left: 9.375rem;
 }
 
 .delete-checkin-button {
-  font-size: 14px;
+  font-size: 0.875em;
   color: red;
   background-color: rgba(255, 0, 0, 0.171);
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 0.5rem;
+  right: 0.5rem;
   border: 1px solid;
-  padding: 3px 5px;
+  padding: 0.188em 0.313em;
   border-radius: 3px;
 }
 
@@ -89,29 +89,29 @@
 .checkincard-comment-container {
   width: 600px;
   margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 1.875em;
+  margin-bottom: 1.875em;
   border: 2px solid #63636383;
-  min-height: 100px;
-  padding: 10px;
+  min-height: 6.25rem;
+  padding: 0.625em;
 }
 
 .checkincard-comment {
-  font-size: 18px;
+  font-size: 1.125em;
 }
 
 .checkincard-time {
   position: absolute;
-  bottom: 8px;
-  left: 8px;
-  font-size: 14px;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.875em;
 }
 
 .checkincard-updated-time {
   position: absolute;
-  bottom: 35px;
-  right: 150px;
-  font-size: 13px;
+  bottom: 2.188rem;
+  right: 9.375rem;
+  font-size: 0.813em;
   font-weight: lighter;
   /* font-family: 'Fira Sans', sans-serif; */
   color: rgb(138, 138, 138);
@@ -119,16 +119,16 @@
 
 .drink-icon {
   position: absolute;
-  top: 105px;
-  right: 16px;
+  top: 6.563rem;
+  right: 1rem;
 }
 
 .wine-sizing {
-  font-size: 30px;
+  font-size: 1.875em;
 }
 
 .can-img {
-  width: 30px;
+  width: 1.875rem;
   display: inline;
 }
 
@@ -139,33 +139,33 @@
 /* Edit field */
 
 .edit-drinks, .edit-rating {
-  margin-left: 15px;
+  margin-left: 0.938em;
 }
 
 .edit-comment-field {
-  width: 650px;
-  /* height: 120px; */
-  margin: 30px 0;
-  margin-left: 110px;
+  width: 40.625rem;
+  margin: 1.875em 0;
+  margin-left: 6.875em;
   border: 2px solid #0f0f0f83;
-  min-height: 80px;
-  padding: 10px;
+  min-height: 5rem;
+  padding: 0.625em;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
+  resize: none;
 }
 
 .edit-submit {
-  font-size: 13px;
+  font-size: 0.813em;
   color: blue;
   position: absolute;
-  bottom: 34px;
-  left: 225px;
+  bottom: 2.125rem;
+  left: 14.063rem;
 }
 
 .edit-serving-style-label {
-  margin-left: 110px;
-  font-size: 18px;
+  margin-left: 5.8em;
+  font-size: 1.125em;
 }
 
 .serving-style {
-  margin-top: 20px;
+  margin-top: 1.25em;
 }

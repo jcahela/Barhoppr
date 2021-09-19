@@ -1,7 +1,7 @@
 .drinks-body {
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888612947096637480/unknown.png');
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   z-index: -1;
@@ -9,7 +9,7 @@
 
 #drinks-top {
   position: relative;
-  bottom: 50px;
+  bottom: 3.125rem;
 }
 
 
@@ -19,11 +19,11 @@
   height: 85vh;
   background-color: #ECECEC;
   margin: 0 auto;
-  margin-top: 100px;
-  border-radius: 1px;
+  margin-top: 6.25rem;
+  border-radius: 3px;
   display: flex;
   flex-wrap: wrap;
-  padding: 50px;
+  padding: 3.125rem;
   overflow: auto;
 }
 
@@ -43,35 +43,34 @@
 
 .drinks-title {
   color: #864323;
-  margin: 30px auto 50px auto;
+  margin: 1.5em auto 2.5em auto;
+  font-size: 2.5em;
 }
 
 .drinks-divider {
   border: 2px solid rgb(182, 182, 182);
   width: 100%;
   background-color: rgb(182, 182, 182);
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .new-drink-card {
-  height: 189px;
-  width: 620px;
+  height: 11.813rem;
+  width: 38.75rem;
   border: 2px dashed #a1a1a1;
   border-radius: 3px;
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   background-color: white;
   text-align: center;
 }
 
 .plus-icon {
-  font-size: 200px;
+  font-size: 12.5em;
   width: 100%;
   text-align: center;
-  max-height: 232px;
   color:rgb(182, 182, 182);
 }
 
@@ -86,13 +85,9 @@
 }
 
 
-.mini-drink-container {
-  margin-top: 30px;
-}
-
 .github-logo {
-  width: 30px;
-  height: 50px;
+  width: 1.875rem;
+  height: 3.125rem;
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888538081119072326/GitHub-Mark-32px.png');
   background-size: contain;
   background-position: center;
@@ -100,8 +95,8 @@
 }
 
 .linkedin-logo {
-  width: 30px;
-  height: 50px;
+  width: 1.875rem;
+  height: 3.125rem;
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888542913594806272/768px-LinkedIn_logo_initials.png');
   background-size: contain;
   background-position: center;
@@ -109,10 +104,10 @@
 }
 
 .github-logo-text {
-  margin-left: 5px;
-  font-size: 18px;
+  margin-left: 0.313rem;
+  font-size: 1.125rem;
 }
 
 .linkedin-link {
-  margin-left: 20px;
+  margin-left: 1.125rem;
 }

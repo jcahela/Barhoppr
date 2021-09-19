@@ -37,9 +37,6 @@ const DrinksPage = ({ isLoaded }) => {
         ))}
 
       </div>
-      <a className="scrollToTop" href="#drinks-top"><span className="material-icons scroll-button-content">
-arrow_upward
-</span></a>
     </>
   )
 }

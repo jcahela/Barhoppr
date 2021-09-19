@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createDrink } from "../../store/drinks";
 import { useDrinkSelected } from "../../context/DrinkSelected";
 import { useHistory } from "react-router-dom";
@@ -8,6 +8,7 @@ import Navigation from '../Navigation'
 import './DrinkForm.css'
 
 function DrinkForm({ isLoaded }) {
+  const sessionUser = useSelector(state => state.session.user)
   const { setShowCheckinModal } = useDrinkSelected();
   const [drinkName, setDrinkName] = useState('');
   const [description, setDescription] = useState('');
@@ -20,6 +21,11 @@ function DrinkForm({ isLoaded }) {
   useEffect(() => {
     setShowCheckinModal(false);
   })
+
+  if (sessionUser['user'] === undefined) {
+    history.push('/');
+    return null;
+  }
 
   const updateFile = (e) => {
     const file = e.target.files[0];

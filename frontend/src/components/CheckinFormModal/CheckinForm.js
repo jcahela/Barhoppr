@@ -82,7 +82,6 @@ const CheckinForm = ({ onClose }) => {
   return (
     <>
     <div className="checkin-container">
-      <span onClick={onClose} className="material-icons checkin-close-icon" id="close-login-icon-color">close</span>
       <h1 className="checkin-title">Checkin</h1>
       <div className="checkin-divider"></div>
       {drinkSelected ? (
