@@ -1,7 +1,7 @@
 .drinks-body {
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888612947096637480/unknown.png');
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   z-index: -1;
@@ -9,7 +9,7 @@
 
 #drinks-top {
   position: relative;
-  bottom: 50px;
+  bottom: 3.125rem;
 }
 
 
@@ -19,11 +19,11 @@
   height: 85vh;
   background-color: #ECECEC;
   margin: 0 auto;
-  margin-top: 100px;
-  border-radius: 1px;
+  margin-top: 6.25rem;
+  border-radius: 3px;
   display: flex;
   flex-wrap: wrap;
-  padding: 50px;
+  padding: 3.125rem;
   overflow: auto;
 }
 
@@ -43,26 +43,25 @@
 
 .drinks-title {
   color: #864323;
-  margin: 30px auto 50px auto;
+  margin: 1.875em auto 3.125em auto;
 }
 
 .drinks-divider {
   border: 2px solid rgb(182, 182, 182);
   width: 100%;
   background-color: rgb(182, 182, 182);
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .new-drink-card {
-  height: 189px;
-  width: 620px;
+  height: 11.813rem;
+  width: 38.75rem;
   border: 2px dashed #a1a1a1;
   border-radius: 3px;
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   background-color: white;
   text-align: center;
 }
