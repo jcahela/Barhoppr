@@ -6,6 +6,7 @@ export const DrinkSelectedProvider = ({children}) => {
   const [drinkSelected, setDrinkSelected] = useState(false);
   const [currentDrink, setCurrentDrink] = useState({});
   const [showCheckinModal, setShowCheckinModal] = useState(false);
+  const [prevHost, setPrevHost] = useState('');
 
   return (
     <DrinkSelectedContext.Provider value={{
@@ -14,7 +15,9 @@ export const DrinkSelectedProvider = ({children}) => {
       currentDrink,
       setCurrentDrink,
       showCheckinModal, 
-      setShowCheckinModal
+      setShowCheckinModal, 
+      prevHost, 
+      setPrevHost
     }}>
       {children}
     </DrinkSelectedContext.Provider>

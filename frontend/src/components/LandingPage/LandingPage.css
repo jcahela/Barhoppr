@@ -65,20 +65,9 @@
   border-radius: 5px;
 }
 
-.landing-login {
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-delay: 3.9s;
-  animation-fill-mode: backwards;
-}
-
 .landing-signup-container {
   background-color: #dc8c66;
   margin-right: 3.75em;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-delay: 3.9s;
-  animation-fill-mode: backwards;
 }
 
 .landing-signup-container:hover {
@@ -110,10 +99,6 @@
   height: 37.5rem;
   border: 3px solid rgb(216, 216, 216);
   border-radius: 7px;
-  animation-name: backgroundChange;
-  animation-duration: 2s;
-  animation-delay: 3.9s;
-  animation-fill-mode: backwards;
 }
 
 @keyframes backgroundChange {
@@ -127,14 +112,58 @@
   }
 }
 
-.landing-logo{
-  height: 5.875rem;
-  width: 5rem;
-  z-index: 1;
+/* First stage of landing animation */
+
+.arrive-right-1 {
   animation-name: arriveRight;
   animation-duration: 1.5s;
   animation-delay: 0.5s;
   animation-fill-mode: backwards;
+}
+
+.arrive-left-1 {
+  animation-name: arriveLeft;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
+.arrive-up-1 {
+  animation-name: arriveUp;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
+/* Second stage of landing animation */
+
+.fadein-2 {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 2.2s;
+  animation-fill-mode: backwards;
+}
+
+/* Third stage of landing animation */
+
+.fadein-3 {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 3.9s;
+  animation-fill-mode: backwards;
+}
+
+.background-3 { 
+  animation-name: backgroundChange;
+  animation-duration: 2s;
+  animation-delay: 3.9s;
+  animation-fill-mode: backwards;
+}
+
+.landing-logo{
+  height: 5.875rem;
+  width: 5rem;
+  z-index: 1;
 }
 
 .landing-welcome-title {
@@ -146,10 +175,6 @@
   z-index: 1;
   font-family: 'Fira Sans', sans-serif;
   font-weight: bold;
-  animation-name: arriveLeft;
-  animation-duration: 1.5s;
-  animation-delay: 0.5s;
-  animation-fill-mode: backwards;
 }
 
 .landing-divider {
@@ -157,11 +182,6 @@
   border: 7px solid;
   color: #F4A980;
   z-index: 1;
-  /* animation CSS */
-  animation-name: arriveUp;
-  animation-duration: 1.5s;
-  animation-delay: 0.5s;
-  animation-fill-mode: backwards;
 }
 
 .landing-welcome-message {
@@ -169,10 +189,6 @@
   font-size: 1.5em;
   margin-top: 2.375em;
   z-index: 1;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-delay: 2.2s;
-  animation-fill-mode: backwards;
 }
 
 .landing-welcome-signup {
@@ -192,10 +208,6 @@
   margin-top: 3.125em;
   background-color: #dc8c66;
   z-index: 1;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-delay: 3.9s;
-  animation-fill-mode: backwards;
 }
 
 .landing-welcome-signup-container:hover {
@@ -211,6 +223,11 @@
   animation-duration: 2s;
   animation-delay: 3.9s;
   animation-fill-mode: backwards;
+}
+
+#landing-welcome-demo-no-animation {
+  color: #ffffff;
+  margin-top: 1em;
 }
 
 /* Keyframe animations */

@@ -5,6 +5,7 @@ import { fetchUsers } from '../../store/userData';
 import { Redirect, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginFormModal from '../LoginFormModal';
+import { useDrinkSelected } from '../../context/DrinkSelected';
 import './SignupFormPage.css'
 
 const SignupFormPage = () => {
@@ -15,6 +16,7 @@ const SignupFormPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const { setPrevHost } = useDrinkSelected();
   const sessionUser = useSelector(state => state.session.user.user)
 
   const history = useHistory();
@@ -147,7 +149,7 @@ const SignupFormPage = () => {
             <button className="signup-button">Signup</button>
             <div className="signup-bottom-links">
               <span className="login-question">Already a user?  <LoginFormModal to="/login"></LoginFormModal></span>
-              <Link className="signup-home-link" to="/">Back to Home</Link>
+              <Link onClick={() => setPrevHost(window.location.hostname)} className="signup-home-link" to="/">Back to Home</Link>
             </div>
           </form>
 

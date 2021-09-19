@@ -1,10 +1,12 @@
 import LoginForm from './LoginForm'
 import { useState } from 'react'
 import { Modal } from '../../context/Modal'
+import { useDrinkSelected } from '../../context/DrinkSelected';
 import './LoginFormPage.css';
 
 const LoginFormModal = () => {
   const [showModal, setShowModal] = useState(false);
+  const { prevHost } = useDrinkSelected();
 
   const onOpen = (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ const LoginFormModal = () => {
 
   return (
     <>
-      <button className={`${logInMainClass} hover-pointer ${window.location.pathname === '/' ? 'landing-login' : ''}`} onClick={onOpen}>{window.location.pathname === '/signup' ? 'Log in here' : 'Log In'}</button>
+      <button className={`${logInMainClass} hover-pointer ${(window.location.pathname === '/') && (prevHost !== 'localhost') ? 'fadein-3' : ''}`} onClick={onOpen}>{window.location.pathname === '/signup' ? 'Log in here' : 'Log In'}</button>
       {showModal && (
         <Modal onClose={onClose}>
           <LoginForm onClose={onClose} />

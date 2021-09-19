@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import { logoutUser, restoreUser } from "../../store/session";
 import { removeMyCheckins } from '../../store/checkins'
+import { useDrinkSelected } from "../../context/DrinkSelected";
 
 const ProfileButton = () => {
   const sessionUser = useSelector(state => state.session.user.user);
@@ -12,6 +13,7 @@ const ProfileButton = () => {
   const history = useHistory();
 
   const [showMenu, setShowMenu] = useState(false);
+  const { setPrevHost } = useDrinkSelected();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -33,7 +35,9 @@ const ProfileButton = () => {
       await dispatch(removeMyCheckins());
       await dispatch(logoutUser());
       await dispatch(restoreUser());
-      history.push('/');
+      setPrevHost(window.location.hostname)
+      history.push(`/`);
+      
     }
     return;
   }
