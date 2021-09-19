@@ -30,7 +30,6 @@ const LandingPage = () => {
     <div className="component-body">
       <div className="landing-darkener">
         <div className="landing-background-image"></div>
-        <div className="landing-welcome-contrast"></div>
       </div>
       <div className="landing-links-container">
           <LoginFormModal />
@@ -47,9 +46,8 @@ const LandingPage = () => {
         <div className="landing-welcome-signup-container" onClick={e => history.push('/signup')}>
           <NavLink className="landing-welcome-signup" to="/signup" id="landing-signup" >Sign Up Here</NavLink>
         </div>
-        <div className="landing-welcome-demo-container">
-          <NavLink onClick={getDemoUser} id="landing-welcome-demo" to="/bar-talk" >Log in as a demo user</NavLink>
-        </div>
+        <NavLink onClick={getDemoUser} id="landing-welcome-demo" to="/bar-talk" >Log in as a demo user</NavLink>
+
       </div>
         
       
