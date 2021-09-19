@@ -37,7 +37,7 @@ const LoginFormModal = () => {
 
   return (
     <>
-      <button className={`${logInMainClass} hover-pointer`} onClick={onOpen}>{window.location.pathname === '/signup' ? 'Log in here' : 'Log In'}</button>
+      <button className={`${logInMainClass} hover-pointer ${window.location.pathname === '/' ? 'landing-login' : ''}`} onClick={onOpen}>{window.location.pathname === '/signup' ? 'Log in here' : 'Log In'}</button>
       {showModal && (
         <Modal onClose={onClose}>
           <LoginForm onClose={onClose} />

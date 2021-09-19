@@ -1,3 +1,7 @@
+.component-body {
+  overflow: hidden;
+}
+
 .landing-background-image {
   background-image: -webkit-linear-gradient(right, rgb(0, 0, 0) 0%,rgba(255,255,255,0) 48%,rgb(2, 2, 2) 100%), url('https://cdn.discordapp.com/attachments/886336420552269847/886337747726516254/patrick-tomasso-GXXYkSwndP4-unsplash.jpg');
   width: 100vw;
@@ -61,9 +65,20 @@
   border-radius: 5px;
 }
 
+.landing-login {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 3.5s;
+  animation-fill-mode: backwards;
+}
+
 .landing-signup-container {
   background-color: #dc8c66;
   margin-right: 3.75em;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 3.5s;
+  animation-fill-mode: backwards;
 }
 
 .landing-signup-container:hover {
@@ -95,12 +110,31 @@
   height: 37.5rem;
   border: 3px solid rgb(216, 216, 216);
   border-radius: 7px;
+  animation-name: backgroundChange;
+  animation-duration: 2s;
+  animation-delay: 3.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid rgba(216, 216, 216, 0);
+  }
+  100% {
+    background-color: rgba(220, 139, 102, 0.699);
+    border: 3px solid rgb(216, 216, 216);
+  }
 }
 
 .landing-logo{
   height: 5.875rem;
   width: 5rem;
   z-index: 1;
+  animation-name: arriveRight;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
 }
 
 .landing-welcome-title {
@@ -112,6 +146,10 @@
   z-index: 1;
   font-family: 'Fira Sans', sans-serif;
   font-weight: bold;
+  animation-name: arriveLeft;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
 }
 
 .landing-divider {
@@ -119,6 +157,11 @@
   border: 7px solid;
   color: #F4A980;
   z-index: 1;
+  /* animation CSS */
+  animation-name: arriveUp;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
 }
 
 .landing-welcome-message {
@@ -126,6 +169,10 @@
   font-size: 1.5em;
   margin-top: 2.375em;
   z-index: 1;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 1.8s;
+  animation-fill-mode: backwards;
 }
 
 .landing-welcome-signup {
@@ -145,6 +192,10 @@
   margin-top: 3.125em;
   background-color: #dc8c66;
   z-index: 1;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 3.5s;
+  animation-fill-mode: backwards;
 }
 
 .landing-welcome-signup-container:hover {
@@ -156,4 +207,53 @@
 #landing-welcome-demo {
   color: #ffffff;
   margin-top: 1em;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-delay: 3.5s;
+  animation-fill-mode: backwards;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  0% {
+    /* transform: translateX(120px); */
+    opacity: 0;
+  }
+  100% {
+    /* transform: translateX(0); */
+    opacity: 1;
+  }
+}
+
+@keyframes arriveLeft {
+  0% {
+    transform: translateX(120px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes arriveRight {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes arriveUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
