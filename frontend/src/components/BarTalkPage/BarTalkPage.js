@@ -5,6 +5,7 @@ import CheckinCard from "../CheckinCard";
 import { useEffect, useState } from "react";
 import { fetchTop5 } from "../../store/drinks";
 import { getAllCheckins } from "../../store/checkins";
+import CheckinFormModal from "../CheckinFormModal";
 
 import './BarTalkPage.css'
 
@@ -135,6 +136,7 @@ const BarTalkPage = ({ isLoaded }) => {
       <div className="bartalk-body" />
       <Navigation isLoaded={isLoaded}/>
       <div className="bartalk-feed-container">
+        <CheckinFormModal />
         <h1 className="bartalk-title">Recent Bar Talk</h1>
         <div className="bartalk-divider"></div>
         <div className="sort-container">
@@ -178,21 +180,19 @@ const BarTalkPage = ({ isLoaded }) => {
         {sortedArray.map(checkin => (
           <CheckinCard key={checkin.id} checkin={checkin}/>
         ))}
+        <div className="top-rated-drinks-container">
+          <h2 className="top-rated-title">Top 5 Rated Drinks</h2>
+          {topFive.map((drink, index) => {
+            return (
+              <div className="mini-drink-container" key={drink.id}>
+                <p className="top-rated-drink">{index + 1}. {drink.name} ({drink.avgRating} - {drink.Checkins.length > 1 ? `${drink.Checkins.length} reviews` : `${drink.Checkins.length} review`})</p>
+              </div>
+            )
+          })}
+        </div>
 
       </div>
-      <div className="top-rated-drinks-container">
-        <h2 className="top-rated-title">Top 5 Rated Drinks</h2>
-        {topFive.map((drink, index) => {
-          return (
-            <div className="mini-drink-container" key={drink.id}>
-              <p className="top-rated-drink">{index + 1}. {drink.name} ({drink.avgRating} - {drink.Checkins.length > 1 ? `${drink.Checkins.length} reviews` : `${drink.Checkins.length} review`})</p>
-            </div>
-          )
-        })}
-      </div>
-      <a className="scrollToTop" href="#bartalk-body"><span className="material-icons scroll-button-content">
-arrow_upward
-</span></a>
+        <a className="bartalk-scroll" href="#bartalk-body"><span className="material-icons scroll-button-content ">arrow_upward</span></a>
     </>
   )
 }

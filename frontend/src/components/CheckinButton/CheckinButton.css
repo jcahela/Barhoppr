@@ -1,9 +1,9 @@
 .checkin-button {
-  position: fixed;
-  left: 400px;
-  top: 200px;
-  width: 80px;
-  height: 80px;
+  position: absolute;
+  left: -2.5rem;
+  top: 12.5rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
   z-index: 2;

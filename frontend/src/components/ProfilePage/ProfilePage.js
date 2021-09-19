@@ -28,18 +28,6 @@ const ProfilePage = ({ isLoaded }) => {
     if (profilePicDiv) profilePicDiv.style.backgroundImage = `url(${profileUser?.profilePicture})`
   })
 
-  // useEffect(() => {
-  //   if (!showMenu) return;
-
-  //   const closeMenu = () => {
-  //     setShowMenu(false);
-  //   };
-
-  //   document.addEventListener('click', closeMenu);
-  
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showMenu]);
-
   if (!profileUser) {
     return (
       <>
@@ -93,7 +81,7 @@ const ProfilePage = ({ isLoaded }) => {
           >
             {(sessionUser.user.id === +id) && <span onClick={openMenu} className="material-icons new-photo-icon">add_a_photo</span>}
           {showMenu && (
-            <div className="new-profile-pic-form-container">
+            
               <form className="new-profile-pic-form" onSubmit={onSubmit}>
                 <span onClick={closeMenu} className="material-icons new-profile-pic-close-icon" id="close-login-icon-color">close</span>
                 <label className="new-profile-pic-file-label">Update profile picture
@@ -106,7 +94,7 @@ const ProfilePage = ({ isLoaded }) => {
                 </label>
                 <button className="new-profile-pic-button">Submit</button>
               </form>
-            </div>
+
           )}
           </div>
           <div className="profile-header-info">

@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-attachment: fixed;
   position: fixed;
   z-index: -1;
@@ -11,27 +11,18 @@
 }
 
 .bartalk-feed-container {
-  width: 1000px;
+  width: 62.5rem;
   box-sizing: border-box;
   min-height: 91.2vh;
   background-color: rgba(255, 255, 255, 0.8);
   margin: 0 auto;
-  margin-top: 90px;
+  margin-top: 5.625em;
   border-radius: 1px;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  padding: 50px;
+  padding: 3.125em;
   position: relative;
-}
-
-.bartalk-checkin-container {
-  width: 800px;
-  height: fit-content;
-  margin: 0 auto;
-  position: relative;
-  top: 300px;
-  border: 1px solid;
 }
 
 .bartalk-divider {
@@ -41,7 +32,7 @@
 }
 
 .sort-container {
-  margin-top: 20px;
+  margin-top: 1.25em;
   display: flex;
   justify-content: space-between;
 }
@@ -52,7 +43,7 @@
   border: 1px solid;
   background-color: white;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 0.875em;
 }
 
 .sort-content-container {
@@ -61,8 +52,8 @@
 }
 
 .filter-container {
-  margin-left: 100px;
-  width: 350px;
+  margin-left: 6.25em;
+  width: 21.875rem;
 }
 
 .filter-by-box {
@@ -81,13 +72,13 @@
 
 .top-rated-drinks-container {
   height: fit-content;
-  width: 300px;
+  width: 18.75rem;
   background-color: #ECECEC;
   position: absolute;
-  right: 70px;
-  top: 220px;
+  right: -23rem;
+  top: 13.75rem;
   border-radius: 3px;
-  padding: 20px;
+  padding: 1.25em;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -95,15 +86,15 @@
 }
 
 .top-rated-title {
-  font-size: 18px;
+  font-size: 1.125em;
   text-align: center;
   color: #353535;
   text-decoration: underline 3px rgb(182, 182, 182);
-  text-underline-offset: 10px;
+  text-underline-offset: 0.625em;
 }
 
 .mini-drink-container {
-  margin-top: 30px;
+  margin-top: 1.875em;
 }
 
 .mini-drink-container:hover {
@@ -116,5 +107,23 @@
 
 #scroll-top {
   position: relative;
-  bottom: 50px;
+  bottom: 3.125em;
+}
+
+.bartalk-scroll {
+  z-index: 2;
+  background-color: rgb(206, 206, 206);
+  border-radius: 50%;
+  width: 2.813rem;
+  height: 2.813rem;
+  text-align: center;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+  position: fixed;
+  right: 23.75rem;
+  bottom: 4.375rem;
+}
+
+.bartalk-scroll:hover {
+  transform: scale(1.08);
 }

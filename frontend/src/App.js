@@ -56,7 +56,7 @@ function App() {
             </Route>
 
             <Route path='/bar-talk'>
-              <CheckinFormModal />  
+              {/* <CheckinFormModal />   */}
               <BarTalkPage isLoaded={isLoaded}/>
             </Route>
 
