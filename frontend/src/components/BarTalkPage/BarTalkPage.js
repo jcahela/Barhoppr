@@ -14,7 +14,8 @@ const BarTalkPage = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
   const allCheckins = useSelector(state => state.checkins.allCheckins);
   const allDrinks = useSelector(state => state.drinks.drinkList);
-  const allDrinksArr = Object.values(allDrinks);
+  const drinksArr = Object.values(allDrinks);
+  const allDrinksArr = drinksArr.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
   const topFive = useSelector(state => state.drinks.top5);
   const [sortStyle, setSortStyle] = useState('newest-to-oldest');
   const [sortedArray, setSortedArray] = useState(allCheckins);
@@ -55,7 +56,7 @@ const BarTalkPage = ({ isLoaded }) => {
         return;
       }
       if (showFilter) {
-        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink?.id === filteredDrink?.id);
         const sortedFilteredCheckins = filteredCheckins.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
         setSortedArray(sortedFilteredCheckins);
         return;
@@ -68,7 +69,7 @@ const BarTalkPage = ({ isLoaded }) => {
         return;
       }
       if (showFilter) {
-        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink?.id === filteredDrink?.id);
         const sortedFilteredCheckins = filteredCheckins.sort((a, b) => a.rating < b.rating ? 1 : -1);
         setSortedArray(sortedFilteredCheckins);
         return;
@@ -81,7 +82,7 @@ const BarTalkPage = ({ isLoaded }) => {
         return;
       }
       if (showFilter) {
-        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink?.id === filteredDrink?.id);
         const sortedFilteredCheckins = filteredCheckins.sort((a, b) => a.rating > b.rating ? 1 : -1);
         setSortedArray(sortedFilteredCheckins);
         return;
@@ -146,10 +147,10 @@ const BarTalkPage = ({ isLoaded }) => {
               value={sortStyle}
               onChange={(e) => sortCheckins(e)}
             >
-              <option value="newest-to-oldest">Newest to oldest</option>
+              <option value="newest-to-oldest">Newest to oldest (default)</option>
               <option value="oldest-to-newest">Oldest to newest</option>
-              <option value="highest-to-lowest">By Rating (highest to lowest)</option>
-              <option value="lowest-to-highest">By Rating (lowest to highest)</option>
+              <option value="highest-to-lowest">By Rating - highest to lowest</option>
+              <option value="lowest-to-highest">By Rating - lowest to highest</option>
             </select>
           </div>
           <div className="filter-container">
