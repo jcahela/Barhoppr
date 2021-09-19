@@ -20,7 +20,7 @@ const Navigation = ({ isLoaded }) => {
 
   return (
     <>
-      <nav className={window.location.pathname === '/drinks' ? "drink-nav-container" : "nav-container"}>
+      <nav className={window.location.pathname === '/drinks' || window.location.pathname === '/new-drink' ? "drink-nav-container" : "nav-container"}>
         <div className="nav-logo-title">
           <NavLink className="nav-link" exact to="/bar-talk">
             <img src="/images/landing-logo.png" alt="A mug of beer logo" className="navbar-logo" />
@@ -46,11 +46,11 @@ const Navigation = ({ isLoaded }) => {
           }
         </div>
       </nav>
-      <div className={window.location.pathname === '/drinks' ? "drink-footer-container" : "footer-container"}>
+      <div className={window.location.pathname === '/drinks' || window.location.pathname === '/new-drink' ? "drink-footer-container" : "footer-container"}>
         <a href="https://github.com/jcahela" target="_blank" rel="noreferrer" className="github-link"><div className="github-logo"></div></a>
-        <span className={window.location.pathname === '/drinks' ? "drink-github-logo-text" : "github-logo-text"}>Github</span>
+        <span className={window.location.pathname === '/drinks' || window.location.pathname === '/new-drink' ? "drink-github-logo-text" : "github-logo-text"}>Github</span>
         <a href="https://www.linkedin.com/in/jason-cahela/" target="_blank" rel="noreferrer" className="linkedin-link"><div className="linkedin-logo"></div></a>
-        <span className={window.location.pathname === '/drinks' ? "drink-github-logo-text" : "github-logo-text"}>LinkedIn</span>
+        <span className={window.location.pathname === '/drinks' || window.location.pathname === '/new-drink' ? "drink-github-logo-text" : "github-logo-text"}>LinkedIn</span>
       </div>
     </>
   )

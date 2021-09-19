@@ -154,7 +154,7 @@
 .github-logo {
   width: 30px;
   height: 50px;
-  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888538081119072326/GitHub-Mark-32px.png');
+  background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/889198252417761290/GitHub-Mark-Light-32px.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -172,7 +172,8 @@
 .github-logo-text {
   margin-left: 5px;
   font-size: 18px;
-  font-family: 'Fira Sans', sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
 }
 
 .linkedin-link {

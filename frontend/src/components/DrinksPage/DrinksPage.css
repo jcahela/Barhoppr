@@ -1,5 +1,8 @@
 .drinks-body {
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888612947096637480/unknown.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
   position: fixed;
