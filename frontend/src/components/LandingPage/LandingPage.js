@@ -32,7 +32,7 @@ const LandingPage = () => {
         <div className="landing-background-image"></div>
       </div>
       <div className="landing-links-container">
-          <LoginFormModal />
+          <LoginFormModal className="landing-login"/>
           <div className="landing-container landing-signup-container">
             <NavLink to="/signup" id="landing-signup" >Sign Up</NavLink>
           </div>
