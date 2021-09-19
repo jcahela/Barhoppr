@@ -18,8 +18,8 @@ const BarTalkPage = ({ isLoaded }) => {
   const topFive = useSelector(state => state.drinks.top5);
   const [sortStyle, setSortStyle] = useState('newest-to-oldest');
   const [sortedArray, setSortedArray] = useState(allCheckins);
-  const [showFilter, setShowFilter] = useState(false);
-  const [filter, setFilter] = useState('');
+  const [showFilter, setShowFilter] = useState(true);
+  const [filter, setFilter] = useState('all');
   const [filteredArray, setFilteredArray] = useState(allDrinksArr);
   const [filteredDrink, setFilteredDrink] = useState({})
 
@@ -35,22 +35,21 @@ const BarTalkPage = ({ isLoaded }) => {
   }, [sortedArray])
 
   useEffect(() => {
-    if (filter === 'all') {
-      return;
-    }
+
     if (sortStyle === 'newest-to-oldest') {
-      if (filter === 'all') {
+      if (!showFilter || filter === 'all') {
+        setSortedArray(allCheckins);
         return;
       }
       if (showFilter) {
-        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink?.id === filteredDrink?.id);
         setSortedArray(filteredCheckins);
         return;
       }
-      setSortedArray(allCheckins);
+
     };
     if (sortStyle === 'oldest-to-newest') {
-      if (filter === 'all') {
+      if (!showFilter || filter === 'all') {
         const oldestToNewest = allCheckins.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
         setSortedArray(oldestToNewest);
         return;
@@ -63,13 +62,30 @@ const BarTalkPage = ({ isLoaded }) => {
       }
     };
     if (sortStyle === 'highest-to-lowest') {
-      const highestToLowest = allCheckins.sort((a, b) => a.rating < b.rating ? 1 : -1);
-      setSortedArray(highestToLowest);
+      if (!showFilter || filter === 'all') {
+        const highestToLowest = allCheckins.sort((a, b) => a.rating < b.rating ? 1 : -1)
+        setSortedArray(highestToLowest);
+        return;
+      }
+      if (showFilter) {
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const sortedFilteredCheckins = filteredCheckins.sort((a, b) => a.rating < b.rating ? 1 : -1);
+        setSortedArray(sortedFilteredCheckins);
+        return;
+      }
     };
     if (sortStyle === 'lowest-to-highest') {
-      const lowestToHighest = allCheckins.sort((a, b) => a.rating > b.rating ? 1 : -1);
-      setSortedArray(lowestToHighest);
-      
+      if (!showFilter || filter === 'all') {
+        const lowestToHighest = allCheckins.sort((a, b) => a.rating > b.rating ? 1 : -1)
+        setSortedArray(lowestToHighest);
+        return;
+      }
+      if (showFilter) {
+        const filteredCheckins = allCheckins.filter(checkin => checkin.Drink.id === filteredDrink.id);
+        const sortedFilteredCheckins = filteredCheckins.sort((a, b) => a.rating > b.rating ? 1 : -1);
+        setSortedArray(sortedFilteredCheckins);
+        return;
+      }
     }
   }, [sortStyle, allCheckins, filter, showFilter])
   
@@ -122,38 +138,42 @@ const BarTalkPage = ({ isLoaded }) => {
         <h1 className="bartalk-title">Recent Bar Talk</h1>
         <div className="bartalk-divider"></div>
         <div className="sort-container">
-          <span className="sort-title">Sort By: </span>
-          <select 
-            name="sortStyle" 
-            className="sort-selector"
-            value={sortStyle}
-            onChange={(e) => sortCheckins(e)}
-          >
-            <option value="newest-to-oldest">Newest to oldest</option>
-            <option value="oldest-to-newest">Oldest to newest</option>
-            <option value="highest-to-lowest">By Rating (highest to lowest)</option>
-            <option value="lowest-to-highest">By Rating (lowest to highest)</option>
-          </select>
-          <div 
-            className="filter-by-box"
-            onClick={toggleFilters}
-          >Filter By +</div>
-          {showFilter && (
-            <>
-              <span className="sort-title">Drink: </span>
-              <select 
-                name="filter" 
-                className="filter-selector"
-                value={filter}
-                onChange={filterCheckins}
-              >
-                <option value="all" selected default>All</option>
-                {allDrinksArr.map(drink => (
-                  <option className="filter-drink" value={drink.name} key={drink.id}>{drink.name}</option>
-                  ))}
-              </select>
-            </>
-          )}
+          <div className="sort-content-container">
+            <span className="sort-title">Sort By: </span>
+            <select 
+              name="sortStyle" 
+              className="sort-selector"
+              value={sortStyle}
+              onChange={(e) => sortCheckins(e)}
+            >
+              <option value="newest-to-oldest">Newest to oldest</option>
+              <option value="oldest-to-newest">Oldest to newest</option>
+              <option value="highest-to-lowest">By Rating (highest to lowest)</option>
+              <option value="lowest-to-highest">By Rating (lowest to highest)</option>
+            </select>
+          </div>
+          <div className="filter-container">
+            <div 
+              className="filter-by-box"
+              onClick={toggleFilters}
+            >Filter By+</div>
+            {showFilter && (
+              <>
+                <span className="filter-title">Drink: </span>
+                <select 
+                  name="filter" 
+                  className="filter-selector"
+                  value={filter}
+                  onChange={filterCheckins}
+                >
+                  <option value="all" selected default>All</option>
+                  {allDrinksArr.map(drink => (
+                    <option className="filter-drink" value={drink.name} key={drink.id}>{drink.name}</option>
+                    ))}
+                </select>
+              </>
+            )}
+          </div>
         </div>
         {sortedArray.map(checkin => (
           <CheckinCard key={checkin.id} checkin={checkin}/>
