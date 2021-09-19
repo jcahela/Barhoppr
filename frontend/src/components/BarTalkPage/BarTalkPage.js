@@ -21,7 +21,6 @@ const BarTalkPage = ({ isLoaded }) => {
   const [sortedArray, setSortedArray] = useState(allCheckins);
   const [showFilter, setShowFilter] = useState(true);
   const [filter, setFilter] = useState('all');
-  const [filteredArray, setFilteredArray] = useState(allDrinksArr);
   const [filteredDrink, setFilteredDrink] = useState({})
 
 
@@ -88,7 +87,7 @@ const BarTalkPage = ({ isLoaded }) => {
         return;
       }
     }
-  }, [sortStyle, allCheckins, filter, showFilter])
+  }, [sortStyle, allCheckins, filter, showFilter, filteredDrink])
   
 
   if (sessionUser['user'] === undefined) {
