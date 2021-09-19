@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/session";
 import { useDrinkSelected } from "../../context/DrinkSelected";
 import './LandingPage.css'
-import { useRef } from "react";
 
 const LandingPage = () => {
   const sessionUser = useSelector(state => state.session.user);

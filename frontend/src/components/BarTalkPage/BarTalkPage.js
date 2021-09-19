@@ -168,7 +168,7 @@ const BarTalkPage = ({ isLoaded }) => {
                   value={filter}
                   onChange={filterCheckins}
                 >
-                  <option value="all" selected default>All</option>
+                  <option value="all" default>All</option>
                   {allDrinksArr.map(drink => (
                     <option className="filter-drink" value={drink.name} key={drink.id}>{drink.name}</option>
                     ))}
