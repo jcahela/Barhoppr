@@ -14,7 +14,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
 
   if (sessionUser['user'] !== undefined) {
-    history.goBack();
+    history.push('/bar-talk');
     return null;
   }
 
