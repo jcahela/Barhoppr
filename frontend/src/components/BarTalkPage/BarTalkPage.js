@@ -20,7 +20,7 @@ const BarTalkPage = ({ isLoaded }) => {
   const topFive = useSelector(state => state.drinks.top5);
   const [sortStyle, setSortStyle] = useState('newest-to-oldest');
   const [sortedArray, setSortedArray] = useState(allCheckins);
-  const [showFilter, setShowFilter] = useState(false);
+  const [showFilter, setShowFilter] = useState(true);
   const [filter, setFilter] = useState('all');
   const [filteredDrink, setFilteredDrink] = useState({})
 
