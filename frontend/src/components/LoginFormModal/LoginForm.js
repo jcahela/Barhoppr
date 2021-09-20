@@ -36,7 +36,7 @@ const LoginForm = ({ onClose }) => {
     e.preventDefault();
     await dispatch(loginUser({
       credential: 'demo-guy',
-      password: 'password'
+      password: '!LOLwow808'
     }));
     // await dispatch(restoreUser());
     history.push('/bar-talk');

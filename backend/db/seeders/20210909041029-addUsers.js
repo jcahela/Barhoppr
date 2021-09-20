@@ -53,7 +53,7 @@ module.exports = {
         username: 'demo-guy',
         firstname: 'Andy',
         lastname: 'Samberg',
-        hashedPassword: bcrypt.hashSync('password'),
+        hashedPassword: bcrypt.hashSync('!LOLwow808'),
         profilePicture: 'https://randomuser.me/api/portraits/med/men/4.jpg',
         createdAt: faker.date.between('2015-01-01', '2021-08-31')
       },

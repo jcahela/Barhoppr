@@ -22,7 +22,7 @@ const LandingPage = () => {
     e.preventDefault();
     dispatch(loginUser({
       credential: 'demo-guy',
-      password: 'password'
+      password: '!LOLwow808'
     }))
     .then(() => history.push('/bar-talk'));
   };
