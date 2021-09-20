@@ -26,7 +26,7 @@ const SignupFormPage = () => {
 
   if (sessionUser) {
     return (
-      <Redirect to="/drinks"></Redirect>
+      <Redirect to="/bar-talk"></Redirect>
     )
   }
 
