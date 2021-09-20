@@ -2,13 +2,21 @@ import Navigation from "../Navigation"
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import DrinkCard from "../DrinkCard";
+import { fetchDrinks } from "../../store/drinks";
+import { useDispatch } from "react-redux";
 
 import './DrinksPage.css'
+import { useEffect } from "react";
 
 const DrinksPage = ({ isLoaded }) => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const drinks = useSelector(state => state.drinks.drinkList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDrinks());
+  }, [dispatch])
 
   const drinksArr = Object.values(drinks);
 
