@@ -56,7 +56,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#interestingissues">Interesting Issues</a></li>
+    <li><a href="#interesting-issues">Interesting Issues</a></li>
   </ol>
 </details>
 
@@ -137,6 +137,25 @@ Jason Cahela - [LinkedIn](https://www.linkedin.com/in/jason-cahela/) - jpacahela
 Project Repo Link: [https://github.com/jcahela/Barhoppr](https://github.com/jcahela/Barhoppr)
 
 Project Link: [https://barhoppr.herokuapp.com/](https://barhoppr.herokuapp.com/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ACKNOWLEDGEMENTS --
 
