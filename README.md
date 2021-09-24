@@ -57,6 +57,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#interesting-issues">Interesting Issues</a></li>
+    <li><a href="#features-to-implement-next">Features to Implement Next</a></li>
   </ol>
 </details>
 
