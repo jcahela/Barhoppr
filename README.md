@@ -30,7 +30,7 @@
   <p align="center">
     A portfolio clone of <a href="https://untappd.com/">Untappd.com</a>
     <br />
-    <a href="https://barhoppr.herokuapp.com/"><strong>Explore the website »</strong></a>
+    <a href="https://barhoppr.herokuapp.com/" target="_blank"><strong>Explore the website »</strong></a>
     <br />
     <br />
   </p>
