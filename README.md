@@ -40,7 +40,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary id="table-of-contents">Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -71,13 +71,13 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project 
-[Back to top](#)
+[Back to top](#table-of-contents)
 [![Product Name Screen Shot][product-screenshot]](https://barhoppr.herokuapp.com/)
 
 I chose to clone Untappd because of its interesting premise, which involves users rating beers they've had at different venues, and share their thoughts with other users. The difference between Untappd and Barhoppr though is that Barhoppr doesn't limit drinks to beers, but any alcoholic drink. This project was a cool mix of a review/rating type website and a social media site, and offered some interesting challenges with context and shared state in the React/Redux frontend.
 
 ### Built With 
-[Back to top](#)
+[Back to top](#table-of-contents)
 * [AWS - Amazon Web Services](https://aws.amazon.com/)
 * [PostgreSQL](https://www.postgresql.org/docs/)
 * [Sequelize](https://sequelize.org/v5/)
@@ -87,7 +87,7 @@ I chose to clone Untappd because of its interesting premise, which involves user
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-[Back to top](#)
+[Back to top](#table-of-contents)
 
 Users can signup and login to use Barhoppr, and can login as a demo user to experience the website quickly.
 
@@ -135,9 +135,8 @@ If a user can't find a drink they want to checkin, they can create a new one:
 When creating a checkin on the Drinks page, you can see the rating average and number of ratings on that drink set dynamically.
 
 ## Interesting Issues:
-[Back to top](#)
 ### Drinks Page Action Buttons
-[Back to top](#)
+[Back to top](#table-of-contents)
 
 <b>Goal</b>: When creating the Drinks page, I wanted each drink card to use the Checkin action button used on the Bar Talk page that opens up the same Checkin form modal but with that particular drink pre-selected. Clicking on the plus button on the Blue Moon drink card should open the Blue Moon Checkin form so the user can describe their experience and rate it.
 
@@ -150,7 +149,7 @@ When creating a checkin on the Drinks page, you can see the rating average and n
 [![Product Name Screen Shot][context-example]](https://barhoppr.herokuapp.com/bar-talk)
 
 ### Landing Page Animation - Only Animates Once
-[Back to top](#)
+[Back to top](#table-of-contents)
 
 <b>Goal</b>: I wanted to make an animation that brings the main title of the website, its subtitle, and the action signup button fade and slide in. I also wanted to use this animation as a way to give time for my App to frontload as much of the Redux store as was needed, such as the drinks for the Drinks page, checkins for the Bartalk page, etc.
 
@@ -167,9 +166,8 @@ In order to do that, I set prevHost as a context variable so that it could be ch
 So, I set the two links (from the Sign Up page and the Logout button) to also set the prevHost variable as its current host name (window.location.hostname) before sending the user to the landing page. This made it so that the animation only places once, and the only time it repeats is if the user refreshes the page, or enters the website from another host name.
 
 ## Features to Implement Next
-[Back to top](#)
 ### Comments
-[Back to top](#)
+[Back to top](#table-of-contents)
 
 <b>Idea</b>: I think the next extention of this project would be adding a comments feature on each checkin. 
 
@@ -180,7 +178,7 @@ The comments joins table could hold the checkin Id that the comment belongs to, 
 Then, if I wanted to get a list of comments associated with a Checkin, I could use eager loading in sequelize to get an array of comments, and their associated users, to display the comments in each checkin.
 
 ### Drink Card Info When Filtering by Drink
-[Back to top](#)
+[Back to top](#table-of-contents)
 
 <b>Idea</b>: Adding a drink's drink card, which includes a description of it, its average rating, and the number of ratings it has, would be an interesting addition to put in the Bar Talk page, above the checkins, when users filter checkins by drink, so they can see more information about the drink they're filtering by.
 
@@ -188,7 +186,7 @@ Then, if I wanted to get a list of comments associated with a Checkin, I could u
 
 <!-- CONTACT -->
 ## Contact
-[Back to top](#)
+[Back to top](#table-of-contents)
 
 Jason Cahela - [LinkedIn](https://www.linkedin.com/in/jason-cahela/) - jpacahela@gmail.com
 
