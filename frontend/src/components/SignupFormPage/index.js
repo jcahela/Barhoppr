@@ -79,83 +79,82 @@ const SignupFormPage = () => {
   }
 
   return (
-    <div className="component-body">
-      <div className="body-cover-image">
-        <div className="signup-form-container">
-          <div className="sign-up-image" />
-          <form 
-            onSubmit={onSubmit} 
-            className="signup-form">
-            <h1 className="signup-title">Sign up to Barhoppr.</h1>
-            {errors.length > 0 && <ul className="errors-container">
-              {errors.map(error => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>}
-            <label htmlFor="firstname"></label>
-            <input 
-              className="signup-input-field"
-              type="text" 
-              name="firstname"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-              placeholder="First Name"
-            />
-            <label htmlFor="lastname"></label>
-            <input 
-              className="signup-input-field"
-              type="text" 
-              name="lastname"
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-              placeholder="Last Name"
-            />
-            <label htmlFor="username"></label>
-            <input 
-              className="signup-input-field"
-              type="text" 
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
-            />
-            <label htmlFor="email"></label>
-            <input 
-              className="signup-input-field"
-              type="email" 
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
-            <label htmlFor="password"></label>
-            <input 
-              className="signup-input-field"
-              type="password" 
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-            <label htmlFor="confirmPassword"></label>
-            <input 
-              className="signup-input-field"
-              type="password" 
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm Password"
-            />
-            <button className="signup-button">Signup</button>
-            <div className="signup-bottom-links">
-              <span className="login-question">Already a user?  <LoginFormModal to="/login"></LoginFormModal></span>
-              <Link onClick={() => setPrevHost(window.location.hostname)} className="signup-home-link" to="/">Back to Home</Link>
-            </div>
-          </form>
+    <>
+      <div className="body-cover-image"/>
+      <div className="signup-form-container">
+        <div className="sign-up-image" />
+        <form 
+          onSubmit={onSubmit} 
+          className="signup-form">
+          <h1 className="signup-title">Sign up to Barhoppr.</h1>
+          {errors.length > 0 && <ul className="errors-container">
+            {errors.map(error => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>}
+          <label htmlFor="firstname"></label>
+          <input 
+            className="signup-input-field"
+            type="text" 
+            name="firstname"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            placeholder="First Name"
+          />
+          <label htmlFor="lastname"></label>
+          <input 
+            className="signup-input-field"
+            type="text" 
+            name="lastname"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            placeholder="Last Name"
+          />
+          <label htmlFor="username"></label>
+          <input 
+            className="signup-input-field"
+            type="text" 
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+          />
+          <label htmlFor="email"></label>
+          <input 
+            className="signup-input-field"
+            type="email" 
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+          <label htmlFor="password"></label>
+          <input 
+            className="signup-input-field"
+            type="password" 
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <label htmlFor="confirmPassword"></label>
+          <input 
+            className="signup-input-field"
+            type="password" 
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
+          />
+          <button className="signup-button">Signup</button>
+          <div className="signup-bottom-links">
+            <span className="login-question">Already a user?  <LoginFormModal to="/login"></LoginFormModal></span>
+            <Link onClick={() => setPrevHost(window.location.hostname)} className="signup-home-link" to="/">Back to Home</Link>
+          </div>
+        </form>
 
-        </div>
       </div>
-    </div>
+    </>
   )
 }
 
