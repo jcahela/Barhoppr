@@ -47,7 +47,11 @@
 
 .landing-links-container {
   display: flex;
+  width: 100vw;
   justify-content: flex-end;
+  /* justify-content: center; */
+  border: 1px solid red;
+  padding-right: 30px;
 }
 
 
@@ -57,7 +61,7 @@
   box-sizing: border-box;
   text-align: center;
   padding-top: 0.75em;
-  margin-right: 0.5em;
+  /* margin-right: 0.5em; */
   margin-top: 1.25em;
   font-size: 1.125em;
   z-index: 1;
@@ -67,7 +71,6 @@
 
 .landing-signup-container {
   background-color: #dc8c66;
-  margin-right: 3.75em;
 }
 
 .landing-signup-container:hover {
@@ -85,20 +88,24 @@
 
 .landing-welcome-container {
   margin: 0 auto;
-  margin-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 50%;
-  height: 60vh;
-  position: relative;
+  height: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: rgba(220, 139, 102, 0.699);
   z-index: 1;
   width: 37.5rem;
-  height: 37.5rem;
   border: 3px solid rgb(216, 216, 216);
   border-radius: 7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
 }
 
 @keyframes backgroundChange {
@@ -273,4 +280,36 @@
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+@media (max-width: 925px) {
+  .landing-links-container {
+    justify-content: center;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-welcome-container {
+    width: 100vw;
+    margin-top: 0;
+  }
+
+  .landing-welcome-title {
+    font-size: 16vw;
+  }
+
+  .landing-welcome-message {
+    text-align: center;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media (max-height: 639px) {
+  .landing-links-container {
+    display: none;
+  }
+
 }
