@@ -112,3 +112,13 @@
   color: #864323;
   font-weight: bold;
 }
+
+@media (max-width: 564px) {
+  .login-container {
+    width: 100vw;
+  }
+
+  .login-form {
+    margin-top: 10px;
+  }
+}

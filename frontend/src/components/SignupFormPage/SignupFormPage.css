@@ -130,13 +130,12 @@
   .signup-form-container {
     width: 100vw;
     height: fit-content;
+    padding-bottom: 20px;
   }
 
   .signup-input-field {
-    width: 100%;
+    width: 80%;
   }
-
-  
 }
 
 @media (max-height: 582px) {
