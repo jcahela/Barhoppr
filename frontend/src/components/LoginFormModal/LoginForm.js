@@ -50,9 +50,6 @@ const LoginForm = ({ onClose }) => {
       <div className="login-line-divider"></div>
       <img src="/images/logo-login.png" alt="A mug of beer logo" className="logo-login" />
       <h2 className="login-title-login">Login</h2>
-      {(window.location.pathname !== '/signup') && (
-        <span className="signup-question">Need a Barhoppr account?  <Link className="signup-link" to="/signup">Sign up here</Link></span>
-      )}
       <form onSubmit={onLogin} className="login-form">
         {loginErrors.length > 0 && <ul className="login-error-container">
           {loginErrors.map(error => (
@@ -80,6 +77,9 @@ const LoginForm = ({ onClose }) => {
         <button className="login-button">Login</button>
       </form>
       <Link id="demo-user-link" to="/" onClick={getDemoUser}>Log in as a demo user</Link>
+      {(window.location.pathname !== '/signup') && (
+        <span className="signup-question">Need a Barhoppr account?  <Link className="signup-link" to="/signup">Sign up here</Link></span>
+      )}
     </div>
   )
 }
