@@ -28,23 +28,24 @@ const Navigation = ({ isLoaded }) => {
           <h1 className="nav-barhoppr">BARHOPPR</h1>
         </div>
 
-        {isLoaded && (<div className="nav-site-link-container">
-          <NavLink style={{color: 'white'}} className="nav-link" to='/bar-talk'>Bar Talk</NavLink>
-          <NavLink style={{color: 'white'}} className="nav-link" to={`/users/${currentUser?.id}`}>My Profile</NavLink>
-          <NavLink style={{color: 'white'}} className="nav-link" to='/drinks'>Drinks</NavLink>
-        </div>)}
+        {isLoaded && (
+          <>
+            <NavLink style={{color: 'white'}} className="nav-link" to='/bar-talk'>Bar Talk</NavLink>
+            <NavLink style={{color: 'white'}} className="nav-link" to={`/users/${currentUser?.id}`}>My Profile</NavLink>
+            <NavLink style={{color: 'white'}} className="nav-link" to='/drinks'>Drinks</NavLink>
+            <div className="nav-link-container">
+              {currentUser && isLoaded ? 
+                <>
+                  <ProfileButton />
+                </>: 
+                <>
+                  <LoginFormModal />
+                  <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
+                </>
+              }
+            </div>
+          </>)}
         
-        <div className="nav-link-container">
-          {currentUser && isLoaded ? 
-            <>
-              <ProfileButton />
-            </>: 
-            <>
-              <LoginFormModal />
-              <NavLink className="nav-link signup-link" to="/signup">Signup</NavLink>
-            </>
-          }
-        </div>
       </nav>
       <div className={window.location.pathname === '/drinks' || window.location.pathname === '/new-drink' ? "drink-footer-container" : "footer-container"}>
         <a href="https://github.com/jcahela" target="_blank" rel="noreferrer" className="github-link"><div className="github-logo"></div></a>
