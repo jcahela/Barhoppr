@@ -147,18 +147,20 @@ const CheckinCard = ({ checkin }) => {
                 <option value="can">Can</option>
               </select>
           {/* Fourth form element - comment */}
-          <label htmlFor="comment" hidden></label>
+          <label className="edit-comment-textarea" htmlFor="comment">
             <textarea 
               className="edit-comment-field"
               name="comment"
               value={editComment}
               onChange={(e) => setEditComment(e.target.value)}
             />
+            <p className="edit-checkin-cancel-button" onClick={() => setBeingEdited(false)}>cancel</p>
+            <button className="edit-submit">confirm</button>
+            </label>
           <p className="checkincard-time">{checkinDateFormatted}</p>
-          <p className="edit-checkin-button" onClick={() => setBeingEdited(false)}>cancel</p>
+          
           <span ref={iconRef} className="hidden material-icons drink-icon"></span>
           <img ref={canRef} className="hidden can-img drink-icon" src="https://img.icons8.com/material/50/000000/beer-can--v2.png" alt=""/>
-          <button className="edit-submit">confirm</button>
           <p className="delete-checkin-button" onClick={deleteCheckin}>delete</p>
         </form>
     </div>
@@ -183,15 +185,16 @@ const CheckinCard = ({ checkin }) => {
 
         <div className="checkincard-comment-container">
           <p className="checkincard-comment">{checkin?.comment}</p>
-        </div>
-        <p className="checkincard-time">{checkinDateFormatted}</p>
-        {checkinDateFormatted !== updateDateFormatted && <p className="checkincard-updated-time">(Edited: {updateDateFormatted})</p>}
-        {ownedCard && (
+          {ownedCard && (
           <p className="edit-checkin-button" onClick={() => {
             setEditDrinkId(checkin.Drink.id)
             setBeingEdited(true)
           }}>edit</p>
         )}
+        </div>
+        <p className="checkincard-time">{checkinDateFormatted}</p>
+        {checkinDateFormatted !== updateDateFormatted && <p className="checkincard-updated-time">(Edited: {updateDateFormatted})</p>}
+        
         <span ref={iconRef} className="material-icons drink-icon"></span>
         <img ref={canRef} className="hidden can-img drink-icon" src="https://img.icons8.com/material/50/000000/beer-can--v2.png" alt=""/>
       </div>

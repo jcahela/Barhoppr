@@ -32,7 +32,7 @@
 }
 
 .sort-container {
-  margin-top: 1.25em;
+  margin-top: 5em;
   display: flex;
   justify-content: space-between;
 }
@@ -52,7 +52,6 @@
 }
 
 .filter-container {
-  margin-left: 6.25em;
   width: 21.875rem;
 }
 
@@ -126,4 +125,48 @@
 
 .bartalk-scroll:hover {
   transform: scale(1.08);
+}
+
+@media (max-width: 1743px) {
+  .top-rated-drinks-container {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .bartalk-feed-container {
+    position: initial;
+  }
+}
+
+@media (max-width: 1020px) {
+  .bartalk-feed-container {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .bartalk-title {
+    text-align: center;
+  }
+  .bartalk-divider {
+    width: 100%;
+  }
+}
+
+@media (max-width: 740px) {
+  .bartalk-feed-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .sort-container {
+    flex-direction: column;
+  }
+
+  .filter-container {
+    margin-top: 20px;
+  }
 }

@@ -11,20 +11,22 @@
 
 .checkincard-header {
   display: flex;
-  justify-content: space-between;
+  height: fit-content;
 }
 
 .checkincard-profile-pic {
-  min-height: 5rem;
+  height: 5rem;
   min-width: 5rem;
   background-size: cover;
   background-position: center;
   border-radius: 50%;
+  margin-right: 40px;
 }
 
 .checkincard-title-container {
   width: 40rem;
-  max-height: 5rem;
+  height: fit-content;
+  margin-right: 40px;
 }
 
 .checkincard-title {
@@ -41,8 +43,8 @@
 }
 
 .checkincard-drink-pic {
-  height: 5rem;
-  width: 5rem;
+  height: 80px;
+  min-width: 80px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -60,8 +62,8 @@
   font-size: 0.813em;
   color: blue;
   position: absolute;
-  bottom: 2.188rem;
-  left: 9.375rem;
+  bottom: -20px;
+  left: 0;
 }
 
 .delete-checkin-button {
@@ -89,11 +91,12 @@
 .checkincard-comment-container {
   width: 600px;
   margin: 0 auto;
-  margin-top: 1.875em;
+  margin-top: 3em;
   margin-bottom: 1.875em;
   border: 2px solid #63636383;
   min-height: 6.25rem;
   padding: 0.625em;
+  position: relative;
 }
 
 .checkincard-comment {
@@ -142,6 +145,18 @@
   margin-left: 0.938em;
 }
 
+.edit-comment-textarea {
+  position: relative;
+}
+
+.edit-checkin-cancel-button {
+  font-size: 0.813em;
+  color: blue;
+  position: absolute;
+  top: -13px;
+  left: 110px;
+}
+
 .edit-comment-field {
   width: 40.625rem;
   margin: 1.875em 0;
@@ -157,8 +172,8 @@
   font-size: 0.813em;
   color: blue;
   position: absolute;
-  bottom: 2.125rem;
-  left: 14.063rem;
+  top: -13px;
+  left: 175px;
 }
 
 .edit-serving-style-label {
@@ -168,4 +183,29 @@
 
 .serving-style {
   margin-top: 1.25em;
+}
+
+@media (max-width: 900px) {
+  .checkincard-header {
+    justify-content: flex-start;
+  }
+
+  .checkincard-profile-pic {
+    margin-right: 20px;
+  }
+
+  .checkincard-title-container {
+    margin-right: 20px;
+  }
+}
+
+@media(max-width: 740px) {
+  .checkincard-container {
+    border-radius: 0px;
+    height: fit-content;
+  }
+
+  .checkincard-comment-container {
+    width: 100%;
+  }
 }
