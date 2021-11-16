@@ -170,15 +170,18 @@ const CheckinCard = ({ checkin }) => {
   return (
     <>
       <div className="checkincard-container">
-        {checkin && (<div className="checkincard-header">
-          <div ref={profilePicRef} className="checkincard-profile-pic"></div>
-          <div className="checkincard-title-container">
-            <h2 className="checkincard-title">
-              <Link id="user-profile-link" to={`/users/${checkinUser?.id}`} className="checkincard-user-name">
-                {checkinUser?.firstname} {checkinUser?.lastname}
-              </Link> is drinking a {checkinDrink?.name}
-            </h2>
-            <p className="checkincard-rating"><span className="checkincard-user-name">{checkinUser?.firstname}</span> rated it a {checkin?.rating}/5!</p>
+        {checkin && (
+        <div className="checkincard-header">
+          <div className="profile-pic-and-title-container">
+            <div ref={profilePicRef} className="checkincard-profile-pic"></div>
+            <div className="checkincard-title-container">
+              <h2 className="checkincard-title">
+                <Link id="user-profile-link" to={`/users/${checkinUser?.id}`} className="checkincard-user-name">
+                  {checkinUser?.firstname} {checkinUser?.lastname}
+                </Link> is drinking a {checkinDrink?.name}
+              </h2>
+              <p className="checkincard-rating"><span className="checkincard-user-name">{checkinUser?.firstname}</span> rated it a {checkin?.rating}/5!</p>
+            </div>
           </div>
           <div ref={drinkPicRef} className="checkincard-drink-pic"></div>
         </div>)}

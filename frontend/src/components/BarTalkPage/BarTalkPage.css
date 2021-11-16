@@ -51,10 +51,6 @@
   flex-direction: column;
 }
 
-.filter-container {
-  width: 21.875rem;
-}
-
 .filter-by-box {
   text-decoration: underline;
 }
@@ -164,9 +160,11 @@
 @media (max-width: 700px) {
   .sort-container {
     flex-direction: column;
+    margin-left: 20px;
   }
 
   .filter-container {
     margin-top: 20px;
+    width: 300px;
   }
 }

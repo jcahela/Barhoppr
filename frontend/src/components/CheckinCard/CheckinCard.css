@@ -12,11 +12,18 @@
 .checkincard-header {
   display: flex;
   height: fit-content;
+  justify-content: space-between;
+  position: relative;
+}
+
+.profile-pic-and-title-container {
+  display: flex;
 }
 
 .checkincard-profile-pic {
   height: 5rem;
   min-width: 5rem;
+  width: 5rem;
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -24,9 +31,8 @@
 }
 
 .checkincard-title-container {
-  width: 40rem;
+  width: 100%;
   height: fit-content;
-  margin-right: 40px;
 }
 
 .checkincard-title {
@@ -186,9 +192,6 @@
 }
 
 @media (max-width: 900px) {
-  .checkincard-header {
-    justify-content: flex-start;
-  }
 
   .checkincard-profile-pic {
     margin-right: 20px;
@@ -207,5 +210,22 @@
 
   .checkincard-comment-container {
     width: 100%;
+  }
+}
+
+@media(max-width: 500px) {
+  .profile-pic-and-title-container {
+    flex-direction: column;
+  }
+
+  .checkincard-title-container {
+    margin-top: 15px;
+    width: 300px;
+    overflow: visible;
+  }
+
+  .checkincard-drink-pic {
+    position: absolute;
+    right: 15px;
   }
 }
