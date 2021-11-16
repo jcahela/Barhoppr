@@ -12,7 +12,7 @@
 
 .profile-banner {
   height: 25rem;
-  width: 50%;
+  width: 940px;
   margin: 0 auto;
   margin-top: 6.25em;
   background-image: url('https://cdn.discordapp.com/attachments/886336420552269847/888168217116311573/mountains-1412683_1280.png');
@@ -64,7 +64,7 @@
 }
 
 .profile-checkins {
-  width: 50%;
+  width: 940px;
   margin: 0 auto;
   padding: 1.875em;
   padding-top: 3.75em;
@@ -185,4 +185,16 @@
 .new-profile-pic-button:hover {
   cursor: pointer;
   transform: scale(1.01);
+}
+
+@media (max-width: 940px) {
+  .profile-banner,
+  .profile-checkins {
+    width: 100%;
+  }
+
+  .profile-checkins {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
