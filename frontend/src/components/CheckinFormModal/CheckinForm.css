@@ -182,3 +182,13 @@
 #can-icon {
   height: 1.25rem;
 }
+
+@media (max-width: 436px) {
+  .checkin-container {
+    width: 100vw;
+  }
+
+  .checkin-search {
+    width: 100%;
+  }
+}
