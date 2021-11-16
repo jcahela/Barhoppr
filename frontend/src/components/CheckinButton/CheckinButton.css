@@ -18,6 +18,7 @@
   .checkin-button {
     position: fixed;
     left: 15px;
-    bottom: -100px;
+    top: auto;
+    bottom: 50px;
   }
 }
