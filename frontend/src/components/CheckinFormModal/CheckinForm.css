@@ -183,12 +183,25 @@
   height: 1.25rem;
 }
 
-@media (max-width: 436px) {
+@media (max-width: 656px) {
   .checkin-container {
     width: 100vw;
   }
 
   .checkin-search {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+}
+
+@media (max-width: 436px) {
+
+  .checkin-search {
     width: 100%;
+  }
+
+  .results-container {
+    width: 92%;
   }
 }
