@@ -5,7 +5,6 @@
   border-radius: 3px;
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
   padding: 20px;
   position: relative;
   margin: 0 auto;
@@ -15,12 +14,11 @@
 
 .drinkcard-image {
   height: 140px;
-  width: 140px;
+  min-width: 140px;
   box-sizing: border-box;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* border: 1px solid #63636383; */
   border-radius: 3px;
 }
 
@@ -53,6 +51,7 @@
 .drinkcard-info {
   display: flex;
   width: fit-content;
+  height: fit-content;
 }
 
 .drinkcard-info-section {
@@ -60,6 +59,7 @@
   padding: 5px 13px;
   font-size: 13px;
   color: black;
+  white-space: pre;
 }
 
 .drinkcard-checkin-button {
@@ -73,4 +73,41 @@
 .drinkcard-checkin-button:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+@media (max-width: 574px) {
+  .drinkcard-container {
+    flex-direction: column;
+    height: fit-content;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+
+  .drinkcard-content {
+    margin-left: 0;
+    height: fit-content
+  }
+
+  .drinkcard-image {
+    width: 100%;
+    height: 235px;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .drinkcard-info {
+    margin-bottom: 30px;
+  }
+
+  .drinkcard-divider {
+    height: 2px;
+    width: 145px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .drinkcard-title {
+    text-align: center;
+  }
 }

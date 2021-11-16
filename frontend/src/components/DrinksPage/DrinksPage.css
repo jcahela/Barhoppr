@@ -114,3 +114,17 @@
 .linkedin-link {
   margin-left: 1.125rem;
 }
+
+@media (max-width: 920px) {
+  .drinks-feed-container {
+    margin: none;
+    width: 100%;
+    height: 78vh;
+  }
+}
+
+@media (max-width: 680px) {
+  .drinks-feed-container {
+    padding: 0;
+  }
+}
