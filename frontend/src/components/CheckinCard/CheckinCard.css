@@ -118,11 +118,10 @@
 
 .checkincard-updated-time {
   position: absolute;
-  bottom: 2.188rem;
-  right: 9.375rem;
+  bottom: -20px;
+  right: 0;
   font-size: 0.813em;
   font-weight: lighter;
-  /* font-family: 'Fira Sans', sans-serif; */
   color: rgb(138, 138, 138);
 }
 
@@ -151,8 +150,13 @@
   margin-left: 0.938em;
 }
 
+.edit-checkincard-form {
+  width: 100%;
+}
+
 .edit-comment-textarea {
   position: relative;
+  width: 100%;
 }
 
 .edit-checkin-cancel-button {
@@ -191,6 +195,13 @@
   margin-top: 1.25em;
 }
 
+@media(max-width: 925px) {
+  .edit-comment-field {
+    width: 80%;
+    margin-left: 20px;
+  }
+}
+
 @media (max-width: 900px) {
 
   .checkincard-profile-pic {
@@ -227,5 +238,13 @@
   .checkincard-drink-pic {
     position: absolute;
     right: 15px;
+  }
+
+  .edit-drinks {
+    margin-left: 0;
+  }
+
+  .edit-serving-style-label {
+    margin-left: 0;
   }
 }

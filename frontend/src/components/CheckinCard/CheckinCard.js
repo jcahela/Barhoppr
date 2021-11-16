@@ -94,41 +94,44 @@ const CheckinCard = ({ checkin }) => {
   if (beingEdited) {
     return (
       <div className="checkincard-container">
-        <form onSubmit={onEdit}>
-          {checkin && (<div className="checkincard-header">
-            <div ref={profilePicRef} className="checkincard-profile-pic"></div>
-            <div className="checkincard-title-container">
-              <h2 className="checkincard-title inline-block"><span className="checkincard-user-name">{checkinUser?.firstname} {checkinUser?.lastname}</span> is drinking a</h2>
-              {/* First form element change - drinks */}
-              <label htmlFor="drinkId" hidden></label>
-              <select 
-                className="checkin-input-field edit-drinks"
-                name="drinkId"
-                value={editDrinkId}
-                onChange={(e) => setEditDrinkId(e.target.value)}
-              >
-                <option value="" disabled>--Select Drink--</option>
-                {drinksArr.map(drink => (
-                  <option key={drink.id} value={drink.id}>{drink.name}</option>
-                ))}
-              </select>
-              <p className="checkincard-rating"><span className="checkincard-user-name">{checkinUser?.firstname}</span> rated it a</p>
-              {/* Second form element change - rating */}
-              <label htmlFor="rating" hidden></label>
-              <select 
-                className="checkin-input-field edit-rating"
-                name="rating"
-                value={editRating}
-                onChange={(e) => setEditRating(e.target.value)}
-              >
-                <option value="" disabled>--Rating--</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+        <form className="edit-checkincard-form" onSubmit={onEdit}>
+          {checkin && (
+          <div className="checkincard-header">
+            <div className="profile-pic-and-title-container">
+              <div ref={profilePicRef} className="checkincard-profile-pic"></div>
+              <div className="checkincard-title-container">
+                <h2 className="checkincard-title inline-block"><span className="checkincard-user-name">{checkinUser?.firstname} {checkinUser?.lastname}</span> is drinking a</h2>
+                {/* First form element change - drinks */}
+                <label htmlFor="drinkId" hidden></label>
+                <select 
+                  className="checkin-input-field edit-drinks"
+                  name="drinkId"
+                  value={editDrinkId}
+                  onChange={(e) => setEditDrinkId(e.target.value)}
+                >
+                  <option value="" disabled>--Select Drink--</option>
+                  {drinksArr.map(drink => (
+                    <option key={drink.id} value={drink.id}>{drink.name}</option>
+                  ))}
+                </select>
+                <p className="checkincard-rating"><span className="checkincard-user-name">{checkinUser?.firstname}</span> rated it a</p>
+                {/* Second form element change - rating */}
+                <label htmlFor="rating" hidden></label>
+                <select 
+                  className="checkin-input-field edit-rating"
+                  name="rating"
+                  value={editRating}
+                  onChange={(e) => setEditRating(e.target.value)}
+                >
+                  <option value="" disabled>--Rating--</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
             </div>
             <div ref={drinkPicRef} className="checkincard-drink-pic"></div>
           </div>)}
@@ -189,14 +192,14 @@ const CheckinCard = ({ checkin }) => {
         <div className="checkincard-comment-container">
           <p className="checkincard-comment">{checkin?.comment}</p>
           {ownedCard && (
-          <p className="edit-checkin-button" onClick={() => {
-            setEditDrinkId(checkin.Drink.id)
-            setBeingEdited(true)
-          }}>edit</p>
-        )}
+            <p className="edit-checkin-button" onClick={() => {
+              setEditDrinkId(checkin.Drink.id)
+              setBeingEdited(true)
+            }}>edit</p>
+          )}
+          {checkinDateFormatted !== updateDateFormatted && <p className="checkincard-updated-time">(Edited: {updateDateFormatted})</p>}
         </div>
         <p className="checkincard-time">{checkinDateFormatted}</p>
-        {checkinDateFormatted !== updateDateFormatted && <p className="checkincard-updated-time">(Edited: {updateDateFormatted})</p>}
         
         <span ref={iconRef} className="material-icons drink-icon"></span>
         <img ref={canRef} className="hidden can-img drink-icon" src="https://img.icons8.com/material/50/000000/beer-can--v2.png" alt=""/>
